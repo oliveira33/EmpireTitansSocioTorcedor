@@ -31,11 +31,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="24dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
+
                 android:orientation="vertical"
+                android:padding="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -66,7 +64,7 @@
                     android:textColor="@android:color/background_light" />
 
                 <EditText
-                    android:id="@+id/editText6"
+                    android:id="@+id/txtNome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -84,7 +82,7 @@
                     android:textColor="@android:color/background_light" />
 
                 <EditText
-                    android:id="@+id/editText5"
+                    android:id="@+id/txtSobrenome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -102,7 +100,7 @@
                     android:textColor="@android:color/background_light" />
 
                 <EditText
-                    android:id="@+id/editText4"
+                    android:id="@+id/txtEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -120,7 +118,7 @@
                     android:textColor="@android:color/background_light" />
 
                 <EditText
-                    android:id="@+id/editText3"
+                    android:id="@+id/txtData"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -138,7 +136,7 @@
                     android:textColor="@android:color/background_light" />
 
                 <EditText
-                    android:id="@+id/editText2"
+                    android:id="@+id/txtCpf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -156,7 +154,7 @@
                     android:textColor="@android:color/background_light" />
 
                 <EditText
-                    android:id="@+id/editText"
+                    android:id="@+id/txtTelefone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -174,7 +172,7 @@
                     android:textColor="@android:color/background_light" />
 
                 <EditText
-                    android:id="@+id/editText7"
+                    android:id="@+id/txtEndereco"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -192,7 +190,7 @@
                     android:textColor="@android:color/background_light" />
 
                 <EditText
-                    android:id="@+id/editText8"
+                    android:id="@+id/txtSenha"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -200,7 +198,7 @@
                     android:inputType="textPersonName" />
 
                 <EditText
-                    android:id="@+id/editText9"
+                    android:id="@+id/txtSenhaConfirm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -218,15 +216,53 @@
                     android:textColor="@android:color/background_light" />
 
                 <EditText
-                    android:id="@+id/editText11"
+                    android:id="@+id/txtCartao"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Insira o número do seu cartão"
                     android:inputType="textPersonName" />
 
+                <CheckBox
+                    android:id="@+id/checkTermos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Concordo com os Termos de Uso"
+                    android:textColor="@android:color/background_light" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btConfirma"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Confirmar"
+                        android:textAlignment="center" />
+
+                    <Button
+                        android:id="@+id/btCancelar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Cancelar" />
+                </LinearLayout>
+
             </LinearLayout>
         </ScrollView>
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="2dp"
+            android:layout_marginTop="2dp"
+            app:srcCompat="@drawable/logo" />
 
     </RelativeLayout>
 
