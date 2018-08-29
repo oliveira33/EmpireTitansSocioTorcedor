@@ -19,6 +19,7 @@ public class Login extends AppCompatActivity {
 
         Button botaoLogin = findViewById(R.id.btLogin);
         Button botaoCadastrar = findViewById(R.id.btCadastrar);
+        //w
 
         botaoLogin.setOnClickListener(new View.OnClickListener() {
             @Override
