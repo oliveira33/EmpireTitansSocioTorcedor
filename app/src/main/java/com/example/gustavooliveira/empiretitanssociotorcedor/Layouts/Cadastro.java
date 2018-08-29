@@ -9,7 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Usuario;
 import com.example.gustavooliveira.empiretitanssociotorcedor.R;
+import com.example.gustavooliveira.empiretitanssociotorcedor.Salesforce.UsuarioSF;
 
 public class Cadastro extends AppCompatActivity {
 
@@ -48,8 +50,21 @@ public class Cadastro extends AppCompatActivity {
         btConfirma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Botão para a função criar novo usuario
-                Toast.makeText(getApplicationContext(), "Função não criada", Toast.LENGTH_LONG).show();
+                try {
+                    String senha = txtSenha.getText().toString();
+                    if (!senha.equals(txtSenhaConfirm.getText().toString()))
+                        throw new Exception("As senhas não são iguais");
+
+                    // RG?
+                    Usuario usuario = new Usuario(txtEmail.getText().toString(), senha, txtNome.getText().toString(), txtSobrenome.getText().toString(), txtData.getText().toString(), txtCpf.getText().toString()
+                            , txtCpf.getText().toString(), txtEndereco.getText().toString(), txtTelefone.getText().toString(), txtCartao.getText().toString());
+
+                    UsuarioSF sf = new UsuarioSF();
+                    sf.Cadastrar(usuario);
+                }
+                catch (Exception ex) {
+                    Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG);
+                }
             }
         });
 

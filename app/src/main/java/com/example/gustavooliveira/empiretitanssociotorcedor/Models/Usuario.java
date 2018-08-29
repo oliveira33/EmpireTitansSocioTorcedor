@@ -1,5 +1,8 @@
 package com.example.gustavooliveira.empiretitanssociotorcedor.Models;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Date;
 
 public class Usuario {
@@ -9,15 +12,16 @@ public class Usuario {
     private String senha;
     private String nome;
     private String sobrenome;
-    private Date dataNascimento;
+    private String dataNascimento;
     private String cpf;
     private String rg;
     private String endereco;
     private String celular;
+    private String cartao;
 
     public Usuario() { }
 
-    public Usuario(String email, String senha, String nome, String sobrenome, Date dataNascimento, String cpf, String rg, String endereco, String celular) {
+    public Usuario(String email, String senha, String nome, String sobrenome, String dataNascimento, String cpf, String rg, String endereco, String celular, String cartao) {
         this.email = email;
         this.senha = senha;
         this.nome = nome;
@@ -27,6 +31,7 @@ public class Usuario {
         this.rg = rg;
         this.endereco = endereco;
         this.celular = celular;
+        this.cartao = cartao;
     }
 
     public int getId() {
@@ -69,11 +74,11 @@ public class Usuario {
         this.sobrenome = sobrenome;
     }
 
-    public Date getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
@@ -107,5 +112,24 @@ public class Usuario {
 
     public void setCelular(String celular) {
         this.celular = celular;
+    }
+
+    public JSONObject toJSON(boolean incluirId) throws JSONException {
+        JSONObject json = new JSONObject();
+
+        if(incluirId)
+            json.put("id", id);
+
+        json.put("email", email);
+        json.put("senha", senha);
+        json.put("nome", nome);
+        json.put("sobrenome", sobrenome);
+        json.put("dataNascimento", dataNascimento);
+        json.put("cpf", cpf);
+        json.put("rg", rg);
+        json.put("endereco", endereco);
+        json.put("celular", celular);
+
+        return json;
     }
 }
