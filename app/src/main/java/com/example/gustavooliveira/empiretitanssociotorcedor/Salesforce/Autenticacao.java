@@ -24,7 +24,7 @@ public class Autenticacao {
     private Instant _atualizacao;
 
     private Autenticacao() {
-        _tempo = Duration.of(14, ChronoUnit.MINUTES);
+        _tempo = Duration.of(15, ChronoUnit.MINUTES);
     }
 
     public static Autenticacao get() {
@@ -37,18 +37,11 @@ public class Autenticacao {
     public String getToken() throws Exception {
         Instant instante = Instant.now();
 
-        if(token == null || Duration.between(instante, _atualizacao).compareTo(_tempo) > 0) {
+        if(_atualizacao == null || Duration.between(instante, _atualizacao).compareTo(_tempo) > 0) {
             _atualizacao = instante;
 
-            if(token == null)
-                token = "QEZuFdpoOTuHSwqedK1rUjpte"; // Coloca o token do e-mail aqui
-
             String parametros = "grant_type=password&client_id=3MVG9dZJodJWITSt1OZ0VfVl9MJZa_4Uk6rsD.FMfw8bfaSRsiOfQxUNxTfW914d0yZjtzKg_WFeXn98_XL7P";
-            parametros += "&client_secret=4508895819599791871&username=gtv.assis@gmail.com&password=empiretitans99" + token;
-
-            // Teste
-            //String parametros1 = "grant_type=refresh_token&client_id=3MVG9dZJodJWITSt1OZ0VfVl9MJZa_4Uk6rsD.FMfw8bfaSRsiOfQxUNxTfW914d0yZjtzKg_WFeXn98_XL7P";
-            //parametros1 += "&client_secret=4508895819599791871&refresh_token=" + token;
+            parametros += "&client_secret=4508895819599791871&username=gtv.assis@gmail.com&password=empiretitans99QEZuFdpoOTuHSwqedK1rUjpte";
 
             HttpURLConnection conexao = (HttpURLConnection) new URL("https://login.salesforce.com/services/oauth2/token").openConnection();
             conexao.setRequestMethod("POST");
