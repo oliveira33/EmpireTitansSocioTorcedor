@@ -12,7 +12,7 @@ public class UsuarioSF {
 
     public void Cadastrar(Usuario usuario) throws Exception {
 
-        HttpURLConnection conexao = (HttpURLConnection) new URL("https://na57.salesforce.com/services/data/v20.0/sobjects/Usuario").openConnection();
+        HttpURLConnection conexao = (HttpURLConnection) new URL("https://na57.salesforce.com/services/data/v43.0/sobjects/Usuario__c").openConnection();
         conexao.setDoInput(true);
         conexao.setDoOutput(true);
         conexao.setRequestMethod("POST");
@@ -24,7 +24,7 @@ public class UsuarioSF {
         writer.flush();
         writer.close();
 
-        if(conexao.getResponseCode() != HttpURLConnection.HTTP_OK)
+        if(conexao.getResponseCode() != HttpURLConnection.HTTP_CREATED)
             throw new Exception(conexao.getResponseMessage());
     }
 

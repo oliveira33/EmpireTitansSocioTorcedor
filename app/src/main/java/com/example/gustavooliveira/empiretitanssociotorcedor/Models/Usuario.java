@@ -120,15 +120,16 @@ public class Usuario {
         if(incluirId)
             json.put("id", id);
 
-        json.put("email", email);
-        json.put("senha", senha);
-        json.put("nome", nome);
-        json.put("sobrenome", sobrenome);
-        json.put("dataNascimento", dataNascimento);
-        json.put("cpf", cpf);
-        json.put("rg", rg);
-        json.put("endereco", endereco);
-        json.put("celular", celular);
+        json.put("email__c", email);
+        json.put("senha__c", senha);
+        json.put("nome__c", nome);
+        json.put("sobrenome__c", sobrenome);
+        json.put("dataNascimento__c", dataNascimento);
+        json.put("cpf__c", cpf);
+        json.put("rg__c", rg);
+        json.put("endereco__c", endereco);
+        json.put("celular__c", celular);
+        json.put("cartao__c", cartao);
 
         return json;
     }
