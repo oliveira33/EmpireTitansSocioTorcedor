@@ -1,17 +1,25 @@
 package com.example.gustavooliveira.empiretitanssociotorcedor;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Fragments.Alterar;
+import com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Fragments.Duvidas;
+import com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Fragments.FaleConosco;
+import com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Fragments.Historico;
+import com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Fragments.Ingresso;
+import com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Fragments.Inicio;
+import com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Login;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -28,6 +36,8 @@ public class MainActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_principal, new Inicio()).commit();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -58,7 +68,8 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_config) {
+        if (id == R.id.action_sair) {
+            confirmacaoSair();
             return true;
         }
 
@@ -71,22 +82,48 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        if (id == R.id.nav_home) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_principal, new Inicio()).commit();
+        } else if (id == R.id.nav_ingresso) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_principal, new Ingresso()).commit();
+        } else if (id == R.id.nav_historico) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_principal, new Historico()).commit();
+        } else if (id == R.id.nav_alterar) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_principal, new Alterar()).commit();
+        } else if (id == R.id.nav_fale_conosco) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_principal, new FaleConosco()).commit();
+        } else if (id == R.id.nav_duvidas) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_principal, new Duvidas()).commit();
+        }else if (id == R.id.nav_sair) {
+            confirmacaoSair();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    public void confirmacaoSair() {
+        AlertDialog.Builder msg = new AlertDialog.Builder(this);
+        msg.setTitle("Deseja realmente sair?");
+        msg.setIcon(R.drawable.icon_sair);
+        msg.setMessage("Tem certeza que deseja sair da sua sessão atual do Empire Titans Sócio Torcedor?");
+        msg.setNegativeButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(MainActivity.this, Login.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        msg.setPositiveButton("Não", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //Nada acontece
+            }
+        });
+
+        msg.show();
+    }
+
 }
