@@ -54,35 +54,12 @@ public class Cadastro extends AppCompatActivity {
         btConfirma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Thread() {
-                    @Override
-                    public void run() {
-                        try {
-                            Validar();
-
-                            // RG?
-                            Usuario usuario = new Usuario(txtEmail.getText().toString(), txtSenha.getText().toString(), txtNome.getText().toString(), txtSobrenome.getText().toString(), txtData.getText().toString(), txtCpf.getText().toString()
-                                    , txtCpf.getText().toString(), txtEndereco.getText().toString(), txtTelefone.getText().toString(), txtCartao.getText().toString());
-
-                            UsuarioSF sf = new UsuarioSF();
-                            sf.Cadastrar(usuario);
-                            handler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Toast.makeText(getApplicationContext(), "Cadastro realizado com sucesso!", Toast.LENGTH_LONG).show();
-                                }
-                            });
-                        }
-                        catch (final Exception ex) {
-                            handler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Toast.makeText(getApplicationContext(), "Erro: " + ex.getMessage(), Toast.LENGTH_LONG).show();
-                                }
-                            });
-                        }
-                    }
-                }.start();
+                try {
+                    cadastrar(validar());
+                }
+                catch (Exception ex) {
+                    Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -96,9 +73,40 @@ public class Cadastro extends AppCompatActivity {
         });
     }
 
-    public void Validar() throws Exception {
+    public Usuario validar() throws Exception {
+        // Precisa implementar as validações aqui
+        // Pega os campos aqui, armazena nas varíaveis e valida. No fim usa as varíaveis para criar o Objeto
         String senha = txtSenha.getText().toString();
         if (!senha.equals(txtSenhaConfirm.getText().toString()))
             throw new Exception("As senhas não são iguais");
+        
+        // RG?
+        return new Usuario(txtEmail.getText().toString(), senha, txtNome.getText().toString(), txtSobrenome.getText().toString(), txtData.getText().toString(), txtCpf.getText().toString(),
+                txtCpf.getText().toString(), txtEndereco.getText().toString(), txtTelefone.getText().toString(), txtCartao.getText().toString());
+    }
+
+    public void cadastrar(final Usuario usuario) {
+        new Thread() {
+            @Override
+            public void run() {
+                try {
+                    new UsuarioSF().Cadastrar(usuario);
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(), "Cadastro realizado com sucesso!", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
+                catch (final Exception ex) {
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(), "Erro: " + ex.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
+            }
+        }.start();
     }
 }

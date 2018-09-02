@@ -18,14 +18,11 @@ import java.time.temporal.ChronoUnit;
 
 public class Autenticacao {
 
-    private Duration _tempo;
     private static Autenticacao _instancia;
     private String token;
     private Instant _atualizacao;
 
-    private Autenticacao() {
-        _tempo = Duration.of(15, ChronoUnit.MINUTES);
-    }
+    private Autenticacao() { }
 
     public static Autenticacao get() {
         if(_instancia == null)
@@ -37,7 +34,7 @@ public class Autenticacao {
     public String getToken() throws Exception {
         Instant instante = Instant.now();
 
-        if(_atualizacao == null || Duration.between(instante, _atualizacao).compareTo(_tempo) > 0) {
+        if(_atualizacao == null || Duration.between(_atualizacao, instante).compareTo(Duration.of(15, ChronoUnit.MINUTES)) >= 0) {
             _atualizacao = instante;
 
             String parametros = "grant_type=password&client_id=3MVG9dZJodJWITSt1OZ0VfVl9MJZa_4Uk6rsD.FMfw8bfaSRsiOfQxUNxTfW914d0yZjtzKg_WFeXn98_XL7P";
