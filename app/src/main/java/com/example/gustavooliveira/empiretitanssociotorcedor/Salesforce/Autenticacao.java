@@ -22,10 +22,11 @@ public class Autenticacao {
     private String token;
     private Instant _atualizacao;
 
-    private Autenticacao() { }
+    private Autenticacao() {
+    }
 
     public static Autenticacao get() {
-        if(_instancia == null)
+        if (_instancia == null)
             _instancia = new Autenticacao();
 
         return _instancia;
@@ -34,7 +35,7 @@ public class Autenticacao {
     public String getToken() throws Exception {
         Instant instante = Instant.now();
 
-        if(_atualizacao == null || Duration.between(_atualizacao, instante).compareTo(Duration.of(15, ChronoUnit.MINUTES)) >= 0) {
+        if (_atualizacao == null || Duration.between(_atualizacao, instante).compareTo(Duration.of(15, ChronoUnit.MINUTES)) >= 0) {
             _atualizacao = instante;
 
             String parametros = "grant_type=password&client_id=3MVG9dZJodJWITSt1OZ0VfVl9MJZa_4Uk6rsD.FMfw8bfaSRsiOfQxUNxTfW914d0yZjtzKg_WFeXn98_XL7P";
@@ -50,7 +51,7 @@ public class Autenticacao {
             writer.flush();
             writer.close();
 
-            if(conexao.getResponseCode() == HttpURLConnection.HTTP_OK) {
+            if (conexao.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 String linha, resposta = new String();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(conexao.getInputStream()));
                 while ((linha = reader.readLine()) != null)
@@ -58,8 +59,7 @@ public class Autenticacao {
 
                 JSONObject json = new JSONObject(resposta);
                 token = json.getString("access_token");
-            }
-            else
+            } else
                 throw new Exception("Houve algum erro durante a execução da requisição do token");
         }
 

@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class Usuario {
 
-    private int id;
+    private String id;
     private String email;
     private String senha;
     private String nome;
@@ -18,6 +18,7 @@ public class Usuario {
     private String endereco;
     private String celular;
     private String cartao;
+    private static Usuario principal;
 
     public Usuario() { }
 
@@ -34,11 +35,25 @@ public class Usuario {
         this.cartao = cartao;
     }
 
-    public int getId() {
+    public Usuario(String id, String email, String senha, String nome, String sobrenome, String dataNascimento, String cpf, String rg, String endereco, String celular, String cartao) {
+        this.id = id;
+        this.email = email;
+        this.senha = senha;
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.dataNascimento = dataNascimento;
+        this.cpf = cpf;
+        this.rg = rg;
+        this.endereco = endereco;
+        this.celular = celular;
+        this.cartao = cartao;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -112,6 +127,22 @@ public class Usuario {
 
     public void setCelular(String celular) {
         this.celular = celular;
+    }
+
+    public String getCartao() {
+        return cartao;
+    }
+
+    public void setCartao(String cartao) {
+        this.cartao = cartao;
+    }
+
+    public static Usuario getPrincipal() {
+        return principal;
+    }
+
+    public static void setPrincipal(Usuario principal) {
+        Usuario.principal = principal;
     }
 
     public JSONObject toJSON(boolean incluirId) throws JSONException {
