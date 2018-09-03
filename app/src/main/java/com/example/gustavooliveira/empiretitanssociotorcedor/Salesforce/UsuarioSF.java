@@ -2,7 +2,6 @@ package com.example.gustavooliveira.empiretitanssociotorcedor.Salesforce;
 
 import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Usuario;
 
-
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -32,7 +31,7 @@ public class UsuarioSF {
     }
 
     public String logar(String email, String senha) throws Exception {
-        String query = "SELECT+id+FROM Usuario__c+WHERE+email__c+=+\'" + email + "\'+AND+senha__c+=+\'" + senha + "\'";
+        String query = "SELECT+id+FROM+Usuario__c+WHERE+email__c+=+'" + email + "'+AND+senha__c+=+'" + senha + "'";
         HttpURLConnection conexao = (HttpURLConnection) new URL("https://na57.salesforce.com/services/data/v43.0/query/?q=" + query).openConnection();
         conexao.setDoInput(true);
         conexao.setDoOutput(true);
@@ -47,8 +46,7 @@ public class UsuarioSF {
 
             JSONObject json = new JSONObject(resposta);
             return json.getString("id");
-        }
-        else
+        } else
             throw new Exception(conexao.getResponseMessage());
     }
 
@@ -69,8 +67,7 @@ public class UsuarioSF {
             return new Usuario(json.getString("id"), json.getString("email__c"), json.getString("senha__c"), json.getString("nome__c"),
                     json.getString("sobrenome__c"), json.getString("datanascimento__c"), json.getString("Cpf__c"), json.getString("Rg__c"),
                     json.getString("Endereco__c"), json.getString("Celular__c"), json.getString("Cartao__c"));
-        }
-        else
+        } else
             throw new Exception(conexao.getResponseMessage());
     }
 

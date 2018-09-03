@@ -3,8 +3,6 @@ package com.example.gustavooliveira.empiretitanssociotorcedor.Models;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Date;
-
 public class Usuario {
 
     private String id;
@@ -20,7 +18,8 @@ public class Usuario {
     private String cartao;
     private static Usuario principal;
 
-    public Usuario() { }
+    public Usuario() {
+    }
 
     public Usuario(String email, String senha, String nome, String sobrenome, String dataNascimento, String cpf, String rg, String endereco, String celular, String cartao) {
         this.email = email;
@@ -148,7 +147,7 @@ public class Usuario {
     public JSONObject toJSON(boolean incluirId) throws JSONException {
         JSONObject json = new JSONObject();
 
-        if(incluirId)
+        if (incluirId)
             json.put("id", id);
 
         json.put("email__c", email);

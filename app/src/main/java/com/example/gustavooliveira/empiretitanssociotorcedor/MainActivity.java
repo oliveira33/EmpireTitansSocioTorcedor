@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity
             getSupportFragmentManager().beginTransaction().replace(R.id.frame_principal, new FaleConosco()).commit();
         } else if (id == R.id.nav_duvidas) {
             getSupportFragmentManager().beginTransaction().replace(R.id.frame_principal, new Duvidas()).commit();
-        }else if (id == R.id.nav_sair) {
+        } else if (id == R.id.nav_sair) {
             confirmacaoSair();
         }
 
