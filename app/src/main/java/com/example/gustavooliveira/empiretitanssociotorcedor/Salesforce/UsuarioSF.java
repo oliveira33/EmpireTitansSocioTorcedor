@@ -34,7 +34,6 @@ public class UsuarioSF {
         String query = "SELECT+id+FROM+Usuario__c+WHERE+email__c+=+'" + email + "'+AND+senha__c+=+'" + senha + "'";
         HttpURLConnection conexao = (HttpURLConnection) new URL("https://na57.salesforce.com/services/data/v43.0/query/?q=" + query).openConnection();
         conexao.setDoInput(true);
-        conexao.setDoOutput(true);
         conexao.setRequestMethod("GET");
         conexao.setRequestProperty("Authorization", "Bearer " + Autenticacao.get().getToken());
 
@@ -44,8 +43,7 @@ public class UsuarioSF {
             while ((linha = reader.readLine()) != null)
                 resposta += linha;
 
-            JSONObject json = new JSONObject(resposta);
-            return json.getString("id");
+            return new JSONObject(resposta).getJSONArray("records").getJSONObject(0).getString("Id");
         } else
             throw new Exception(conexao.getResponseMessage());
     }
@@ -53,7 +51,6 @@ public class UsuarioSF {
     public Usuario get(String id) throws Exception {
         HttpURLConnection conexao = (HttpURLConnection) new URL("https://na57.salesforce.com/services/data/v43.0/sobjects/Usuario__c/" + id).openConnection();
         conexao.setDoInput(true);
-        conexao.setDoOutput(true);
         conexao.setRequestMethod("GET");
         conexao.setRequestProperty("Authorization", "Bearer " + Autenticacao.get().getToken());
 
@@ -64,8 +61,8 @@ public class UsuarioSF {
                 resposta += linha;
 
             JSONObject json = new JSONObject(resposta);
-            return new Usuario(json.getString("id"), json.getString("email__c"), json.getString("senha__c"), json.getString("nome__c"),
-                    json.getString("sobrenome__c"), json.getString("datanascimento__c"), json.getString("Cpf__c"), json.getString("Rg__c"),
+            return new Usuario(json.getString("Id"), json.getString("email__c"), json.getString("Senha__c"), json.getString("Nome__c"),
+                    json.getString("Sobrenome__c"), json.getString("DataNascimento__c"), json.getString("Cpf__c"), json.getString("Rg__c"),
                     json.getString("Endereco__c"), json.getString("Celular__c"), json.getString("Cartao__c"));
         } else
             throw new Exception(conexao.getResponseMessage());
