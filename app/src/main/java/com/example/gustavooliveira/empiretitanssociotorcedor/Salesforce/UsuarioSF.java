@@ -2,6 +2,7 @@ package com.example.gustavooliveira.empiretitanssociotorcedor.Salesforce;
 
 import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Usuario;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -43,7 +44,11 @@ public class UsuarioSF {
             while ((linha = reader.readLine()) != null)
                 resposta += linha;
 
-            return new JSONObject(resposta).getJSONArray("records").getJSONObject(0).getString("Id");
+            JSONArray array = new JSONObject(resposta).getJSONArray("records");
+            if(array.length() == 0)
+                throw new Exception("Usuário não cadastrado");
+
+            return array.getJSONObject(0).getString("Id");
         } else
             throw new Exception(conexao.getResponseMessage());
     }

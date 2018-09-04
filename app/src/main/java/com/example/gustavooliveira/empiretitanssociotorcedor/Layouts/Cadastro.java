@@ -100,7 +100,7 @@ public class Cadastro extends AppCompatActivity {
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(getApplicationContext(), "Erro: " + ex.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     });
                 }
