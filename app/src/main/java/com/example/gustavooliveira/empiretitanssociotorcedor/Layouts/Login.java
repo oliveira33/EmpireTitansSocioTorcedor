@@ -38,7 +38,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    validar();
+                    // validar(); Desabilitado para testes
                     logar(txtEmail.getText().toString(), txtSenha.getText().toString());
                 } catch (Exception ex) {
                     Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
@@ -59,16 +59,16 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    public void validar() throws Exception { // Desabilitado para testes
-        //String email = txtEmail.getText().toString();
-        //if (email.isEmpty())
-        //    throw new Exception("O e-mail é obrigatório");
-        //if (!email.contains("@") || !email.contains("."))
-        //    throw new Exception("O e-mail é inválido");
-        //
-        //String senha = txtSenha.getText().toString();
-        //if (senha.isEmpty())
-        //    throw new Exception("A senha é obrigatória");
+    public void validar() throws Exception {
+        String email = txtEmail.getText().toString();
+        if (email.isEmpty())
+            throw new Exception("O e-mail é obrigatório");
+        if (!email.contains("@") || !email.contains("."))
+            throw new Exception("O e-mail é inválido");
+
+        String senha = txtSenha.getText().toString();
+        if (senha.isEmpty())
+            throw new Exception("A senha é obrigatória");
     }
 
     public void logar(final String email, final String senha) {
@@ -92,7 +92,7 @@ public class Login extends AppCompatActivity {
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(getApplicationContext(), "Erro: " + ex.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     });
                 }

@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Fragments.Alterar;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Fragments.Duvidas;
@@ -20,6 +21,7 @@ import com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Fragments.H
 import com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Fragments.Ingresso;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Fragments.Inicio;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Login;
+import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Usuario;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -41,6 +43,8 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        TextView txtUsuario = (TextView) navigationView.getHeaderView(0).findViewById(R.id.txtUsuario);
+        txtUsuario.setText(Usuario.getPrincipal().getNome() + "\n");
     }
 
     @Override

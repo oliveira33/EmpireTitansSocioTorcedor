@@ -1,6 +1,5 @@
 package com.example.gustavooliveira.empiretitanssociotorcedor.Layouts;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -65,8 +64,6 @@ public class Cadastro extends AppCompatActivity {
         btCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Cadastro.this, Login.class);
-                startActivity(intent);
                 finish();
             }
         });
@@ -74,10 +71,10 @@ public class Cadastro extends AppCompatActivity {
 
     public Usuario validar() throws Exception {
         // Precisa implementar as validações aqui
-        // Pega os campos aqui, armazena nas varíaveis e valida. No fim usa as varíaveis para criar o Objeto
+        // Pega os campos aqui, armazena nas variáveis e valida. No fim usa as variáveis para criar o Objeto
         String senha = txtSenha.getText().toString();
         if (!senha.equals(txtSenhaConfirm.getText().toString()))
-            throw new Exception("As senhas não são iguais");
+            throw new Exception("As senhas não são conferem");
 
         // RG?
         return new Usuario(txtEmail.getText().toString(), senha, txtNome.getText().toString(), txtSobrenome.getText().toString(), txtData.getText().toString(), txtCpf.getText().toString(),
@@ -94,6 +91,7 @@ public class Cadastro extends AppCompatActivity {
                         @Override
                         public void run() {
                             Toast.makeText(getApplicationContext(), "Cadastro realizado com sucesso!", Toast.LENGTH_LONG).show();
+                            finish();
                         }
                     });
                 } catch (final Exception ex) {

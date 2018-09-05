@@ -4,23 +4,23 @@ import java.util.Date;
 
 public class Historico {
 
-    private int idUsuario;
-    private int idPartida;
+    private String idUsuario;
+    private String idPartida;
     private Date data;
 
-    public int getIdUsuario() {
+    public String getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
+    public void setIdUsuario(String idUsuario) {
         this.idUsuario = idUsuario;
     }
 
-    public int getIdPartida() {
+    public String getIdPartida() {
         return idPartida;
     }
 
-    public void setIdPartida(int idPartida) {
+    public void setIdPartida(String idPartida) {
         this.idPartida = idPartida;
     }
 

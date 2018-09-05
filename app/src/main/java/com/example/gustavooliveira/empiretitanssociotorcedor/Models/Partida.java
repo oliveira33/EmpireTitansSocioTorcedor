@@ -1,36 +1,37 @@
 package com.example.gustavooliveira.empiretitanssociotorcedor.Models;
 
+import java.time.Instant;
 import java.util.Date;
 
 public class Partida {
 
-    private int id;
-    private int idClube;
-    private Date data;
+    private String id;
+    private String idClube;
+    private Instant data;
     private Double valor;
     private String local;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getIdClube() {
+    public String getIdClube() {
         return idClube;
     }
 
-    public void setIdClube(int idClube) {
+    public void setIdClube(String idClube) {
         this.idClube = idClube;
     }
 
-    public Date getData() {
+    public Instant getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(Instant data) {
         this.data = data;
     }
 
