@@ -10,6 +10,14 @@ public class Partida {
     private Instant data;
     private Double valor;
     private String local;
+    private String imagem;
+
+    public Partida(String idClube, Double valor, String local, String imagem) {
+        this.idClube = idClube;
+        this.valor = valor;
+        this.local = local;
+        this.imagem = imagem;
+    }
 
     public String getId() {
         return id;
@@ -49,5 +57,13 @@ public class Partida {
 
     public void setLocal(String local) {
         this.local = local;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 }
