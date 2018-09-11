@@ -16,7 +16,6 @@ public class UsuarioSF {
 
     public void cadastrar(Usuario usuario) throws Exception {
         HttpURLConnection conexao = (HttpURLConnection) new URL("https://na57.salesforce.com/services/data/v43.0/sobjects/Usuario__c").openConnection();
-        conexao.setDoInput(true);
         conexao.setDoOutput(true);
         conexao.setRequestMethod("POST");
         conexao.setRequestProperty("Authorization", "Bearer " + Autenticacao.get().getToken());
@@ -43,6 +42,7 @@ public class UsuarioSF {
             BufferedReader reader = new BufferedReader(new InputStreamReader(conexao.getInputStream()));
             while ((linha = reader.readLine()) != null)
                 resposta += linha;
+            reader.close();
 
             JSONArray array = new JSONObject(resposta).getJSONArray("records");
             if(array.length() == 0)
@@ -64,6 +64,7 @@ public class UsuarioSF {
             BufferedReader reader = new BufferedReader(new InputStreamReader(conexao.getInputStream()));
             while ((linha = reader.readLine()) != null)
                 resposta += linha;
+            reader.close();
 
             JSONObject json = new JSONObject(resposta);
             return new Usuario(json.getString("Id"), json.getString("email__c"), json.getString("Senha__c"), json.getString("Nome__c"),

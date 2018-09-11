@@ -8,15 +8,14 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.time.Duration;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Autenticacao {
 
     private static Autenticacao _instancia;
     private String token;
-    private Instant _atualizacao;
+    private Date _atualizacao;
 
     private Autenticacao() {
     }
@@ -29,10 +28,8 @@ public class Autenticacao {
     }
 
     public String getToken() throws Exception {
-        Instant instante = Instant.now();
-
-        if (_atualizacao == null || Duration.between(_atualizacao, instante).compareTo(Duration.of(15, ChronoUnit.MINUTES)) >= 0) {
-            _atualizacao = instante;
+        if (compararData()) {
+            _atualizacao = new Date();
 
             String parametros = "grant_type=password&client_id=3MVG9dZJodJWITSt1OZ0VfVl9MJZa_4Uk6rsD.FMfw8bfaSRsiOfQxUNxTfW914d0yZjtzKg_WFeXn98_XL7P";
             parametros += "&client_secret=4508895819599791871&username=gtv.assis@gmail.com&password=empiretitans99QEZuFdpoOTuHSwqedK1rUjpte";
@@ -52,6 +49,7 @@ public class Autenticacao {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(conexao.getInputStream()));
                 while ((linha = reader.readLine()) != null)
                     resposta += linha;
+                reader.close();
 
                 JSONObject json = new JSONObject(resposta);
                 token = json.getString("access_token");
@@ -60,5 +58,16 @@ public class Autenticacao {
         }
 
         return token;
+    }
+
+    private boolean compararData() {
+        if (_atualizacao == null)
+            return true;
+
+        Calendar calendario = Calendar.getInstance();
+        calendario.setTime(_atualizacao);
+        calendario.add(Calendar.MINUTE, 15);
+
+        return new Date().after(calendario.getTime());
     }
 }

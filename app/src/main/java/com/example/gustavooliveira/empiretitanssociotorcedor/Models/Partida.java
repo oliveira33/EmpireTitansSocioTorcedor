@@ -1,13 +1,10 @@
 package com.example.gustavooliveira.empiretitanssociotorcedor.Models;
 
-import java.time.Instant;
-import java.util.Date;
-
 public class Partida {
 
     private String id;
     private String idClube;
-    private Instant data;
+    private String data;
     private Double valor;
     private String local;
     private String imagem;
@@ -35,11 +32,11 @@ public class Partida {
         this.idClube = idClube;
     }
 
-    public Instant getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Instant data) {
+    public void setData(String data) {
         this.data = data;
     }
 
