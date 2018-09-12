@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         TextView txtUsuario = (TextView) navigationView.getHeaderView(0).findViewById(R.id.txtUsuario);
-        txtUsuario.setText(Usuario.getPrincipal().getNome() + "\n");
+        txtUsuario.setText(Usuario.getPrincipal().getNome() + " " + Usuario.getPrincipal().getSobrenome() + "\n" + Usuario.getPrincipal().getEmail());
     }
 
     @Override
