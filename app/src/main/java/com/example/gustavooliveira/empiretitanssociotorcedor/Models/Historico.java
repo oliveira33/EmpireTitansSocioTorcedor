@@ -1,12 +1,19 @@
 package com.example.gustavooliveira.empiretitanssociotorcedor.Models;
 
-import java.util.Date;
-
 public class Historico {
 
+    private String id;
     private String idUsuario;
     private String idPartida;
-    private Date data;
+    private String data;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getIdUsuario() {
         return idUsuario;
@@ -24,11 +31,11 @@ public class Historico {
         this.idPartida = idPartida;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 }
