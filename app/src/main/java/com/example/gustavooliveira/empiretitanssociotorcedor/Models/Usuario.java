@@ -15,12 +15,13 @@ public class Usuario {
     private String endereco;
     private String celular;
     private String cartao;
+    private String codSeguranca;
     private static Usuario principal;
 
     public Usuario() {
     }
 
-    public Usuario(String email, String senha, String nome, String sobrenome, String dataNascimento, String cpf, String endereco, String celular, String cartao) {
+    public Usuario(String email, String senha, String nome, String sobrenome, String dataNascimento, String cpf, String endereco, String celular, String cartao, String codSeguranca) {
         this.email = email;
         this.senha = senha;
         this.nome = nome;
@@ -30,9 +31,10 @@ public class Usuario {
         this.endereco = endereco;
         this.celular = celular;
         this.cartao = cartao;
+        this.codSeguranca = codSeguranca;
     }
 
-    public Usuario(String id, String email, String senha, String nome, String sobrenome, String dataNascimento, String cpf, String endereco, String celular, String cartao) {
+    public Usuario(String id, String email, String senha, String nome, String sobrenome, String dataNascimento, String cpf, String endereco, String celular, String cartao, String codSeguranca) {
         this.id = id;
         this.email = email;
         this.senha = senha;
@@ -43,6 +45,7 @@ public class Usuario {
         this.endereco = endereco;
         this.celular = celular;
         this.cartao = cartao;
+        this.codSeguranca = codSeguranca;
     }
 
     public String getId() {
@@ -125,6 +128,14 @@ public class Usuario {
         this.cartao = cartao;
     }
 
+    public String getCodSeguranca() {
+        return codSeguranca;
+    }
+
+    public void setCodSeguranca(String codSeguranca) {
+        this.codSeguranca = codSeguranca;
+    }
+
     public static Usuario getPrincipal() {
         return principal;
     }
@@ -148,6 +159,7 @@ public class Usuario {
         json.put("endereco__c", endereco);
         json.put("celular__c", celular);
         json.put("cartao__c", cartao);
+        json.put("codseguranca__c", codSeguranca);
 
         return json;
     }
