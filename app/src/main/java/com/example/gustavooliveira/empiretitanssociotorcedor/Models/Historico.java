@@ -7,6 +7,22 @@ public class Historico {
     private String idPartida;
     private String data;
 
+    public Historico() {
+    }
+
+    public Historico(String idUsuario, String idPartida, String data) {
+        this.idUsuario = idUsuario;
+        this.idPartida = idPartida;
+        this.data = data;
+    }
+
+    public Historico(String id, String idUsuario, String idPartida, String data) {
+        this.id = id;
+        this.idUsuario = idUsuario;
+        this.idPartida = idPartida;
+        this.data = data;
+    }
+
     public String getId() {
         return id;
     }
