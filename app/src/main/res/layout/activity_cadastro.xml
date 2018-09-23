@@ -100,7 +100,7 @@
                     android:textColor="@android:color/background_light" />
 
                 <EditText
-                    android:id="@+id/txtEmail"
+                    android:id="@+id/txtEmailAtt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"

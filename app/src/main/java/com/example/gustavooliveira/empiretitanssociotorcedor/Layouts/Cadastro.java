@@ -45,7 +45,7 @@ public class Cadastro extends AppCompatActivity {
         btCancelar = (Button) findViewById(R.id.btCancelar);
         txtNome = (EditText) findViewById(R.id.txtNome);
         txtSobrenome = (EditText) findViewById(R.id.txtSobrenome);
-        txtEmail = (EditText) findViewById(R.id.txtEmail);
+        txtEmail = (EditText) findViewById(R.id.txtEmailAtt);
         txtData = (EditText) findViewById(R.id.txtData);
         txtCpf = (EditText) findViewById(R.id.txtCpf);
         txtTelefone = (EditText) findViewById(R.id.txtTelefone);

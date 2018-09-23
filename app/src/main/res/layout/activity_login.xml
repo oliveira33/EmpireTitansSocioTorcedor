@@ -44,15 +44,15 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/txtEmail"
-            android:layout_alignStart="@+id/txtEmail"
+            android:layout_above="@+id/txtEmailAtt"
+            android:layout_alignStart="@+id/txtEmailAtt"
             android:layout_marginBottom="-245dp"
             android:paddingLeft="5dp"
             android:text="E-Mail:"
             android:textColor="@android:color/background_light" />
 
         <EditText
-            android:id="@+id/txtEmail"
+            android:id="@+id/txtEmailAtt"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -73,7 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/textView4"
-            android:layout_below="@+id/txtEmail"
+            android:layout_below="@+id/txtEmailAtt"
             android:paddingLeft="5dp"
             android:text="Senha:"
             android:textColor="@android:color/background_light" />

@@ -31,7 +31,7 @@ public class Login extends AppCompatActivity {
 
         btLogin = (Button) findViewById(R.id.btLogin);
         btCadastrar = (Button) findViewById(R.id.btCadastrar);
-        txtEmail = (EditText) findViewById(R.id.txtEmail);
+        txtEmail = (EditText) findViewById(R.id.txtEmailAtt);
         txtSenha = (EditText) findViewById(R.id.txtSenha);
 
         btLogin.setOnClickListener(new View.OnClickListener() {
