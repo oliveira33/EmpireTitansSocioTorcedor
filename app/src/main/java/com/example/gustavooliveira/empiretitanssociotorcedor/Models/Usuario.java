@@ -12,7 +12,6 @@ public class Usuario {
     private String sobrenome;
     private String dataNascimento;
     private String cpf;
-    private String rg;
     private String endereco;
     private String celular;
     private String cartao;
@@ -21,20 +20,19 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String email, String senha, String nome, String sobrenome, String dataNascimento, String cpf, String rg, String endereco, String celular, String cartao) {
+    public Usuario(String email, String senha, String nome, String sobrenome, String dataNascimento, String cpf, String endereco, String celular, String cartao) {
         this.email = email;
         this.senha = senha;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.dataNascimento = dataNascimento;
         this.cpf = cpf;
-        this.rg = rg;
         this.endereco = endereco;
         this.celular = celular;
         this.cartao = cartao;
     }
 
-    public Usuario(String id, String email, String senha, String nome, String sobrenome, String dataNascimento, String cpf, String rg, String endereco, String celular, String cartao) {
+    public Usuario(String id, String email, String senha, String nome, String sobrenome, String dataNascimento, String cpf, String endereco, String celular, String cartao) {
         this.id = id;
         this.email = email;
         this.senha = senha;
@@ -42,7 +40,6 @@ public class Usuario {
         this.sobrenome = sobrenome;
         this.dataNascimento = dataNascimento;
         this.cpf = cpf;
-        this.rg = rg;
         this.endereco = endereco;
         this.celular = celular;
         this.cartao = cartao;
@@ -104,14 +101,6 @@ public class Usuario {
         this.cpf = cpf;
     }
 
-    public String getRg() {
-        return rg;
-    }
-
-    public void setRg(String rg) {
-        this.rg = rg;
-    }
-
     public String getEndereco() {
         return endereco;
     }
@@ -156,7 +145,6 @@ public class Usuario {
         json.put("sobrenome__c", sobrenome);
         json.put("dataNascimento__c", dataNascimento);
         json.put("cpf__c", cpf);
-        json.put("rg__c", rg);
         json.put("endereco__c", endereco);
         json.put("celular__c", celular);
         json.put("cartao__c", cartao);

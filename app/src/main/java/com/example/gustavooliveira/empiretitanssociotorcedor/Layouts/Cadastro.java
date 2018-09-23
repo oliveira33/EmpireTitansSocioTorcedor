@@ -76,9 +76,8 @@ public class Cadastro extends AppCompatActivity {
         if (!senha.equals(txtSenhaConfirm.getText().toString()))
             throw new Exception("As senhas não são conferem");
 
-        // RG?
-        return new Usuario(txtEmail.getText().toString(), senha, txtNome.getText().toString(), txtSobrenome.getText().toString(), txtData.getText().toString(), txtCpf.getText().toString(),
-                txtCpf.getText().toString(), txtEndereco.getText().toString(), txtTelefone.getText().toString(), txtCartao.getText().toString());
+        return new Usuario(txtEmail.getText().toString(), senha, txtNome.getText().toString(), txtSobrenome.getText().toString(), txtData.getText().toString(), txtCpf.getText().toString()
+            , txtEndereco.getText().toString(), txtTelefone.getText().toString(), txtCartao.getText().toString());
     }
 
     public void cadastrar(final Usuario usuario) {

@@ -68,7 +68,7 @@ public class UsuarioSF {
 
             JSONObject json = new JSONObject(resposta);
             return new Usuario(json.getString("Id"), json.getString("email__c"), json.getString("Senha__c"), json.getString("Nome__c"),
-                    json.getString("Sobrenome__c"), json.getString("DataNascimento__c"), json.getString("Cpf__c"), json.getString("Rg__c"),
+                    json.getString("Sobrenome__c"), json.getString("DataNascimento__c"), json.getString("Cpf__c"),
                     json.getString("Endereco__c"), json.getString("Celular__c"), json.getString("Cartao__c"));
         } else
             throw new Exception(conexao.getResponseMessage());
