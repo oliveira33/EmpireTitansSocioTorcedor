@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.gustavooliveira.empiretitanssociotorcedor.MainActivity;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Usuario;
 import com.example.gustavooliveira.empiretitanssociotorcedor.R;
+import com.example.gustavooliveira.empiretitanssociotorcedor.Salesforce.PartidaSF;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Salesforce.UsuarioSF;
 
 public class Login extends AppCompatActivity {

@@ -1,9 +1,8 @@
 package com.example.gustavooliveira.empiretitanssociotorcedor.Salesforce;
 
-import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Historico;
+import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Partida;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -11,12 +10,14 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 
-public class HistoricoSF {
+public class PartidaSF {
 
-    public ArrayList<Historico> GetHistoricoUsuario(String idUsuario) throws Exception {
-        ArrayList<Historico> historicos = new ArrayList<>();
-        String query = "SELECT+Data__c,+Id,+IdPartida__c,+IdUsuario__c+FROM+Historico__c+WHERE+IdUsuario__c+=+'" + idUsuario + "'";
+    public ArrayList<Partida> GetProximasPartidas() throws Exception {
+        ArrayList<Partida> partidas = new ArrayList<>();
+
+        String query = "SELECT+Clube__c,+Data__c,+Id,+Local__c,+Valor__c+FROM+Partida__c+WHERE+Data__c+>+" + new DateSF().fromDateTime(new Date());
         HttpURLConnection conexao = (HttpURLConnection) new URL("https://na57.salesforce.com/services/data/v43.0/query/?q=" + query).openConnection();
         conexao.setDoInput(true);
         conexao.setRequestMethod("GET");
@@ -30,25 +31,16 @@ public class HistoricoSF {
             reader.close();
 
             JSONArray array = new JSONObject(resposta).getJSONArray("records");
-            JSONObject json = null;
+            JSONObject json;
             for (int i = 0; i < array.length(); i++) {
                 json = array.getJSONObject(i);
-                historicos.add(new Historico(json.getString("Id"), idUsuario, json.getString("IdPartida__c"), new DateSF().toDateTime(json.getString("Data__c"))));
+                partidas.add(new Partida(json.getString("Id"), json.getString("Clube__c"), new DateSF().toDateTime(json.getString("Data__c")),
+                        Double.parseDouble(json.getString("Valor__c")), json.getString("Local__c")));
             }
         } else
             throw new Exception(conexao.getResponseMessage());
 
-        return historicos;
-    }
-
-    public JSONObject toJson(Historico historico) throws Exception {
-        JSONObject json = new JSONObject();
-
-        json.put("IdUsuario__c", historico.getIdUsuario());
-        json.put("IdPartida__c", historico.getIdPartida());
-        json.put("Data__c", new DateSF().fromDateTime(historico.getData()));
-
-        return json;
+        return partidas;
     }
 
 }

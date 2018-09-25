@@ -3,6 +3,8 @@ package com.example.gustavooliveira.empiretitanssociotorcedor.Models;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Date;
+
 public class Usuario {
 
     private String id;
@@ -10,7 +12,7 @@ public class Usuario {
     private String senha;
     private String nome;
     private String sobrenome;
-    private String dataNascimento;
+    private Date dataNascimento;
     private String cpf;
     private String endereco;
     private String celular;
@@ -21,7 +23,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String email, String senha, String nome, String sobrenome, String dataNascimento, String cpf, String endereco, String celular, String cartao, String codSeguranca) {
+    public Usuario(String email, String senha, String nome, String sobrenome, Date dataNascimento, String cpf, String endereco, String celular, String cartao, String codSeguranca) {
         this.email = email;
         this.senha = senha;
         this.nome = nome;
@@ -34,7 +36,7 @@ public class Usuario {
         this.codSeguranca = codSeguranca;
     }
 
-    public Usuario(String id, String email, String senha, String nome, String sobrenome, String dataNascimento, String cpf, String endereco, String celular, String cartao, String codSeguranca) {
+    public Usuario(String id, String email, String senha, String nome, String sobrenome, Date dataNascimento, String cpf, String endereco, String celular, String cartao, String codSeguranca) {
         this.id = id;
         this.email = email;
         this.senha = senha;
@@ -88,11 +90,11 @@ public class Usuario {
         this.sobrenome = sobrenome;
     }
 
-    public String getDataNascimento() {
+    public Date getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(String dataNascimento) {
+    public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
@@ -144,11 +146,8 @@ public class Usuario {
         Usuario.principal = principal;
     }
 
-    public JSONObject toJSON(boolean incluirId) throws JSONException {
+    public JSONObject toJSON() throws JSONException {
         JSONObject json = new JSONObject();
-
-        if (incluirId)
-            json.put("id", id);
 
         json.put("email__c", email);
         json.put("senha__c", senha);

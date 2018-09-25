@@ -1,6 +1,5 @@
 package com.example.gustavooliveira.empiretitanssociotorcedor.Adapters;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -18,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class JogoAdapter extends RecyclerView.Adapter{
+public class JogoAdapter extends RecyclerView.Adapter {
 
     private List<Partida> list;
     private Context context;
@@ -36,7 +35,7 @@ public class JogoAdapter extends RecyclerView.Adapter{
 
     @NonNull
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.celula_jogos , parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.celula_jogos, parent, false);
         NossoViewHolder holder = new NossoViewHolder(view);
         return holder;
     }
@@ -75,7 +74,6 @@ public class JogoAdapter extends RecyclerView.Adapter{
                     Toast.makeText(context, "Partida Info", Toast.LENGTH_SHORT).show();
                 }
             });
-
 
 
         }

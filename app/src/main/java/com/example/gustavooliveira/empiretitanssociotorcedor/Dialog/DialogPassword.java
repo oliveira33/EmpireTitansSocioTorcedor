@@ -21,11 +21,11 @@ public class DialogPassword extends AppCompatDialogFragment {
         builder.setView(mView)
                 .setTitle("Insira a senha")
                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
 
-                    }
-                }
+                            }
+                        }
                 )
                 .setPositiveButton("Avançar", new DialogInterface.OnClickListener() {
                     @Override

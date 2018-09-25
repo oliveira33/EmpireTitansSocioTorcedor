@@ -22,7 +22,7 @@ public class UsuarioSF {
         conexao.setRequestProperty("Content-Type", "application/json");
 
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(conexao.getOutputStream(), "UTF-8"));
-        writer.write(usuario.toJSON(false).toString());
+        writer.write(toJson(usuario).toString());
         writer.flush();
         writer.close();
 
@@ -45,7 +45,7 @@ public class UsuarioSF {
             reader.close();
 
             JSONArray array = new JSONObject(resposta).getJSONArray("records");
-            if(array.length() == 0)
+            if (array.length() == 0)
                 throw new Exception("Usuário não cadastrado");
 
             return array.getJSONObject(0).getString("Id");
@@ -68,10 +68,26 @@ public class UsuarioSF {
 
             JSONObject json = new JSONObject(resposta);
             return new Usuario(json.getString("Id"), json.getString("Email__c"), json.getString("Senha__c"), json.getString("Nome__c"),
-                    json.getString("Sobrenome__c"), json.getString("DataNascimento__c"), json.getString("Cpf__c"), json.getString("Endereco__c"),
-                    json.getString("Celular__c"), json.getString("Cartao__c"), json.getString("CodSeguranca__c"));
+                    json.getString("Sobrenome__c"), new DateSF().toDate(json.getString("DataNascimento__c")), json.getString("Cpf__c"),
+                    json.getString("Endereco__c"), json.getString("Celular__c"), json.getString("Cartao__c"), json.getString("CodSeguranca__c"));
         } else
             throw new Exception(conexao.getResponseMessage());
     }
 
+    private JSONObject toJson(Usuario usuario) throws Exception {
+        JSONObject json = new JSONObject();
+
+        json.put("Email__c", usuario.getEmail());
+        json.put("Senha__c", usuario.getSenha());
+        json.put("Nome__c", usuario.getNome());
+        json.put("Sobrenome__c", usuario.getSobrenome());
+        json.put("DataNascimento__c", new DateSF().fromDate(usuario.getDataNascimento()));
+        json.put("Cpf__c", usuario.getCpf());
+        json.put("Endereco__c", usuario.getEndereco());
+        json.put("Celular__c", usuario.getCelular());
+        json.put("Cartao__c", usuario.getCartao());
+        json.put("CodSeguranca__c", usuario.getCodSeguranca());
+
+        return json;
+    }
 }

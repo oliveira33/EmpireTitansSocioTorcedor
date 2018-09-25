@@ -16,6 +16,7 @@ import com.example.gustavooliveira.empiretitanssociotorcedor.Salesforce.UsuarioS
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Cadastro extends AppCompatActivity {
 
@@ -85,12 +86,13 @@ public class Cadastro extends AppCompatActivity {
         if (!email.contains("@") || !email.contains("."))
             throw new Exception("O e-mail informado é inválido");
 
-        String data = txtData.getText().toString();
-        if (data.isEmpty())
+        Date data = null;
+        String dataString = txtData.getText().toString();
+        if (dataString.isEmpty())
             throw new Exception("A data de nascimento não foi informada");
 
         try {
-            new SimpleDateFormat("dd/MM/yyyy").parse(data);
+            data = new SimpleDateFormat("dd/MM/yyyy").parse(dataString);
         } catch (ParseException e) {
             throw new Exception("A data de nascimento informada é inválida");
         }
@@ -99,7 +101,7 @@ public class Cadastro extends AppCompatActivity {
         if (!senha.equals(txtSenhaConfirm.getText().toString()))
             throw new Exception("As senhas não são conferem");
 
-        String codSeguranca = txtCodSeguranca.getText().toString();
+        String codSeguranca = "123"; // txtCodSeguranca.getText().toString();
         if (codSeguranca.isEmpty())
             throw new Exception("O código de segurança não foi informado");
 

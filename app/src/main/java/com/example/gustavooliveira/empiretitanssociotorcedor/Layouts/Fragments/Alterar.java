@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -14,7 +13,6 @@ import android.widget.Toast;
 
 import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Usuario;
 import com.example.gustavooliveira.empiretitanssociotorcedor.R;
-import com.example.gustavooliveira.empiretitanssociotorcedor.Salesforce.UsuarioSF;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -72,7 +70,7 @@ public class Alterar extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if(txtSenha.equals(txtSenhaConfirm) && openDialogPassword()) {
+                if (txtSenha.equals(txtSenhaConfirm) && openDialogPassword()) {
                     realizarAtualizacao();
                 } else {
                     Toast.makeText(getContext(), "As senhas não conferem!", Toast.LENGTH_LONG).show();
