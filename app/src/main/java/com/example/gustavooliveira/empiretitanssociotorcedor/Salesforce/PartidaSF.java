@@ -14,7 +14,7 @@ import java.util.Date;
 
 public class PartidaSF {
 
-    public ArrayList<Partida> GetProximasPartidas() throws Exception {
+    public ArrayList<Partida> getProximasPartidas() throws Exception {
         ArrayList<Partida> partidas = new ArrayList<>();
 
         String query = "SELECT+Clube__c,+Data__c,+Id,+Local__c,+Valor__c+FROM+Partida__c+WHERE+Data__c+>+" + new DateSF().fromDateTime(new Date());
