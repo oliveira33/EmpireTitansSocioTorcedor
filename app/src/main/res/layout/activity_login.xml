@@ -17,22 +17,23 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/tela_login" />
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/textView3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="150dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="180dp"
             android:fontFamily="monospace"
             android:text="Efetue o Login"
             android:textAlignment="center"
@@ -42,7 +43,7 @@
 
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/txtEmailAtt"
             android:layout_alignStart="@+id/txtEmailAtt"
@@ -53,10 +54,11 @@
 
         <EditText
             android:id="@+id/txtEmailAtt"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
             android:layout_marginTop="245dp"
             android:autoText="true"
             android:ems="10"
@@ -70,7 +72,7 @@
 
         <TextView
             android:id="@+id/textView5"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/textView4"
             android:layout_below="@+id/txtEmailAtt"
@@ -80,7 +82,7 @@
 
         <EditText
             android:id="@+id/txtSenha"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView5"
             android:layout_centerHorizontal="true"
@@ -94,35 +96,35 @@
 
         <Button
             android:id="@+id/btLogin"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/txtSenha"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="10dp"
-            android:text="Login" />
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="#37a4a4a4"
+            android:text="Login"
+            android:textColor="@android:color/darker_gray" />
 
         <Button
             android:id="@+id/btCadastrar"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/txtSenha"
-            android:layout_marginEnd="50dp"
-            android:layout_marginTop="10dp"
-            android:text="Cadastrar" />
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#37a3a3a3"
+            android:text="Cadastrar"
+            android:textColor="@android:color/darker_gray" />
 
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btLogin"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:text="Esqueci minha senha"
-            android:textColor="@android:color/background_light"
-            android:textSize="10sp" />
+    </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:background="#8d000000"
+            android:padding="150dp" />
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

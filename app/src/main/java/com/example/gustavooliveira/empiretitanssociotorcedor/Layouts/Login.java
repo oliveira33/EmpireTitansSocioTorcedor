@@ -1,13 +1,16 @@
 package com.example.gustavooliveira.empiretitanssociotorcedor.Layouts;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.gustavooliveira.empiretitanssociotorcedor.MainActivity;
@@ -22,6 +25,8 @@ public class Login extends AppCompatActivity {
     private Button btCadastrar;
     private EditText txtEmail;
     private EditText txtSenha;
+    private ProgressBar progressBar;
+    private Dialog dialog;
 
     private final Handler handler = new Handler(Looper.getMainLooper());
 
@@ -34,15 +39,22 @@ public class Login extends AppCompatActivity {
         btCadastrar = (Button) findViewById(R.id.btCadastrar);
         txtEmail = (EditText) findViewById(R.id.txtEmailAtt);
         txtSenha = (EditText) findViewById(R.id.txtSenha);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.INVISIBLE);
 
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
                     // validar(); Desabilitado para testes
+                    progressBar.setVisibility(View.VISIBLE);
+                    getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                     logar(txtEmail.getText().toString(), txtSenha.getText().toString());
                 } catch (Exception ex) {
                     Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
+                    progressBar.setVisibility(View.INVISIBLE);
+                    getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 }
             }
         });
@@ -94,6 +106,8 @@ public class Login extends AppCompatActivity {
                         @Override
                         public void run() {
                             Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
+                            progressBar.setVisibility(View.INVISIBLE);
+                            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                         }
                     });
                 }
