@@ -114,7 +114,7 @@ public class Alterar extends Fragment {
 
     private void openDialogPassword() {
         final Dialog dialog=new Dialog(mView.getContext());
-        dialog.setTitle("Confirmar Alteração de Dados");
+        dialog.setTitle("Confirmar Alteração");
         dialog.setContentView(R.layout.layout_dialog_password);
         dialog.setCancelable(true);
         final EditText senha = (EditText) dialog.findViewById(R.id.txtSenhaDialog);
@@ -189,7 +189,7 @@ public class Alterar extends Fragment {
             viewCpf.setText("CPF:");
         }
 
-        if(txtTelefone.length() != 15) {
+        if(txtTelefone.length() != 15 && txtTelefone.length() != 14) {
             viewTelefone.setTextColor(Color.RED);
             viewTelefone.setText("*Celular:");
             status = false;

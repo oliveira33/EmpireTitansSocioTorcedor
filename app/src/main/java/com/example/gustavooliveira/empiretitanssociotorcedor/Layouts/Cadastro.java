@@ -117,7 +117,7 @@ public class Cadastro extends AppCompatActivity {
             viewCpf.setText("CPF");
         }
 
-        if(txtTelefone.length() != 15) {
+        if(txtTelefone.length() != 15 && txtTelefone.length() != 14) {
             viewTelefone.setTextColor(Color.RED);
             viewTelefone.setText("*Telefone de Contato");
             status = false;
