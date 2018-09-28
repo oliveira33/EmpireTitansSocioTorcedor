@@ -80,7 +80,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Insira seu e-mail"
-                    android:inputType="textPersonName" />
+                    android:inputType="textEmailAddress" />
 
                 <TextView
                     android:id="@+id/viewDataNascimentoAtt"
@@ -95,7 +95,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Insira sua data de nascimento"
-                    android:inputType="textPersonName" />
+                    android:inputType="number" />
 
                 <TextView
                     android:id="@+id/viewCpfAtt"
@@ -110,7 +110,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Insira seu CPF:"
-                    android:inputType="textPersonName" />
+                    android:inputType="number" />
 
                 <TextView
                     android:id="@+id/viewTelefoneAtt"
@@ -125,7 +125,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Insira seu celular:"
-                    android:inputType="textPersonName" />
+                    android:inputType="number" />
 
                 <TextView
                     android:id="@+id/viewEnderecoAtt"
@@ -154,7 +154,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Insira sua senha:"
+                    android:hint="Insira sua nova senha:"
                     android:inputType="textPersonName" />
 
                 <TextView
@@ -169,7 +169,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Confirme sua senha:"
+                    android:hint="Confirme sua nova senha:"
                     android:inputType="textPersonName" />
 
                 <TextView
@@ -186,7 +186,7 @@
                     android:layout_marginBottom="20dp"
                     android:ems="10"
                     android:hint="Insira o número do seu cartão:"
-                    android:inputType="textPersonName" />
+                    android:inputType="number" />
 
             </LinearLayout>
 

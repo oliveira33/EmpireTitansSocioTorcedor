@@ -1,11 +1,14 @@
 package com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Fragments;
 
 
+import android.app.Dialog;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -13,6 +16,10 @@ import android.widget.Toast;
 
 import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Usuario;
 import com.example.gustavooliveira.empiretitanssociotorcedor.R;
+import com.github.rtoshiro.util.format.SimpleMaskFormatter;
+import com.github.rtoshiro.util.format.text.MaskTextWatcher;
+
+import java.text.SimpleDateFormat;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -52,8 +59,6 @@ public class Alterar extends Fragment {
 
         mView = inflater.inflate(R.layout.fragment_alterar, container, false);
 
-        carregarDados();
-
         txtNome = mView.findViewById(R.id.txtNomeAtt);
         txtSobrenome = mView.findViewById(R.id.txtSobrenomeAtt);
         txtEmail = mView.findViewById(R.id.txtEmailAtt);
@@ -65,15 +70,18 @@ public class Alterar extends Fragment {
         txtSenhaConfirm = mView.findViewById(R.id.txtSenhaConfirmAtt);
         txtCartao = mView.findViewById(R.id.txtCartaoAtt);
 
+        carregarDados();
+        aplicarMascaras();
+
         btAttCadastro = mView.findViewById(R.id.btAttCadastro);
         btAttCadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (txtSenha.equals(txtSenhaConfirm) && openDialogPassword()) {
-                    realizarAtualizacao();
+                if (txtSenha.getText().toString().equals(txtSenhaConfirm.getText().toString()) && validarCampos()) {
+                    openDialogPassword();
                 } else {
-                    Toast.makeText(getContext(), "As senhas não conferem!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Confira os campos, algo está errado!", Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -82,35 +90,124 @@ public class Alterar extends Fragment {
         return mView;
     }
 
-    private boolean openDialogPassword() {
+    private void aplicarMascaras() {
+        //Mascara Data de Nascimento
+        SimpleMaskFormatter mask = new SimpleMaskFormatter("NN/NN/NNNN");
+        MaskTextWatcher mtw = new MaskTextWatcher(txtData, mask);
+        txtData.addTextChangedListener(mtw);
 
-        return false;
+        //Mascara CPF
+        mask = new SimpleMaskFormatter("NNN.NNN.NNN-NN");
+        mtw = new MaskTextWatcher(txtCpf, mask);
+        txtCpf.addTextChangedListener(mtw);
+
+        //Mascara Celular
+        mask = new SimpleMaskFormatter("(NN) NNNNN-NNNN");
+        mtw = new MaskTextWatcher(txtTelefone, mask);
+        txtTelefone.addTextChangedListener(mtw);
+
+        //Mascara Cartão
+        mask = new SimpleMaskFormatter("NNNN NNNN NNNN NNNN");
+        mtw = new MaskTextWatcher(txtCartao, mask);
+        txtCartao.addTextChangedListener(mtw);
+    }
+
+    private void openDialogPassword() {
+        final Dialog dialog=new Dialog(mView.getContext());
+        dialog.setTitle("Confirmar Alteração de Dados");
+        dialog.setContentView(R.layout.layout_dialog_password);
+        dialog.setCancelable(true);
+        final EditText senha = (EditText) dialog.findViewById(R.id.txtSenhaDialog);
+        Button cadastrar = (Button) dialog.findViewById(R.id.btConfirmaDialog);
+        Button cancelar = (Button) dialog.findViewById(R.id.btCancelaDialog);
+
+        cadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(senha.getText().toString().equals(Usuario.getPrincipal().getSenha())){
+                    realizarAtualizacao();
+                    dialog.dismiss();
+                }else {
+                    Toast.makeText(getContext(), "Senha incorreta!!!", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        cancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 
     private void realizarAtualizacao() {
-        Usuario usuarioAtt = new Usuario();
+        //Local para realizar o Update do usuario
+
     }
 
     private void carregarDados() {
 
-        viewNome = mView.findViewById(R.id.viewNomeAtt);
-        viewNome.setText("Nome: " + Usuario.getPrincipal().getNome());
-        viewSobrenome = mView.findViewById(R.id.viewSobrenomeAtt);
-        viewSobrenome.setText("Sobrenome: " + Usuario.getPrincipal().getSobrenome());
+        SimpleDateFormat out = new SimpleDateFormat("dd/MM/yyyy");
+
         viewEmail = mView.findViewById(R.id.viewEmailAtt);
-        viewEmail.setText("E-Mail: " + Usuario.getPrincipal().getEmail());
         viewData = mView.findViewById(R.id.viewDataNascimentoAtt);
-        viewData.setText("Data de Nascimento: " + Usuario.getPrincipal().getDataNascimento());
         viewCpf = mView.findViewById(R.id.viewCpfAtt);
-        viewCpf.setText("CPF: " + Usuario.getPrincipal().getCpf());
         viewTelefone = mView.findViewById(R.id.viewTelefoneAtt);
-        viewTelefone.setText("Celular: " + Usuario.getPrincipal().getCelular());
-        viewEndereco = mView.findViewById(R.id.viewEnderecoAtt);
-        viewEndereco.setText("Endereço: " + Usuario.getPrincipal().getEndereco());
         viewCartao = mView.findViewById(R.id.viewCartaoAtt);
-        viewCartao.setText("Número do cartão: " + Usuario.getPrincipal().getCartao());
+        txtNome.setText(Usuario.getPrincipal().getNome());
+        txtSobrenome.setText(Usuario.getPrincipal().getSobrenome());
+        txtEmail.setText(Usuario.getPrincipal().getEmail());
+        txtData.setText(out.format(Usuario.getPrincipal().getDataNascimento()));
+        txtCpf.setText(Usuario.getPrincipal().getCpf());
+        txtTelefone.setText(Usuario.getPrincipal().getCelular());
+        txtEndereco.setText(Usuario.getPrincipal().getEndereco());
+        txtCartao.setText(Usuario.getPrincipal().getCartao());
 
     }
 
+    private boolean validarCampos() {
+        boolean status = true;
+
+        if(txtData.length() != 10) {
+            viewData.setTextColor(Color.RED);
+            viewData.setText("*Data de Nascimento:");
+            status = false;
+        } else {
+            viewData.setTextColor(Color.GRAY);
+            viewData.setText("Data de Nascimento:");
+        }
+
+        if(txtCpf.length() != 14) {
+            viewCpf.setTextColor(Color.RED);
+            viewCpf.setText("*CPF:");
+            status = false;
+        } else {
+            viewCpf.setTextColor(Color.GRAY);
+            viewCpf.setText("CPF:");
+        }
+
+        if(txtTelefone.length() != 15) {
+            viewTelefone.setTextColor(Color.RED);
+            viewTelefone.setText("*Celular:");
+            status = false;
+        } else {
+            viewTelefone.setTextColor(Color.GRAY);
+            viewTelefone.setText("Celular:");
+        }
+
+        if(txtCartao.length() != 19) {
+            viewCartao.setTextColor(Color.RED);
+            viewCartao.setText("*Número do cartão:");
+            status = false;
+        } else {
+            viewCartao.setTextColor(Color.GRAY);
+            viewCartao.setText("Número do cartão:");
+        }
+
+        return status;
+    }
 
 }

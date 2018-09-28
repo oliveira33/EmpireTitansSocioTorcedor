@@ -1,5 +1,6 @@
 package com.example.gustavooliveira.empiretitanssociotorcedor.Layouts;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -7,12 +8,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Usuario;
 import com.example.gustavooliveira.empiretitanssociotorcedor.R;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Salesforce.UsuarioSF;
+import com.github.rtoshiro.util.format.SimpleMaskFormatter;
+import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -33,6 +38,11 @@ public class Cadastro extends AppCompatActivity {
     private EditText txtSenhaConfirm;
     private EditText txtCartao;
     private EditText txtCodSeguranca;
+    private TextView viewData;
+    private TextView viewCpf;
+    private TextView viewTelefone;
+    private TextView viewCartao;
+    private CheckBox checkTermos;
 
     private final Handler handler = new Handler(Looper.getMainLooper());
 
@@ -55,14 +65,25 @@ public class Cadastro extends AppCompatActivity {
         txtSenhaConfirm = (EditText) findViewById(R.id.txtSenhaConfirm);
         txtCartao = (EditText) findViewById(R.id.txtCartao);
         // txtCodSeguranca = (EditText) findViewById(R.id.txtCodSeguranca);
+        viewData = (TextView) findViewById(R.id.viewData);
+        viewCpf = (TextView) findViewById(R.id.viewCpf);
+        viewTelefone = (TextView) findViewById(R.id.viewTelefone);
+        viewCartao = (TextView) findViewById(R.id.viewCartao);
+        checkTermos = (CheckBox) findViewById(R.id.checkTermos);
+
+        aplicarMascaras();
 
         btConfirma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    cadastrar(validar());
-                } catch (Exception ex) {
-                    Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
+                if(validarCampos()) {
+                    try {
+                        cadastrar(validar());
+                    } catch (Exception ex) {
+                        Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }else {
+                    Toast.makeText(getApplicationContext(), "Verifique os campos incorretos!", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -73,6 +94,57 @@ public class Cadastro extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private boolean validarCampos() {
+        boolean status = true;
+
+        if(txtData.length() != 10) {
+            viewData.setTextColor(Color.RED);
+            viewData.setText("*Data de Nascimento");
+            status = false;
+        } else {
+            viewData.setTextColor(Color.WHITE);
+            viewData.setText("Data de Nascimento");
+        }
+
+        if(txtCpf.length() != 14) {
+            viewCpf.setTextColor(Color.RED);
+            viewCpf.setText("*CPF");
+            status = false;
+        } else {
+            viewCpf.setTextColor(Color.WHITE);
+            viewCpf.setText("CPF");
+        }
+
+        if(txtTelefone.length() != 15) {
+            viewTelefone.setTextColor(Color.RED);
+            viewTelefone.setText("*Telefone de Contato");
+            status = false;
+        } else {
+            viewTelefone.setTextColor(Color.WHITE);
+            viewTelefone.setText("Telefone de Contato");
+        }
+
+        if(txtCartao.length() != 19) {
+            viewCartao.setTextColor(Color.RED);
+            viewCartao.setText("*Cartão");
+            status = false;
+        } else {
+            viewCartao.setTextColor(Color.WHITE);
+            viewCartao.setText("Cartão");
+        }
+
+        if(!checkTermos.isChecked()) {
+            checkTermos.setTextColor(Color.RED);
+            checkTermos.setText("*Concordo com os Termos de Uso");
+            status = false;
+        } else {
+            checkTermos.setTextColor(Color.WHITE);
+            checkTermos.setText("Concordo com os Termos de Uso");
+        }
+
+        return status;
     }
 
     public Usuario validar() throws Exception {
@@ -141,4 +213,27 @@ public class Cadastro extends AppCompatActivity {
             }
         }.start();
     }
+
+    private void aplicarMascaras() {
+        //Mascara Data de Nascimento
+        SimpleMaskFormatter mask = new SimpleMaskFormatter("NN/NN/NNNN");
+        MaskTextWatcher mtw = new MaskTextWatcher(txtData, mask);
+        txtData.addTextChangedListener(mtw);
+
+        //Mascara CPF
+        mask = new SimpleMaskFormatter("NNN.NNN.NNN-NN");
+        mtw = new MaskTextWatcher(txtCpf, mask);
+        txtCpf.addTextChangedListener(mtw);
+
+        //Mascara Celular
+        mask = new SimpleMaskFormatter("(NN) NNNNN-NNNN");
+        mtw = new MaskTextWatcher(txtTelefone, mask);
+        txtTelefone.addTextChangedListener(mtw);
+
+        //Mascara Cartão
+        mask = new SimpleMaskFormatter("NNNN NNNN NNNN NNNN");
+        mtw = new MaskTextWatcher(txtCartao, mask);
+        txtCartao.addTextChangedListener(mtw);
+    }
+
 }
