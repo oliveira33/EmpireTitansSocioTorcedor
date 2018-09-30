@@ -76,13 +76,13 @@ public class Cadastro extends AppCompatActivity {
         btConfirma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(validarCampos()) {
+                if (validarCampos()) {
                     try {
                         cadastrar(validar());
                     } catch (Exception ex) {
                         Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
                     }
-                }else {
+                } else {
                     Toast.makeText(getApplicationContext(), "Verifique os campos incorretos!", Toast.LENGTH_LONG).show();
                 }
             }
@@ -99,7 +99,7 @@ public class Cadastro extends AppCompatActivity {
     private boolean validarCampos() {
         boolean status = true;
 
-        if(txtData.length() != 10) {
+        if (txtData.length() != 10) {
             viewData.setTextColor(Color.RED);
             viewData.setText("*Data de Nascimento");
             status = false;
@@ -108,7 +108,7 @@ public class Cadastro extends AppCompatActivity {
             viewData.setText("Data de Nascimento");
         }
 
-        if(txtCpf.length() != 14) {
+        if (txtCpf.length() != 14) {
             viewCpf.setTextColor(Color.RED);
             viewCpf.setText("*CPF");
             status = false;
@@ -117,7 +117,7 @@ public class Cadastro extends AppCompatActivity {
             viewCpf.setText("CPF");
         }
 
-        if(txtTelefone.length() != 15 && txtTelefone.length() != 14) {
+        if (txtTelefone.length() != 15 && txtTelefone.length() != 14) {
             viewTelefone.setTextColor(Color.RED);
             viewTelefone.setText("*Telefone de Contato");
             status = false;
@@ -126,7 +126,7 @@ public class Cadastro extends AppCompatActivity {
             viewTelefone.setText("Telefone de Contato");
         }
 
-        if(txtCartao.length() != 19) {
+        if (txtCartao.length() != 19) {
             viewCartao.setTextColor(Color.RED);
             viewCartao.setText("*Cartão");
             status = false;
@@ -135,7 +135,7 @@ public class Cadastro extends AppCompatActivity {
             viewCartao.setText("Cartão");
         }
 
-        if(!checkTermos.isChecked()) {
+        if (!checkTermos.isChecked()) {
             checkTermos.setTextColor(Color.RED);
             checkTermos.setText("*Concordo com os Termos de Uso");
             status = false;
@@ -148,9 +148,6 @@ public class Cadastro extends AppCompatActivity {
     }
 
     public Usuario validar() throws Exception {
-        // Precisa implementar as validações aqui
-        // Pega os campos aqui, armazena nas variáveis e valida. No fim usa as variáveis para criar o Objeto
-
         String email = txtEmail.getText().toString();
         if (email.isEmpty())
             throw new Exception("O e-mail não foi informada");
@@ -186,7 +183,7 @@ public class Cadastro extends AppCompatActivity {
         }
 
         return new Usuario(email, senha, txtNome.getText().toString(), txtSobrenome.getText().toString(), data, txtCpf.getText().toString(),
-                txtEndereco.getText().toString(), txtTelefone.getText().toString(), txtCartao.getText().toString(), codSeguranca);
+                txtEndereco.getText().toString(), txtTelefone.getText().toString(), txtCartao.getText().toString(), codSeguranca, 'U');
     }
 
     public void cadastrar(final Usuario usuario) {

@@ -18,12 +18,13 @@ public class Usuario {
     private String celular;
     private String cartao;
     private String codSeguranca;
+    private Character administrador;
     private static Usuario principal;
 
     public Usuario() {
     }
 
-    public Usuario(String email, String senha, String nome, String sobrenome, Date dataNascimento, String cpf, String endereco, String celular, String cartao, String codSeguranca) {
+    public Usuario(String email, String senha, String nome, String sobrenome, Date dataNascimento, String cpf, String endereco, String celular, String cartao, String codSeguranca, Character administrador) {
         this.email = email;
         this.senha = senha;
         this.nome = nome;
@@ -34,9 +35,10 @@ public class Usuario {
         this.celular = celular;
         this.cartao = cartao;
         this.codSeguranca = codSeguranca;
+        this.administrador = administrador;
     }
 
-    public Usuario(String id, String email, String senha, String nome, String sobrenome, Date dataNascimento, String cpf, String endereco, String celular, String cartao, String codSeguranca) {
+    public Usuario(String id, String email, String senha, String nome, String sobrenome, Date dataNascimento, String cpf, String endereco, String celular, String cartao, String codSeguranca, Character administrador) {
         this.id = id;
         this.email = email;
         this.senha = senha;
@@ -48,6 +50,7 @@ public class Usuario {
         this.celular = celular;
         this.cartao = cartao;
         this.codSeguranca = codSeguranca;
+        this.administrador = administrador;
     }
 
     public String getId() {
@@ -138,6 +141,14 @@ public class Usuario {
         this.codSeguranca = codSeguranca;
     }
 
+    public Character getAdministrador() {
+        return administrador;
+    }
+
+    public void setAdministrador(Character administrador) {
+        this.administrador = administrador;
+    }
+
     public static Usuario getPrincipal() {
         return principal;
     }
@@ -159,6 +170,7 @@ public class Usuario {
         json.put("celular__c", celular);
         json.put("cartao__c", cartao);
         json.put("codseguranca__c", codSeguranca);
+        json.put("administrador__c", administrador);
 
         return json;
     }

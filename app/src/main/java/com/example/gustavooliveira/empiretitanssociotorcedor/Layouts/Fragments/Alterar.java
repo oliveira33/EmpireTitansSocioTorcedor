@@ -16,9 +16,11 @@ import android.widget.Toast;
 
 import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Usuario;
 import com.example.gustavooliveira.empiretitanssociotorcedor.R;
+import com.example.gustavooliveira.empiretitanssociotorcedor.Salesforce.UsuarioSF;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 /**
@@ -77,13 +79,11 @@ public class Alterar extends Fragment {
         btAttCadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if (txtSenha.getText().toString().equals(txtSenhaConfirm.getText().toString()) && validarCampos()) {
                     openDialogPassword();
                 } else {
                     Toast.makeText(getContext(), "Confira os campos, algo está errado!", Toast.LENGTH_LONG).show();
                 }
-
             }
         });
 
@@ -144,12 +144,26 @@ public class Alterar extends Fragment {
     }
 
     private void realizarAtualizacao() {
-        //Local para realizar o Update do usuario
-
+        new Thread() {
+            @Override
+            public void run() {
+                try {
+                    new UsuarioSF().alterar(new Usuario(Usuario.getPrincipal().getId(), txtEmail.getText().toString(), txtSenha.getText().toString(), txtNome.getText().toString(),
+                            txtSobrenome.getText().toString(), new SimpleDateFormat("dd/MM/yyyy").parse(txtData.getText().toString()), txtCpf.getText().toString(), txtEndereco.getText().toString(),
+                            txtTelefone.getText().toString(), txtCartao.getText().toString(), "", 'U'));
+                } catch (final Exception e) {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG);
+                        }
+                    });
+                }
+            }
+        }.start();
     }
 
     private void carregarDados() {
-
         SimpleDateFormat out = new SimpleDateFormat("dd/MM/yyyy");
 
         viewEmail = mView.findViewById(R.id.viewEmailAtt);

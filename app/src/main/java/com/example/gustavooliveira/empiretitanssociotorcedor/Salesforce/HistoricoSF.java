@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class HistoricoSF {
 
-    public void Cadastrar(Historico historico) throws Exception {
+    public void cadastrar(Historico historico) throws Exception {
         HttpURLConnection conexao = (HttpURLConnection) new URL("https://na57.salesforce.com/services/data/v43.0/sobjects/Historico__c").openConnection();
         conexao.setDoOutput(true);
         conexao.setRequestMethod("POST");
@@ -59,7 +59,7 @@ public class HistoricoSF {
         return historicos;
     }
 
-    public JSONObject toJson(Historico historico) throws Exception {
+    private JSONObject toJson(Historico historico) throws Exception {
         JSONObject json = new JSONObject();
 
         json.put("IdUsuario__c", historico.getIdUsuario());
