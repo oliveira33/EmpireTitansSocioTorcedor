@@ -15,7 +15,7 @@ public class Usuario {
     private Date dataNascimento;
     private String cpf;
     private String endereco;
-    private String celular;
+    private String telefone;
     private String cartao;
     private String codSeguranca;
     private Character administrador;
@@ -24,7 +24,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String email, String senha, String nome, String sobrenome, Date dataNascimento, String cpf, String endereco, String celular, String cartao, String codSeguranca, Character administrador) {
+    public Usuario(String email, String senha, String nome, String sobrenome, Date dataNascimento, String cpf, String endereco, String telefone, String cartao, String codSeguranca, Character administrador) {
         this.email = email;
         this.senha = senha;
         this.nome = nome;
@@ -32,13 +32,13 @@ public class Usuario {
         this.dataNascimento = dataNascimento;
         this.cpf = cpf;
         this.endereco = endereco;
-        this.celular = celular;
+        this.telefone = telefone;
         this.cartao = cartao;
         this.codSeguranca = codSeguranca;
         this.administrador = administrador;
     }
 
-    public Usuario(String id, String email, String senha, String nome, String sobrenome, Date dataNascimento, String cpf, String endereco, String celular, String cartao, String codSeguranca, Character administrador) {
+    public Usuario(String id, String email, String senha, String nome, String sobrenome, Date dataNascimento, String cpf, String endereco, String telefone, String cartao, String codSeguranca, Character administrador) {
         this.id = id;
         this.email = email;
         this.senha = senha;
@@ -47,7 +47,7 @@ public class Usuario {
         this.dataNascimento = dataNascimento;
         this.cpf = cpf;
         this.endereco = endereco;
-        this.celular = celular;
+        this.telefone = telefone;
         this.cartao = cartao;
         this.codSeguranca = codSeguranca;
         this.administrador = administrador;
@@ -117,12 +117,12 @@ public class Usuario {
         this.endereco = endereco;
     }
 
-    public String getCelular() {
-        return celular;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setCelular(String celular) {
-        this.celular = celular;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public String getCartao() {
@@ -155,23 +155,5 @@ public class Usuario {
 
     public static void setPrincipal(Usuario principal) {
         Usuario.principal = principal;
-    }
-
-    public JSONObject toJSON() throws JSONException {
-        JSONObject json = new JSONObject();
-
-        json.put("email__c", email);
-        json.put("senha__c", senha);
-        json.put("nome__c", nome);
-        json.put("sobrenome__c", sobrenome);
-        json.put("dataNascimento__c", dataNascimento);
-        json.put("cpf__c", cpf);
-        json.put("endereco__c", endereco);
-        json.put("celular__c", celular);
-        json.put("cartao__c", cartao);
-        json.put("codseguranca__c", codSeguranca);
-        json.put("administrador__c", administrador);
-
-        return json;
     }
 }

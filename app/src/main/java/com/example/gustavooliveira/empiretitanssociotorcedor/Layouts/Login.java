@@ -72,7 +72,7 @@ public class Login extends AppCompatActivity {
         if (!email.contains("@") || !email.contains("."))
             throw new Exception("O e-mail é inválido");
 
-        String senha = txtSenha.getText().toString();
+        String senha = txtSenha.getText().toString().trim();
         if (senha.isEmpty())
             throw new Exception("A senha é obrigatória");
     }

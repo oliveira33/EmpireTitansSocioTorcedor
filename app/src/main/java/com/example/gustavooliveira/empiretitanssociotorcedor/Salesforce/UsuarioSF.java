@@ -56,7 +56,7 @@ public class UsuarioSF {
     }
 
     public Usuario logar(String email, String senha) throws Exception {
-        String query = "SELECT+Id,+Email__c,+Senha__c,+Nome__c,+Sobrenome__c,+Cpf__c,+Endereco__c,+DataNascimento__c,+Celular__c,+Cartao__c,+CodSeguranca__c,+Administrador__c+FROM+Usuario__c+WHERE+Email__c+=+'" + email + "'+AND+senha__c+=+'" + senha + "'";
+        String query = "SELECT+Id,+Email__c,+Senha__c,+Nome__c,+Sobrenome__c,+Cpf__c,+Endereco__c,+DataNascimento__c,+Telefone__c,+Cartao__c,+CodSeguranca__c,+Administrador__c+FROM+Usuario__c+WHERE+Email__c+=+'" + email + "'+AND+senha__c+=+'" + senha + "'";
         HttpURLConnection conexao = (HttpURLConnection) new URL("https://na57.salesforce.com/services/data/v43.0/query/?q=" + query).openConnection();
         conexao.setDoInput(true);
         conexao.setRequestMethod("GET");
@@ -75,7 +75,7 @@ public class UsuarioSF {
 
             JSONObject json = array.getJSONObject(0);
             return new Usuario(json.getString("Id"), json.getString("Email__c"), json.getString("Senha__c"), json.getString("Nome__c"), json.getString("Sobrenome__c"),
-                    new DateSF().toDate(json.getString("DataNascimento__c")), json.getString("Cpf__c"), json.getString("Endereco__c"), json.getString("Celular__c"),
+                    new DateSF().toDate(json.getString("DataNascimento__c")), json.getString("Cpf__c"), json.getString("Endereco__c"), json.getString("Telefone__c"),
                     json.getString("Cartao__c"), json.getString("CodSeguranca__c"), json.getString("Administrador__c").charAt(0));
         } else
             throw new Exception(conexao.getResponseMessage());
@@ -91,7 +91,7 @@ public class UsuarioSF {
         json.put("DataNascimento__c", new DateSF().fromDate(usuario.getDataNascimento()));
         json.put("Cpf__c", usuario.getCpf());
         json.put("Endereco__c", usuario.getEndereco());
-        json.put("Celular__c", usuario.getCelular());
+        json.put("Telefone__c", usuario.getTelefone());
         json.put("Cartao__c", usuario.getCartao());
         json.put("CodSeguranca__c", usuario.getCodSeguranca());
         json.put("Administrador__c", usuario.getAdministrador());

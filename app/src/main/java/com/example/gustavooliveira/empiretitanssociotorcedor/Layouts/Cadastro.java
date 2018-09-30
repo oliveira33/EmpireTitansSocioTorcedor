@@ -2,8 +2,6 @@ package com.example.gustavooliveira.empiretitanssociotorcedor.Layouts;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
@@ -43,8 +41,6 @@ public class Cadastro extends AppCompatActivity {
     private TextView viewTelefone;
     private TextView viewCartao;
     private CheckBox checkTermos;
-
-    private final Handler handler = new Handler(Looper.getMainLooper());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -192,7 +188,7 @@ public class Cadastro extends AppCompatActivity {
             public void run() {
                 try {
                     new UsuarioSF().cadastrar(usuario);
-                    handler.post(new Runnable() {
+                    runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             Toast.makeText(getApplicationContext(), "Cadastro realizado com sucesso!", Toast.LENGTH_LONG).show();
@@ -200,7 +196,7 @@ public class Cadastro extends AppCompatActivity {
                         }
                     });
                 } catch (final Exception ex) {
-                    handler.post(new Runnable() {
+                    runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();

@@ -54,7 +54,6 @@ public class Alterar extends Fragment {
 
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -113,7 +112,7 @@ public class Alterar extends Fragment {
     }
 
     private void openDialogPassword() {
-        final Dialog dialog=new Dialog(mView.getContext());
+        final Dialog dialog = new Dialog(mView.getContext());
         dialog.setTitle("Confirmar Alteração");
         dialog.setContentView(R.layout.layout_dialog_password);
         dialog.setCancelable(true);
@@ -124,10 +123,10 @@ public class Alterar extends Fragment {
         cadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(senha.getText().toString().equals(Usuario.getPrincipal().getSenha())){
+                if (senha.getText().toString().equals(Usuario.getPrincipal().getSenha())) {
                     realizarAtualizacao();
                     dialog.dismiss();
-                }else {
+                } else {
                     Toast.makeText(getContext(), "Senha incorreta!!!", Toast.LENGTH_LONG).show();
                 }
             }
@@ -144,18 +143,26 @@ public class Alterar extends Fragment {
     }
 
     private void realizarAtualizacao() {
+        final String senha = txtSenha.getText().toString().trim().isEmpty() ? Usuario.getPrincipal().getSenha() : txtSenha.getText().toString().trim();
+
         new Thread() {
             @Override
             public void run() {
                 try {
-                    new UsuarioSF().alterar(new Usuario(Usuario.getPrincipal().getId(), txtEmail.getText().toString(), txtSenha.getText().toString(), txtNome.getText().toString(),
+                    new UsuarioSF().alterar(new Usuario(Usuario.getPrincipal().getId(), txtEmail.getText().toString(), senha, txtNome.getText().toString(),
                             txtSobrenome.getText().toString(), new SimpleDateFormat("dd/MM/yyyy").parse(txtData.getText().toString()), txtCpf.getText().toString(), txtEndereco.getText().toString(),
                             txtTelefone.getText().toString(), txtCartao.getText().toString(), "", 'U'));
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getContext(), "Dados alterados com sucesso!", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 } catch (final Exception e) {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG);
+                            Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     });
                 }
@@ -176,7 +183,7 @@ public class Alterar extends Fragment {
         txtEmail.setText(Usuario.getPrincipal().getEmail());
         txtData.setText(out.format(Usuario.getPrincipal().getDataNascimento()));
         txtCpf.setText(Usuario.getPrincipal().getCpf());
-        txtTelefone.setText(Usuario.getPrincipal().getCelular());
+        txtTelefone.setText(Usuario.getPrincipal().getTelefone());
         txtEndereco.setText(Usuario.getPrincipal().getEndereco());
         txtCartao.setText(Usuario.getPrincipal().getCartao());
 
@@ -185,7 +192,7 @@ public class Alterar extends Fragment {
     private boolean validarCampos() {
         boolean status = true;
 
-        if(txtData.length() != 10) {
+        if (txtData.length() != 10) {
             viewData.setTextColor(Color.RED);
             viewData.setText("*Data de Nascimento:");
             status = false;
@@ -194,7 +201,7 @@ public class Alterar extends Fragment {
             viewData.setText("Data de Nascimento:");
         }
 
-        if(txtCpf.length() != 14) {
+        if (txtCpf.length() != 14) {
             viewCpf.setTextColor(Color.RED);
             viewCpf.setText("*CPF:");
             status = false;
@@ -203,7 +210,7 @@ public class Alterar extends Fragment {
             viewCpf.setText("CPF:");
         }
 
-        if(txtTelefone.length() != 15 && txtTelefone.length() != 14) {
+        if (txtTelefone.length() != 15 && txtTelefone.length() != 14) {
             viewTelefone.setTextColor(Color.RED);
             viewTelefone.setText("*Celular:");
             status = false;
@@ -212,7 +219,7 @@ public class Alterar extends Fragment {
             viewTelefone.setText("Celular:");
         }
 
-        if(txtCartao.length() != 19) {
+        if (txtCartao.length() != 19) {
             viewCartao.setTextColor(Color.RED);
             viewCartao.setText("*Número do cartão:");
             status = false;
