@@ -10,7 +10,7 @@ public class Partida {
     private Double valor;
     private String local;
     private String imagem;
-	private Clube clube;
+    private Clube clube;
 
     public Partida() {
     }
@@ -21,7 +21,7 @@ public class Partida {
         this.data = data;
         this.valor = valor;
         this.local = local;
-		this.clube = clube;
+	this.clube = clube;
     }
 
     public String getId() {
@@ -72,11 +72,11 @@ public class Partida {
         this.imagem = imagem;
     }
 	
-	public Clube getClube() {
-		return clube;
-	}
+    public Clube getClube() {
+	return clube;
+    }
 	
-	public void setClube(Clube clube) {
-		this.clube = clube;
-	}
+    public void setClube(Clube clube) {
+	this.clube = clube;
+    }
 }
