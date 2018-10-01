@@ -10,7 +10,7 @@ public class Clube {
 
     public Clube(String id, String nome) {
         this.id = id;
-        thid.nome = nome;
+        this.nome = nome;
     }
 
     public String getId() {
