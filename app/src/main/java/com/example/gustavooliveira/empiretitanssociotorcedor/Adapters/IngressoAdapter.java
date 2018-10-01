@@ -13,7 +13,6 @@ import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Partida;
 import com.example.gustavooliveira.empiretitanssociotorcedor.R;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 public class IngressoAdapter extends RecyclerView.Adapter {
@@ -41,8 +40,8 @@ public class IngressoAdapter extends RecyclerView.Adapter {
         Partida p = partidas.get(position);
         holder.idClube.setText(p.getIdClube());
         holder.data.setText(format.format(p.getData()));
-        holder.local.setText("Local: "+p.getLocal());
-        holder.valor.setText("R$"+p.getValor().toString());
+        holder.local.setText("Local: " + p.getLocal());
+        holder.valor.setText("R$ " + p.getValor().toString());
     }
 
     @Override

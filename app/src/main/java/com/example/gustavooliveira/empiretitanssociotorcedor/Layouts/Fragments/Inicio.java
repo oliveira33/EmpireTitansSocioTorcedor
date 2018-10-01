@@ -63,12 +63,6 @@ public class Inicio extends Fragment {
     private static List<Partida> preencherPartidas() {
         List<Partida> list = new ArrayList<>();
 
-        list.add(new Partida("Atletico", 120.00, "Estaio A", "p1"));
-        list.add(new Partida("Nacional", 150.00, "Estaio B", "p2"));
-        list.add(new Partida("Monte Alegre", 90.00, "Estaio A", "p3"));
-        list.add(new Partida("Vazame", 75.50, "Estaio C", "p4"));
-
-
         return list;
     }
 

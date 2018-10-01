@@ -1,6 +1,8 @@
 package com.example.gustavooliveira.empiretitanssociotorcedor.Salesforce;
 
+import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Clube;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Historico;
+import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Partida;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,7 +36,7 @@ public class HistoricoSF {
 
     public ArrayList<Historico> getHistoricoUsuario(String idUsuario) throws Exception {
         ArrayList<Historico> historicos = new ArrayList<>();
-        String query = "SELECT+Data__c,+Id,+IdPartida__c,+IdUsuario__c+FROM+Historico__c+WHERE+IdUsuario__c+=+'" + idUsuario + "'";
+        String query = "SELECT+Historico__c.Data__c,+Historico__c.Id,+Historico__c.IdPartida__c,+Historico__c.IdUsuario__c,+Historico__c.Partida__r.Clube__r.Nome__c+FROM+Historico__c+WHERE+Historico__c.IdUsuario__c+=+'" + idUsuario + "'";
         HttpURLConnection conexao = (HttpURLConnection) new URL("https://na57.salesforce.com/services/data/v43.0/query/?q=" + query).openConnection();
         conexao.setDoInput(true);
         conexao.setRequestMethod("GET");
@@ -51,7 +53,7 @@ public class HistoricoSF {
             JSONObject json = null;
             for (int i = 0; i < array.length(); i++) {
                 json = array.getJSONObject(i);
-                historicos.add(new Historico(json.getString("Id"), idUsuario, json.getString("IdPartida__c"), new DateSF().toDateTime(json.getString("Data__c"))));
+                historicos.add(new Historico(json.getString("Id"), idUsuario, json.getString("IdPartida__c"), new DateSF().toDateTime(json.getString("Data__c")), new Partida(new Clube(json.getString("Partida__c.Nome__c")))));
             }
         } else
             throw new Exception(conexao.getResponseMessage());

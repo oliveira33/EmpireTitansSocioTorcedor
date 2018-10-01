@@ -10,9 +10,14 @@ public class Partida {
     private Double valor;
     private String local;
     private String imagem;
+
     private Clube clube;
 
     public Partida() {
+    }
+
+    public Partida(Clube clube) {
+        this.clube = clube;
     }
 
     public Partida(String id, String idClube, Date data, Double valor, String local, Clube clube) {
@@ -21,7 +26,7 @@ public class Partida {
         this.data = data;
         this.valor = valor;
         this.local = local;
-	this.clube = clube;
+        this.clube = clube;
     }
 
     public String getId() {

@@ -9,6 +9,8 @@ public class Historico {
     private String idPartida;
     private Date data;
 
+    private Partida partida;
+
     public Historico() {
     }
 
@@ -18,11 +20,12 @@ public class Historico {
         this.data = data;
     }
 
-    public Historico(String id, String idUsuario, String idPartida, Date data) {
+    public Historico(String id, String idUsuario, String idPartida, Date data, Partida partida) {
         this.id = id;
         this.idUsuario = idUsuario;
         this.idPartida = idPartida;
         this.data = data;
+        this.partida = partida;
     }
 
     public String getId() {
@@ -55,5 +58,13 @@ public class Historico {
 
     public void setData(Date data) {
         this.data = data;
+    }
+
+    public Partida getPartida() {
+        return partida;
+    }
+
+    public void setPartida(Partida partida) {
+        this.partida = partida;
     }
 }

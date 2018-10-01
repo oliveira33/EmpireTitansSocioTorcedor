@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Fragments.Alterar;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Fragments.Duvidas;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Fragments.FaleConosco;
-import com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Fragments.Historico;
+import com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Fragments.HistoricoFrag;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Fragments.Ingresso;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Fragments.Inicio;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Login;
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_ingresso) {
             getSupportFragmentManager().beginTransaction().replace(R.id.frame_principal, new Ingresso()).commit();
         } else if (id == R.id.nav_historico) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.frame_principal, new Historico()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_principal, new HistoricoFrag()).commit();
         } else if (id == R.id.nav_alterar) {
             getSupportFragmentManager().beginTransaction().replace(R.id.frame_principal, new Alterar()).commit();
         } else if (id == R.id.nav_fale_conosco) {

@@ -8,6 +8,10 @@ public class Clube {
     public Clube() {
     }
 
+    public Clube(String nome) {
+        this.nome = nome;
+    }
+
     public Clube(String id, String nome) {
         this.id = id;
         this.nome = nome;
