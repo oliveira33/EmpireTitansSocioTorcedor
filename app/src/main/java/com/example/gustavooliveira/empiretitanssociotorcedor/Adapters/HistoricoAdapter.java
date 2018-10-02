@@ -35,7 +35,6 @@ public class HistoricoAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder nholder, int position) {
-        SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
         NossoViewHolder holder = (NossoViewHolder) nholder;
         Historico h = historicos.get(position);
         holder.txtCardJogoRival.setText(h.getPartida().getClube().getNome());

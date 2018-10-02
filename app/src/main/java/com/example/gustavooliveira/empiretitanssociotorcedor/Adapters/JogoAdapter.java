@@ -13,18 +13,19 @@ import android.widget.Toast;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Partida;
 import com.example.gustavooliveira.empiretitanssociotorcedor.R;
 
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class JogoAdapter extends RecyclerView.Adapter {
 
-    private List<Partida> list;
+    private List<Partida> partidas;
     private Context context;
     private Map<String, Integer> imagens;
 
     public JogoAdapter(List<Partida> list, Context context) {
-        this.list = list;
+        this.partidas = list;
         this.context = context;
         imagens = new HashMap<String, Integer>();
         imagens.put("p1", R.drawable.time_a);
@@ -42,15 +43,15 @@ public class JogoAdapter extends RecyclerView.Adapter {
 
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder nHolder, int position) {
         NossoViewHolder holder = (NossoViewHolder) nHolder;
-        Partida p = list.get(position);
-        holder.imagem.setImageResource(imagens.get(p.getImagem()));
-        holder.rival.setText(p.getIdClube());
-        holder.horario.setText("???");
+        Partida p = partidas.get(position);
+        // holder.imagem.setImageResource(imagens.get(0));
+        holder.rival.setText(p.getClube().getNome());
+        holder.horario.setText(new SimpleDateFormat("dd/MM").format(p.getData()) + " às " + new SimpleDateFormat("HH:mm").format(p.getData()));
         holder.local.setText(p.getLocal());
     }
 
     public int getItemCount() {
-        return list.size();
+        return partidas.size();
     }
 
 

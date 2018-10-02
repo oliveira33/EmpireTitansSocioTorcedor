@@ -50,8 +50,13 @@ public class HistoricoFrag extends Fragment {
                 try {
                     listHistorico = new HistoricoSF().getHistoricoUsuario(Usuario.getPrincipal().getId());
                     preencherHistoricos(listHistorico);
-                } catch (Exception e) {
-                    Toast.makeText(getContext(), "A lista de histórico não pode ser carregada.\n" + e.getMessage(), Toast.LENGTH_LONG).show();
+                } catch (final Exception e) {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getContext(), "A lista de histórico não pode ser carregada.\n" + e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
             }
         }.start();

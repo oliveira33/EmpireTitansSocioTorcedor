@@ -52,8 +52,13 @@ public class Ingresso extends Fragment {
                 try {
                     listPartidas = new PartidaSF().getProximasPartidas();
                     preencherPartidas(listPartidas);
-                } catch (Exception e) {
-                    Toast.makeText(getContext(), "A lista de ingressos não pode ser carregada.\n" + e.getMessage(), Toast.LENGTH_LONG).show();
+                } catch (final Exception e) {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getContext(), "A lista de ingressos não pode ser carregada.\n" + e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
             }
         }.start();

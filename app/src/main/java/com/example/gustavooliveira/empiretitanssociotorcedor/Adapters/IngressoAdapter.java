@@ -35,11 +35,10 @@ public class IngressoAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder nHolder, int position) {
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         NossoViewHolder holder = (NossoViewHolder) nHolder;
         Partida p = partidas.get(position);
-        holder.idClube.setText(p.getIdClube());
-        holder.data.setText(format.format(p.getData()));
+        holder.nomeClube.setText(p.getClube().getNome());
+        holder.data.setText(new SimpleDateFormat("dd/MM/yyyy").format(p.getData()));
         holder.local.setText("Local: " + p.getLocal());
         holder.valor.setText("R$ " + String.format("%.2f", p.getValor()));
     }
@@ -50,14 +49,14 @@ public class IngressoAdapter extends RecyclerView.Adapter {
     }
 
     public class NossoViewHolder extends RecyclerView.ViewHolder {
-        private TextView idClube;
+        private TextView nomeClube;
         private TextView data;
         private TextView valor;
         private TextView local;
 
         public NossoViewHolder(View itemView) {
             super(itemView);
-            this.idClube = (TextView) itemView.findViewById(R.id.viewPartidaTitulo);
+            this.nomeClube = (TextView) itemView.findViewById(R.id.viewPartidaTitulo);
             this.data = (TextView) itemView.findViewById(R.id.viewDataCardIngresso);
             this.valor = (TextView) itemView.findViewById(R.id.viewValorCardIngresso);
             this.local = (TextView) itemView.findViewById(R.id.viewLocalCardIngresso);
