@@ -69,7 +69,8 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Insira seu nome"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textColor="@android:color/background_light" />
 
                 <TextView
                     android:id="@+id/textView12"
@@ -87,7 +88,8 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Insira seu sobrenome"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textColor="@android:color/background_light" />
 
                 <TextView
                     android:id="@+id/textView11"
@@ -100,15 +102,16 @@
                     android:textColor="@android:color/background_light" />
 
                 <EditText
-                    android:id="@+id/txtEmail"
+                    android:id="@+id/txtEmailAtt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Insira seu e-mail"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress"
+                    android:textColor="@android:color/background_light" />
 
                 <TextView
-                    android:id="@+id/textView10"
+                    android:id="@+id/viewData"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
@@ -122,10 +125,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="date" />
+                    android:hint="Insira sua data de nascimento"
+                    android:inputType="date"
+                    android:textColor="@android:color/background_light" />
 
                 <TextView
-                    android:id="@+id/textView9"
+                    android:id="@+id/viewCpf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
@@ -140,10 +145,11 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Insira seu CPF"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:textColor="@android:color/background_light" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/viewTelefone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
@@ -158,7 +164,8 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Insira um telefone para contato"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:textColor="@android:color/background_light" />
 
                 <TextView
                     android:id="@+id/textView14"
@@ -176,10 +183,11 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Insira seu endereço"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textColor="@android:color/background_light" />
 
                 <TextView
-                    android:id="@+id/textView15"
+                    android:id="@+id/viewSenha"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
@@ -194,7 +202,8 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Insira uma senha"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:textColor="@android:color/background_light" />
 
                 <EditText
                     android:id="@+id/txtSenhaConfirm"
@@ -202,10 +211,11 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Confirme a sua senha"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:textColor="@android:color/background_light" />
 
                 <TextView
-                    android:id="@+id/as"
+                    android:id="@+id/viewCartao"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
@@ -220,7 +230,8 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Insira o número do seu cartão"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:textColor="@android:color/background_light" />
 
                 <View
                     android:id="@+id/divider"

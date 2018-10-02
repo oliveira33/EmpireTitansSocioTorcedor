@@ -2,12 +2,12 @@ package com.example.gustavooliveira.empiretitanssociotorcedor.Layouts;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.gustavooliveira.empiretitanssociotorcedor.MainActivity;
@@ -21,8 +21,7 @@ public class Login extends AppCompatActivity {
     private Button btCadastrar;
     private EditText txtEmail;
     private EditText txtSenha;
-
-    private final Handler handler = new Handler(Looper.getMainLooper());
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,17 +30,24 @@ public class Login extends AppCompatActivity {
 
         btLogin = (Button) findViewById(R.id.btLogin);
         btCadastrar = (Button) findViewById(R.id.btCadastrar);
-        txtEmail = (EditText) findViewById(R.id.txtEmail);
+        txtEmail = (EditText) findViewById(R.id.txtEmailAtt);
         txtSenha = (EditText) findViewById(R.id.txtSenha);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.INVISIBLE);
 
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    // validar(); Desabilitado para testes
+                    validar();
+                    progressBar.setVisibility(View.VISIBLE);
+                    getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                     logar(txtEmail.getText().toString(), txtSenha.getText().toString());
                 } catch (Exception ex) {
                     Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
+                    progressBar.setVisibility(View.INVISIBLE);
+                    getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 }
             }
         });
@@ -66,7 +72,7 @@ public class Login extends AppCompatActivity {
         if (!email.contains("@") || !email.contains("."))
             throw new Exception("O e-mail é inválido");
 
-        String senha = txtSenha.getText().toString();
+        String senha = txtSenha.getText().toString().trim();
         if (senha.isEmpty())
             throw new Exception("A senha é obrigatória");
     }
@@ -76,11 +82,9 @@ public class Login extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    UsuarioSF sf = new UsuarioSF();
-                    String id = sf.logar(email, senha);
-                    Usuario.setPrincipal(sf.get(id));
+                    Usuario.setPrincipal(new UsuarioSF().logar(email, senha));
 
-                    handler.post(new Runnable() {
+                    runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             Intent intent = new Intent(Login.this, MainActivity.class);
@@ -89,10 +93,12 @@ public class Login extends AppCompatActivity {
                         }
                     });
                 } catch (final Exception ex) {
-                    handler.post(new Runnable() {
+                    runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
+                            progressBar.setVisibility(View.INVISIBLE);
+                            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                         }
                     });
                 }

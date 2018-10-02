@@ -3,6 +3,8 @@ package com.example.gustavooliveira.empiretitanssociotorcedor.Models;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Date;
+
 public class Usuario {
 
     private String id;
@@ -10,17 +12,19 @@ public class Usuario {
     private String senha;
     private String nome;
     private String sobrenome;
-    private String dataNascimento;
+    private Date dataNascimento;
     private String cpf;
     private String endereco;
-    private String celular;
+    private String telefone;
     private String cartao;
+    private String codSeguranca;
+    private Character administrador;
     private static Usuario principal;
 
     public Usuario() {
     }
 
-    public Usuario(String email, String senha, String nome, String sobrenome, String dataNascimento, String cpf, String endereco, String celular, String cartao) {
+    public Usuario(String email, String senha, String nome, String sobrenome, Date dataNascimento, String cpf, String endereco, String telefone, String cartao, String codSeguranca, Character administrador) {
         this.email = email;
         this.senha = senha;
         this.nome = nome;
@@ -28,11 +32,13 @@ public class Usuario {
         this.dataNascimento = dataNascimento;
         this.cpf = cpf;
         this.endereco = endereco;
-        this.celular = celular;
+        this.telefone = telefone;
         this.cartao = cartao;
+        this.codSeguranca = codSeguranca;
+        this.administrador = administrador;
     }
 
-    public Usuario(String id, String email, String senha, String nome, String sobrenome, String dataNascimento, String cpf, String endereco, String celular, String cartao) {
+    public Usuario(String id, String email, String senha, String nome, String sobrenome, Date dataNascimento, String cpf, String endereco, String telefone, String cartao, String codSeguranca, Character administrador) {
         this.id = id;
         this.email = email;
         this.senha = senha;
@@ -41,8 +47,10 @@ public class Usuario {
         this.dataNascimento = dataNascimento;
         this.cpf = cpf;
         this.endereco = endereco;
-        this.celular = celular;
+        this.telefone = telefone;
         this.cartao = cartao;
+        this.codSeguranca = codSeguranca;
+        this.administrador = administrador;
     }
 
     public String getId() {
@@ -85,11 +93,11 @@ public class Usuario {
         this.sobrenome = sobrenome;
     }
 
-    public String getDataNascimento() {
+    public Date getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(String dataNascimento) {
+    public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
@@ -109,12 +117,12 @@ public class Usuario {
         this.endereco = endereco;
     }
 
-    public String getCelular() {
-        return celular;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setCelular(String celular) {
-        this.celular = celular;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public String getCartao() {
@@ -125,30 +133,27 @@ public class Usuario {
         this.cartao = cartao;
     }
 
+    public String getCodSeguranca() {
+        return codSeguranca;
+    }
+
+    public void setCodSeguranca(String codSeguranca) {
+        this.codSeguranca = codSeguranca;
+    }
+
+    public Character getAdministrador() {
+        return administrador;
+    }
+
+    public void setAdministrador(Character administrador) {
+        this.administrador = administrador;
+    }
+
     public static Usuario getPrincipal() {
         return principal;
     }
 
     public static void setPrincipal(Usuario principal) {
         Usuario.principal = principal;
-    }
-
-    public JSONObject toJSON(boolean incluirId) throws JSONException {
-        JSONObject json = new JSONObject();
-
-        if (incluirId)
-            json.put("id", id);
-
-        json.put("email__c", email);
-        json.put("senha__c", senha);
-        json.put("nome__c", nome);
-        json.put("sobrenome__c", sobrenome);
-        json.put("dataNascimento__c", dataNascimento);
-        json.put("cpf__c", cpf);
-        json.put("endereco__c", endereco);
-        json.put("celular__c", celular);
-        json.put("cartao__c", cartao);
-
-        return json;
     }
 }

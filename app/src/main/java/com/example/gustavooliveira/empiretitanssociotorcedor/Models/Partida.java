@@ -1,19 +1,32 @@
 package com.example.gustavooliveira.empiretitanssociotorcedor.Models;
 
+import java.util.Date;
+
 public class Partida {
 
     private String id;
     private String idClube;
-    private String data;
+    private Date data;
     private Double valor;
     private String local;
     private String imagem;
 
-    public Partida(String idClube, Double valor, String local, String imagem) {
+    private Clube clube;
+
+    public Partida() {
+    }
+
+    public Partida(Clube clube) {
+        this.clube = clube;
+    }
+
+    public Partida(String id, String idClube, Date data, Double valor, String local, Clube clube) {
+        this.id = id;
         this.idClube = idClube;
+        this.data = data;
         this.valor = valor;
         this.local = local;
-        this.imagem = imagem;
+        this.clube = clube;
     }
 
     public String getId() {
@@ -32,11 +45,11 @@ public class Partida {
         this.idClube = idClube;
     }
 
-    public String getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(Date data) {
         this.data = data;
     }
 
@@ -62,5 +75,13 @@ public class Partida {
 
     public void setImagem(String imagem) {
         this.imagem = imagem;
+    }
+	
+    public Clube getClube() {
+	return clube;
+    }
+	
+    public void setClube(Clube clube) {
+	this.clube = clube;
     }
 }

@@ -1,11 +1,32 @@
 package com.example.gustavooliveira.empiretitanssociotorcedor.Models;
 
+import java.util.Date;
+
 public class Historico {
 
     private String id;
     private String idUsuario;
     private String idPartida;
-    private String data;
+    private Date data;
+
+    private Partida partida;
+
+    public Historico() {
+    }
+
+    public Historico(String idUsuario, String idPartida, Date data) {
+        this.idUsuario = idUsuario;
+        this.idPartida = idPartida;
+        this.data = data;
+    }
+
+    public Historico(String id, String idUsuario, String idPartida, Date data, Partida partida) {
+        this.id = id;
+        this.idUsuario = idUsuario;
+        this.idPartida = idPartida;
+        this.data = data;
+        this.partida = partida;
+    }
 
     public String getId() {
         return id;
@@ -31,11 +52,19 @@ public class Historico {
         this.idPartida = idPartida;
     }
 
-    public String getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(Date data) {
         this.data = data;
+    }
+
+    public Partida getPartida() {
+        return partida;
+    }
+
+    public void setPartida(Partida partida) {
+        this.partida = partida;
     }
 }
