@@ -41,7 +41,7 @@ public class IngressoAdapter extends RecyclerView.Adapter {
         holder.idClube.setText(p.getIdClube());
         holder.data.setText(format.format(p.getData()));
         holder.local.setText("Local: " + p.getLocal());
-        holder.valor.setText("R$ " + p.getValor().toString());
+        holder.valor.setText("R$ " + String.format("%.2f", p.getValor()));
     }
 
     @Override

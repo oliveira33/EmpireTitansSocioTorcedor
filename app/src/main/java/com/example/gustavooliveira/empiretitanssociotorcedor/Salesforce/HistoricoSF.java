@@ -36,7 +36,7 @@ public class HistoricoSF {
 
     public ArrayList<Historico> getHistoricoUsuario(String idUsuario) throws Exception {
         ArrayList<Historico> historicos = new ArrayList<>();
-        String query = "SELECT+Historico__c.Data__c,+Historico__c.Id,+Historico__c.IdPartida__c,+Historico__c.IdUsuario__c,+Historico__c.Partida__r.Clube__r.Nome__c+FROM+Historico__c+WHERE+Historico__c.IdUsuario__c+=+'" + idUsuario + "'";
+        String query = "SELECT+Id,+Partida__c+,+Data__c+FROM+Historico__c+WHERE+Usuario__c+=+'" + idUsuario + "'";
         HttpURLConnection conexao = (HttpURLConnection) new URL("https://na57.salesforce.com/services/data/v43.0/query/?q=" + query).openConnection();
         conexao.setDoInput(true);
         conexao.setRequestMethod("GET");
@@ -51,9 +51,11 @@ public class HistoricoSF {
 
             JSONArray array = new JSONObject(resposta).getJSONArray("records");
             JSONObject json = null;
+            String idPartida;
             for (int i = 0; i < array.length(); i++) {
                 json = array.getJSONObject(i);
-                historicos.add(new Historico(json.getString("Id"), idUsuario, json.getString("IdPartida__c"), new DateSF().toDateTime(json.getString("Data__c")), new Partida(new Clube(json.getString("Partida__c.Nome__c")))));
+                idPartida = json.getString("Partida__c");
+                historicos.add(new Historico(json.getString("Id"), idUsuario, idPartida, new DateSF().toDateTime(json.getString("Data__c")), new PartidaSF().get(idPartida)));
             }
         } else
             throw new Exception(conexao.getResponseMessage());
@@ -65,7 +67,7 @@ public class HistoricoSF {
         JSONObject json = new JSONObject();
 
         json.put("IdUsuario__c", historico.getIdUsuario());
-        json.put("IdPartida__c", historico.getIdPartida());
+        json.put("Partida__c", historico.getIdPartida());
         json.put("Data__c", new DateSF().fromDateTime(historico.getData()));
 
         return json;

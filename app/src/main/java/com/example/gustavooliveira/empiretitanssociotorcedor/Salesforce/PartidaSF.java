@@ -17,8 +17,7 @@ public class PartidaSF {
 
     public ArrayList<Partida> getProximasPartidas() throws Exception {
         ArrayList<Partida> partidas = new ArrayList<>();
-
-        String query = "SELECT+Partida__c.Clube__c,+Partida__c.Data__c,+Partida__c.Id,+Partida__c.Local__c,+Partida__c.Name,+Partida__c.Valor__c,+Partida__c.Clube__r.Nome__c+FROM+Partida__c+WHERE+Data__c+>+" + new DateSF().fromDateTime(new Date());
+        String query = "SELECT+Id,+Clube__c,+Data__c,+Valor__c,+Local__c+FROM+Partida__c+WHERE+Data__c+>+" + new DateSF().fromDateTime(new Date());
         HttpURLConnection conexao = (HttpURLConnection) new URL("https://na57.salesforce.com/services/data/v43.0/query/?q=" + query).openConnection();
         conexao.setDoInput(true);
         conexao.setRequestMethod("GET");
@@ -33,15 +32,40 @@ public class PartidaSF {
 
             JSONArray array = new JSONObject(resposta).getJSONArray("records");
             JSONObject json;
+            String idClube;
             for (int i = 0; i < array.length(); i++) {
                 json = array.getJSONObject(i);
-                partidas.add(new Partida(json.getString("Id"), json.getString("Clube__c"), new DateSF().toDateTime(json.getString("Data__c")),
-                        Double.parseDouble(json.getString("Valor__c")), json.getString("Local__c"), new Clube(json.getString("Clube__c"), json.getString("Clube__c.Nome__c"))));
+                idClube = json.getString("Clube__c");
+                partidas.add(new Partida(json.getString("Id"), idClube, new DateSF().toDateTime(json.getString("Data__c")),
+                        Double.parseDouble(json.getString("Valor__c")), json.getString("Local__c"), new ClubeSF().get(idClube)));
             }
         } else
             throw new Exception(conexao.getResponseMessage());
 
         return partidas;
+    }
+
+    public Partida get(String id) throws Exception {
+        String query = "SELECT+Clube__c,+Data__c,+Valor__c,+Local__c+FROM+Partida__c+WHERE+Id+=+'" + id + "'";
+        HttpURLConnection conexao = (HttpURLConnection) new URL("https://na57.salesforce.com/services/data/v43.0/query/?q=" + query).openConnection();
+        conexao.setDoInput(true);
+        conexao.setRequestMethod("GET");
+        conexao.setRequestProperty("Authorization", "Bearer " + Autenticacao.get().getToken());
+
+        if (conexao.getResponseCode() == HttpURLConnection.HTTP_OK) {
+            String linha, resposta = new String();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(conexao.getInputStream()));
+            while ((linha = reader.readLine()) != null)
+                resposta += linha;
+            reader.close();
+
+            JSONArray array = new JSONObject(resposta).getJSONArray("records");
+            JSONObject json = array.getJSONObject(0);
+            String idClube = json.getString("Clube__c");
+            return new Partida(id, idClube, new DateSF().toDateTime(json.getString("Data__c")), Double.parseDouble(json.getString("Valor__c")), json.getString("Local__c"),
+                    new ClubeSF().get(idClube));
+        } else
+            throw new Exception(conexao.getResponseMessage());
     }
 
 }
