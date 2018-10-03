@@ -28,7 +28,7 @@ public class HistoricoAdapter extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.celula_jogos, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.celula_historico, parent, false);
         NossoViewHolder holder = new NossoViewHolder(view);
         return holder;
     }
@@ -37,11 +37,10 @@ public class HistoricoAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder nholder, int position) {
         NossoViewHolder holder = (NossoViewHolder) nholder;
         Historico h = historicos.get(position);
-        holder.txtCardJogoRival.setText(h.getPartida().getClube().getNome());
-        holder.txtCardJogoHorario.setText(new SimpleDateFormat("HH:mm").format(h.getData()));
-        holder.txtCardJogoData.setText(new SimpleDateFormat("dd/MM/yyyy").format(h.getData()));
-        // holder.txtCardJogoDisponibilidade.setText(); ?
-        holder.txtCardJogoLocal.setText("Local: " + h.getPartida().getLocal());
+        holder.txtPartidaHistoricoCard.setText("Empire Titans x "+h.getPartida().getClube().getNome());
+        holder.txtDataHitoricoCard.setText(new SimpleDateFormat("dd/MM/yyyy").format(h.getData()));
+        holder.txtLocalHistoricoCard.setText(h.getPartida().getLocal());
+        holder.txtValorHistoricoCard.setText("R$"+String.format("%,.2f", h.getPartida().getValor()));
     }
 
     @Override
@@ -50,19 +49,19 @@ public class HistoricoAdapter extends RecyclerView.Adapter {
     }
 
     public class NossoViewHolder extends RecyclerView.ViewHolder {
-        private TextView txtCardJogoRival;
-        private TextView txtCardJogoHorario;
-        private TextView txtCardJogoData;
-        private TextView txtCardJogoDisponibilidade;
-        private TextView txtCardJogoLocal;
+        private TextView txtPartidaHistoricoCard;
+        private TextView txtDataHitoricoCard;
+        private TextView txtLocalHistoricoCard;
+        private TextView txtValorHistoricoCard;
+
 
         public NossoViewHolder(View itemView) {
             super(itemView);
-            this.txtCardJogoRival = (TextView) itemView.findViewById(R.id.txtCardJogoRival);
-            this.txtCardJogoHorario = (TextView) itemView.findViewById(R.id.txtCardJogoHorario);
-            this.txtCardJogoData = (TextView) itemView.findViewById(R.id.txtCardJogoData);
-            this.txtCardJogoDisponibilidade = (TextView) itemView.findViewById(R.id.txtCardJogoDisponibilidade);
-            this.txtCardJogoLocal = (TextView) itemView.findViewById(R.id.txtCardJogoLocal);
+            this.txtPartidaHistoricoCard = (TextView) itemView.findViewById(R.id.txtPartidaHistoricoCard);
+            this.txtDataHitoricoCard = (TextView) itemView.findViewById(R.id.txtDataHitoricoCard);
+            this.txtLocalHistoricoCard = (TextView) itemView.findViewById(R.id.txtLocalHitoricoCard);
+            this.txtValorHistoricoCard = (TextView) itemView.findViewById(R.id.txtValorHistoricoCard);
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

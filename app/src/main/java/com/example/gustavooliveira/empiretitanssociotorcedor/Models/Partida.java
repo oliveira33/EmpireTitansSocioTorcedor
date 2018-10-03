@@ -82,6 +82,6 @@ public class Partida {
     }
 	
     public void setClube(Clube clube) {
-	this.clube = clube;
+	    this.clube = clube;
     }
 }
