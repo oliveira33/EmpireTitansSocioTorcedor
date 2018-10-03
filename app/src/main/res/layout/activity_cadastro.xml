@@ -233,6 +233,23 @@
                     android:inputType="number"
                     android:textColor="@android:color/background_light" />
 
+                <TextView
+                    android:id="@+id/viewCodSeguranca"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:paddingStart="6dp"
+                    android:text="Código de segurança"
+                    android:textColor="@android:color/background_light" />
+
+                <EditText
+                    android:id="@+id/txtCodSeguranca"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Insira o código de segurança do cartão"
+                    android:inputType="number" />
+
                 <View
                     android:id="@+id/divider"
                     android:layout_width="match_parent"

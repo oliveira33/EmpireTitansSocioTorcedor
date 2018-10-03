@@ -1,11 +1,8 @@
 package com.example.gustavooliveira.empiretitanssociotorcedor.Salesforce;
 
-import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Clube;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Historico;
-import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Partida;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
