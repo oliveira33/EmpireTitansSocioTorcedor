@@ -124,7 +124,7 @@ public class IngressoAdapter extends RecyclerView.Adapter {
                             new HistoricoSF().cadastrar(new Historico(Usuario.getPrincipal().getId(), idPartida, new Date()));
                         } catch (Exception e) {
                             e.printStackTrace();
-                            //Toast.makeText(context, "Deu ruim", Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, "Deu ruim", Toast.LENGTH_LONG).show();
                         }
                     }
                 }).start();

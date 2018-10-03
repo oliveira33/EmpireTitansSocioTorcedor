@@ -63,7 +63,7 @@ public class HistoricoSF {
     private JSONObject toJson(Historico historico) throws Exception {
         JSONObject json = new JSONObject();
 
-        json.put("IdUsuario__c", historico.getIdUsuario());
+        json.put("Usuario__c", historico.getIdUsuario());
         json.put("Partida__c", historico.getIdPartida());
         json.put("Data__c", new DateSF().fromDateTime(historico.getData()));
 
