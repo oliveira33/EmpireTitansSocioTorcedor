@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Partida;
 import com.example.gustavooliveira.empiretitanssociotorcedor.R;
 
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,9 +38,10 @@ public class JogoAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder nHolder, int position) {
         NossoViewHolder holder = (NossoViewHolder) nHolder;
         Partida p = list.get(position);
-        holder.rival.setText(p.getIdClube());
-        holder.horario.setText("???");
+        holder.rival.setText(p.getClube().getNome());
         holder.local.setText(p.getLocal());
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        holder.data.setText(sdf.format(p.getData()));
     }
 
     public int getItemCount() {
@@ -51,14 +53,14 @@ public class JogoAdapter extends RecyclerView.Adapter {
 
         private ImageView imagem;
         private TextView rival;
-        private TextView horario;
         private TextView local;
+        private TextView data;
 
         public NossoViewHolder(final View itemView) {
             super(itemView);
             rival = (TextView) itemView.findViewById(R.id.txtCardJogoRival);
-            horario = (TextView) itemView.findViewById(R.id.txtCardJogoHorario);
             local = (TextView) itemView.findViewById(R.id.txtCardJogoLocal);
+            data = (TextView) itemView.findViewById(R.id.txtCardJogoData);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

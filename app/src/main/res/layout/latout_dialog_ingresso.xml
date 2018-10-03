@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="240dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="240dp">
+
+        <ImageView
+            android:id="@+id/imageView14"
+            android:layout_width="wrap_content"
+            android:layout_height="240dp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/fundo_jogo" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="240dp">
+
+        <TextView
+            android:id="@+id/viewDialogCompraValor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/viewDialogCompraLocal"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:text="Valor:"
+            android:textColor="@color/cardview_light_background" />
+
+        <Button
+            android:id="@+id/btConfirmarDialogIngresso"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/viewDialogCompraCartao"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="115dp"
+            android:background="@color/cardview_shadow_start_color"
+            android:text="Confirmar"
+            android:textColor="@color/cardview_light_background" />
+
+        <TextView
+            android:id="@+id/viewDialogCompraCartao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/viewDialogCompraValor"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="15dp"
+            android:text="Cartão:"
+            android:textColor="@color/cardview_light_background" />
+
+        <TextView
+            android:id="@+id/viewDialogCompraAdversario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView39"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:text="Partida:"
+            android:textColor="@color/cardview_light_background" />
+
+        <TextView
+            android:id="@+id/viewDialogCompraLocal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/viewDialogCompraData"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:text="Local:"
+            android:textColor="@android:color/background_light" />
+
+        <TextView
+            android:id="@+id/textView39"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp"
+            android:text="Confirme a compra deste ingresso para a respectiva partida:"
+            android:textAlignment="viewStart"
+            android:textColor="@android:color/background_light" />
+
+        <Button
+            android:id="@+id/btCancelarDialogIngresso"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/viewDialogCompraCartao"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="10dp"
+            android:background="@color/cardview_shadow_start_color"
+            android:text="Cancelar"
+            android:textColor="@color/cardview_light_background" />
+
+        <TextView
+            android:id="@+id/viewDialogCompraData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/viewDialogCompraAdversario"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:text="Data:"
+            android:textColor="@color/cardview_light_background" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.gustavooliveira.empiretitanssociotorcedor.Adapters.HistoricoAdapter;
@@ -25,6 +26,7 @@ public class HistoricoFrag extends Fragment {
     private RecyclerView recyclerView;
     private ArrayList<Historico> listHistorico;
     private HistoricoAdapter adapter;
+    private ProgressBar progressBar;
 
     public HistoricoFrag() {
         // Required empty public constructor
@@ -35,6 +37,7 @@ public class HistoricoFrag extends Fragment {
                              Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_historico, container, false);
         recyclerView = mView.findViewById(R.id.recycleViewHistorico);
+        progressBar = (ProgressBar) mView.findViewById(R.id.progressBarHistorico);
         RecyclerView.LayoutManager li = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(li);
 
@@ -55,6 +58,7 @@ public class HistoricoFrag extends Fragment {
                         @Override
                         public void run() {
                             Toast.makeText(getContext(), "A lista de histórico não pode ser carregada.\n" + e.getMessage(), Toast.LENGTH_LONG).show();
+                            progressBar.setVisibility(View.INVISIBLE);
                         }
                     });
                 }
@@ -68,6 +72,7 @@ public class HistoricoFrag extends Fragment {
             public void run() {
                 adapter = new HistoricoAdapter(historicos, getContext());
                 recyclerView.setAdapter(adapter);
+                progressBar.setVisibility(View.INVISIBLE);
             }
         });
     }

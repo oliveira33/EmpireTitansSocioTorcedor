@@ -8,13 +8,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.gustavooliveira.empiretitanssociotorcedor.Adapters.JogoAdapter;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Clube;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Partida;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Usuario;
 import com.example.gustavooliveira.empiretitanssociotorcedor.R;
+import com.example.gustavooliveira.empiretitanssociotorcedor.Salesforce.PartidaSF;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,13 +29,14 @@ import java.util.List;
  */
 public class Inicio extends Fragment {
 
-    static List<Partida> listJogo = preencherPartidas();
+    private ArrayList<Partida> listJogo = new ArrayList<>();
     private JogoAdapter adapter;
     private RecyclerView recyclerView;
     private TextView txtNomeUsuario;
     private TextView txtEmailUsuario;
     private TextView txtCpfUsuario;
-    View mView;
+    private ProgressBar progressBar;
+    private View mView;
 
     public Inicio() {
         // Required empty public constructor
@@ -53,23 +57,47 @@ public class Inicio extends Fragment {
         txtEmailUsuario.setText(Usuario.getPrincipal().getEmail());
         txtCpfUsuario = mView.findViewById(R.id.txtCardMatricula);
         txtCpfUsuario.setText(Usuario.getPrincipal().getCpf());
+        progressBar = mView.findViewById(R.id.progressBarInicio);
 
-        adapter = new JogoAdapter(listJogo, getContext());
-
-        recyclerView.setAdapter(adapter);
+        preencherPartidas();
 
         return mView;
 
     }
 
-    private static List<Partida> preencherPartidas() {
-        List<Partida> list = new ArrayList<>();
+    private void preencherPartidas() {
 
-        list.add(new Partida("Atletico", "01", new Date(), 120.00, "Estaio A", new Clube("01", "oi")));
-        list.add(new Partida("Atletico", "01", new Date(), 120.00, "Estaio A", new Clube("01", "oi")));
-        list.add(new Partida("Atletico", "01", new Date(), 120.00, "Estaio A", new Clube("01", "oi")));
 
-        return list;
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    listJogo = new PartidaSF().getProximasPartidas();
+                    implementarAdapter();
+                } catch (Exception e) {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getContext(), "Não foi possível carregar a lista de partidas", Toast.LENGTH_LONG).show();
+                            progressBar.setVisibility(View.INVISIBLE);
+                        }
+                    });
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
+    }
+
+    private void implementarAdapter() {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                adapter = new JogoAdapter(listJogo, getContext());
+                recyclerView.setAdapter(adapter);
+                progressBar.setVisibility(View.INVISIBLE);
+            }
+        });
     }
 
 }
