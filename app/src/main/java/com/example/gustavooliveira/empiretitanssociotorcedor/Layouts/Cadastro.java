@@ -60,7 +60,7 @@ public class Cadastro extends AppCompatActivity {
         txtSenha = (EditText) findViewById(R.id.txtSenha);
         txtSenhaConfirm = (EditText) findViewById(R.id.txtSenhaConfirm);
         txtCartao = (EditText) findViewById(R.id.txtCartao);
-        // txtCodSeguranca = (EditText) findViewById(R.id.txtCodSeguranca);
+        txtCodSeguranca = (EditText) findViewById(R.id.txtCodSeguranca);
         viewData = (TextView) findViewById(R.id.viewData);
         viewCpf = (TextView) findViewById(R.id.viewCpf);
         viewTelefone = (TextView) findViewById(R.id.viewTelefone);
@@ -166,7 +166,7 @@ public class Cadastro extends AppCompatActivity {
         if (!senha.equals(txtSenhaConfirm.getText().toString()))
             throw new Exception("As senhas não são conferem");
 
-        String codSeguranca = "123"; // txtCodSeguranca.getText().toString();
+        String codSeguranca = txtCodSeguranca.getText().toString();
         if (codSeguranca.isEmpty())
             throw new Exception("O código de segurança não foi informado");
 

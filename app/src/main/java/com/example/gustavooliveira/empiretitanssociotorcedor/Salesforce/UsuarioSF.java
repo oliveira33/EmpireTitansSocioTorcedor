@@ -74,7 +74,7 @@ public class UsuarioSF {
                 throw new Exception("Usuário não cadastrado");
 
             JSONObject json = array.getJSONObject(0);
-            return new Usuario(json.getString("Id"), json.getString("Email__c"), json.getString("Senha__c"), json.getString("Nome__c"), json.getString("Sobrenome__c"),
+            return new Usuario(json.getString("Id"), json.getString("Email__c"), json.getString("Senha__c"), json.getString("Nome__c"), json.getString("Sobrenome__c").replace("null", ""),
                     new DateSF().toDate(json.getString("DataNascimento__c")), json.getString("Cpf__c"), json.getString("Endereco__c"), json.getString("Telefone__c"),
                     json.getString("Cartao__c"), json.getString("CodSeguranca__c"), json.getString("Administrador__c").charAt(0));
         } else

@@ -38,6 +38,7 @@ public class Alterar extends Fragment {
     private EditText txtSenha;
     private EditText txtSenhaConfirm;
     private EditText txtCartao;
+    private EditText txtCodSeguranca;
     private TextView viewNome;
     private TextView viewSobrenome;
     private TextView viewEmail;
@@ -70,6 +71,7 @@ public class Alterar extends Fragment {
         txtSenha = mView.findViewById(R.id.txtSenhaAtt);
         txtSenhaConfirm = mView.findViewById(R.id.txtSenhaConfirmAtt);
         txtCartao = mView.findViewById(R.id.txtCartaoAtt);
+        txtCodSeguranca = mView.findViewById(R.id.txtCodSegurancaAtt);
 
         carregarDados();
         aplicarMascaras();
@@ -151,7 +153,7 @@ public class Alterar extends Fragment {
                 try {
                     new UsuarioSF().alterar(new Usuario(Usuario.getPrincipal().getId(), txtEmail.getText().toString(), senha, txtNome.getText().toString(),
                             txtSobrenome.getText().toString(), new SimpleDateFormat("dd/MM/yyyy").parse(txtData.getText().toString()), txtCpf.getText().toString(), txtEndereco.getText().toString(),
-                            txtTelefone.getText().toString(), txtCartao.getText().toString(), "", 'U'));
+                            txtTelefone.getText().toString(), txtCartao.getText().toString(), txtCodSeguranca.getText().toString(), 'U'));
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -171,8 +173,6 @@ public class Alterar extends Fragment {
     }
 
     private void carregarDados() {
-        SimpleDateFormat out = new SimpleDateFormat("dd/MM/yyyy");
-
         viewEmail = mView.findViewById(R.id.viewEmailAtt);
         viewData = mView.findViewById(R.id.viewDataNascimentoAtt);
         viewCpf = mView.findViewById(R.id.viewCpfAtt);
@@ -181,12 +181,12 @@ public class Alterar extends Fragment {
         txtNome.setText(Usuario.getPrincipal().getNome());
         txtSobrenome.setText(Usuario.getPrincipal().getSobrenome());
         txtEmail.setText(Usuario.getPrincipal().getEmail());
-        txtData.setText(out.format(Usuario.getPrincipal().getDataNascimento()));
+        txtData.setText(new SimpleDateFormat("dd/MM/yyyy").format(Usuario.getPrincipal().getDataNascimento()));
         txtCpf.setText(Usuario.getPrincipal().getCpf());
         txtTelefone.setText(Usuario.getPrincipal().getTelefone());
         txtEndereco.setText(Usuario.getPrincipal().getEndereco());
         txtCartao.setText(Usuario.getPrincipal().getCartao());
-
+        txtCodSeguranca.setText(Usuario.getPrincipal().getCodSeguranca());
     }
 
     private boolean validarCampos() {

@@ -17,14 +17,6 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView16"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="> Alterar Dados de Cadastro"
-                android:textSize="10sp" />
-
-            <TextView
                 android:id="@+id/textView17"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -183,9 +175,24 @@
                     android:id="@+id/txtCartaoAtt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
                     android:ems="10"
                     android:hint="Insira o número do seu cartão:"
+                    android:inputType="number" />
+
+                <TextView
+                    android:id="@+id/viewCodSegurancaAtt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="5dp"
+                    android:text="Código de segurança:" />
+
+                <EditText
+                    android:id="@+id/txtCodSegurancaAtt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:ems="10"
+                    android:hint="Insira seu código de segurança"
                     android:inputType="number" />
 
             </LinearLayout>
@@ -209,8 +216,8 @@
             android:id="@+id/btAttCadastro"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
             android:src="@drawable/botao_att" />
     </RelativeLayout>
 
