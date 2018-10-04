@@ -33,7 +33,7 @@ public class HistoricoSF {
 
     public ArrayList<Historico> getHistoricoUsuario(String idUsuario) throws Exception {
         ArrayList<Historico> historicos = new ArrayList<>();
-        String query = "SELECT+Id,+Partida__c+,+Data__c+FROM+Historico__c+WHERE+Usuario__c+=+'" + idUsuario + "'";
+        String query = "SELECT+Id,+Partida__c+,+Data__c+FROM+Historico__c+WHERE+Usuario__c+=+'" + idUsuario + "'+ORDER+BY+Data__c+ASC";
         HttpURLConnection conexao = (HttpURLConnection) new URL("https://na57.salesforce.com/services/data/v43.0/query/?q=" + query).openConnection();
         conexao.setDoInput(true);
         conexao.setRequestMethod("GET");

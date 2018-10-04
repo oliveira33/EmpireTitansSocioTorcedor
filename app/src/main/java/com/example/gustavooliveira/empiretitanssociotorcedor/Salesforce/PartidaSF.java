@@ -1,6 +1,5 @@
 package com.example.gustavooliveira.empiretitanssociotorcedor.Salesforce;
 
-import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Clube;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Partida;
 
 import org.json.JSONArray;
@@ -17,7 +16,7 @@ public class PartidaSF {
 
     public ArrayList<Partida> getProximasPartidas() throws Exception {
         ArrayList<Partida> partidas = new ArrayList<>();
-        String query = "SELECT+Id,+Clube__c,+Data__c,+Valor__c,+Local__c+FROM+Partida__c+WHERE+Data__c+>+" + new DateSF().fromDateTime(new Date());
+        String query = "SELECT+Id,+Clube__c,+Data__c,+Valor__c,+Local__c+FROM+Partida__c+WHERE+Data__c+>+" + new DateSF().fromDateTime(new Date()) + "+ORDER+BY+Data__c+ASC";
         HttpURLConnection conexao = (HttpURLConnection) new URL("https://na57.salesforce.com/services/data/v43.0/query/?q=" + query).openConnection();
         conexao.setDoInput(true);
         conexao.setRequestMethod("GET");
