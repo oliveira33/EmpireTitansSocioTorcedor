@@ -3,6 +3,7 @@ package com.example.gustavooliveira.empiretitanssociotorcedor.Adapters;
 import android.app.Dialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,10 +28,12 @@ public class IngressoAdapter extends RecyclerView.Adapter {
 
     private List<Partida> partidas;
     private Context context;
+    private View view;
 
-    public IngressoAdapter(List<Partida> partidas, Context context) {
+    public IngressoAdapter(List<Partida> partidas, Context context, View view) {
         this.partidas = partidas;
         this.context = context;
+        this.view = view;
     }
 
     @NonNull
@@ -122,9 +125,10 @@ public class IngressoAdapter extends RecyclerView.Adapter {
                     public void run() {
                         try {
                             new HistoricoSF().cadastrar(new Historico(Usuario.getPrincipal().getId(), idPartida, new Date()));
+                            Snackbar.make(view, "Ingresso comprado com sucesso!", Snackbar.LENGTH_LONG).show();
                         } catch (Exception e) {
                             e.printStackTrace();
-                            Toast.makeText(context, "Deu ruim", Toast.LENGTH_LONG).show();
+                            Snackbar.make(view, "ATENÇÃO, ALGO DEU ERRADO!\nSeu transação NÃO foi efetivada com sucesso", Snackbar.LENGTH_LONG).show();
                         }
                     }
                 }).start();

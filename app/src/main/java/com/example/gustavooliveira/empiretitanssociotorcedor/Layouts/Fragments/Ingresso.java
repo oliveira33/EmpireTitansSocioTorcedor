@@ -72,7 +72,7 @@ public class Ingresso extends Fragment {
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                adapter = new IngressoAdapter(partidas, getContext());
+                adapter = new IngressoAdapter(partidas, getContext(), mView);
                 recyclerView.setAdapter(adapter);
                 progressBar.setVisibility(View.INVISIBLE);
             }

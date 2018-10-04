@@ -12,6 +12,8 @@ import android.widget.Toast;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Historico;
 import com.example.gustavooliveira.empiretitanssociotorcedor.R;
 
+import org.w3c.dom.Text;
+
 import java.text.SimpleDateFormat;
 import java.util.List;
 
@@ -41,6 +43,9 @@ public class HistoricoAdapter extends RecyclerView.Adapter {
         holder.txtDataHitoricoCard.setText(new SimpleDateFormat("dd/MM/yyyy").format(h.getData()));
         holder.txtLocalHistoricoCard.setText(h.getPartida().getLocal());
         holder.txtValorHistoricoCard.setText("R$"+String.format("%,.2f", h.getPartida().getValor()));
+        SimpleDateFormat sdfData = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdfHora = new SimpleDateFormat("HH:mm");
+        holder.txtAquisicao.setText("Ingresso adquirido em: "+sdfData.format(h.getData())+" às "+sdfHora.format(h.getData()));
     }
 
     @Override
@@ -53,6 +58,7 @@ public class HistoricoAdapter extends RecyclerView.Adapter {
         private TextView txtDataHitoricoCard;
         private TextView txtLocalHistoricoCard;
         private TextView txtValorHistoricoCard;
+        private TextView txtAquisicao;
 
 
         public NossoViewHolder(View itemView) {
@@ -61,6 +67,7 @@ public class HistoricoAdapter extends RecyclerView.Adapter {
             this.txtDataHitoricoCard = (TextView) itemView.findViewById(R.id.txtDataHitoricoCard);
             this.txtLocalHistoricoCard = (TextView) itemView.findViewById(R.id.txtLocalHitoricoCard);
             this.txtValorHistoricoCard = (TextView) itemView.findViewById(R.id.txtValorHistoricoCard);
+            this.txtAquisicao = (TextView) itemView.findViewById(R.id.viewDataAdquirido);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
