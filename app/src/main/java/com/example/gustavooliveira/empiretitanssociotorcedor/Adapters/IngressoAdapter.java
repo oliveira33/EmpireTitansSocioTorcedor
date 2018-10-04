@@ -88,6 +88,7 @@ public class IngressoAdapter extends RecyclerView.Adapter {
                     final TextView viewLocal = (TextView) dialog.findViewById(R.id.viewDialogCompraLocal);
                     final TextView viewValor = (TextView) dialog.findViewById(R.id.viewDialogCompraValor);
                     final TextView viewCartao = (TextView) dialog.findViewById(R.id.viewDialogCompraCartao);
+                    final EditText txtCod = (EditText) dialog.findViewById(R.id.txtCodSegurancaDialog);
                     Button confirmar = (Button) dialog.findViewById(R.id.btConfirmarDialogIngresso);
                     Button cancelar = (Button) dialog.findViewById(R.id.btCancelarDialogIngresso);
 
@@ -100,8 +101,13 @@ public class IngressoAdapter extends RecyclerView.Adapter {
                     confirmar.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            realizarCompra(id);
-                            dialog.dismiss();
+                            if(txtCod.getText().toString().equals(Usuario.getPrincipal().getCodSeguranca())) {
+                                realizarCompra(id);
+                                dialog.dismiss();
+                            }
+                            else {
+                                Toast.makeText(context, "Código de segurança do cartão incorreto!", Toast.LENGTH_LONG).show();
+                            }
                         }
                     });
 

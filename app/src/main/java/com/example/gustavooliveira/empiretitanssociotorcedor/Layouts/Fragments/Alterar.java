@@ -115,7 +115,7 @@ public class Alterar extends Fragment {
 
     private void openDialogPassword() {
         final Dialog dialog = new Dialog(mView.getContext());
-        dialog.setTitle("Confirmar Alteração");
+        //dialog.setTitle("Confirmar Alteração");
         dialog.setContentView(R.layout.layout_dialog_password);
         dialog.setCancelable(true);
         final EditText senha = (EditText) dialog.findViewById(R.id.txtSenhaDialog);

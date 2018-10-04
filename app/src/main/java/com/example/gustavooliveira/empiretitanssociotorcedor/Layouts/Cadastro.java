@@ -60,7 +60,7 @@ public class Cadastro extends AppCompatActivity {
         txtSenha = (EditText) findViewById(R.id.txtSenha);
         txtSenhaConfirm = (EditText) findViewById(R.id.txtSenhaConfirm);
         txtCartao = (EditText) findViewById(R.id.txtCartao);
-        txtCodSeguranca = (EditText) findViewById(R.id.txtCodSeguranca);
+        txtCodSeguranca = (EditText) findViewById(R.id.txtCodSegurancaDialog);
         viewData = (TextView) findViewById(R.id.viewData);
         viewCpf = (TextView) findViewById(R.id.viewCpf);
         viewTelefone = (TextView) findViewById(R.id.viewTelefone);

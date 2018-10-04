@@ -1,6 +1,8 @@
 package com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Fragments;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,6 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +40,7 @@ public class Inicio extends Fragment {
     private TextView txtEmailUsuario;
     private TextView txtCpfUsuario;
     private ProgressBar progressBar;
+    private ImageButton btFacebook;
     private View mView;
 
     public Inicio() {
@@ -58,6 +63,15 @@ public class Inicio extends Fragment {
         txtCpfUsuario = mView.findViewById(R.id.txtCardMatricula);
         txtCpfUsuario.setText(Usuario.getPrincipal().getCpf());
         progressBar = mView.findViewById(R.id.progressBarInicio);
+        btFacebook = mView.findViewById(R.id.btFacebookInicio);
+
+        btFacebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/Empire-Titans-2179135355701007/?modal=admin_todo_tour"));
+                startActivity(intent);
+            }
+        });
 
         preencherPartidas();
 
