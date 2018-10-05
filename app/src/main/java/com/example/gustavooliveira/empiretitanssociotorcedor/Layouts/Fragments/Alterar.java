@@ -20,7 +20,6 @@ import com.example.gustavooliveira.empiretitanssociotorcedor.Salesforce.UsuarioS
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 /**

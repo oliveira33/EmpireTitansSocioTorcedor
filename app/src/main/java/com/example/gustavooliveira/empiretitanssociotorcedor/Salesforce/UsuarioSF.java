@@ -71,7 +71,7 @@ public class UsuarioSF {
 
             JSONArray array = new JSONObject(resposta).getJSONArray("records");
             if (array.length() == 0)
-                throw new Exception("Usuário não cadastrado");
+                throw new Exception("Seu usuário ou senha estão incorretos.");
 
             JSONObject json = array.getJSONObject(0);
             return new Usuario(json.getString("Id"), json.getString("Email__c"), json.getString("Senha__c"), json.getString("Nome__c"), json.getString("Sobrenome__c").replace("null", ""),

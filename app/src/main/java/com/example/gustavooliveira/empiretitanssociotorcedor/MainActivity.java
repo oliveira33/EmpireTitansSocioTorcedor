@@ -1,5 +1,6 @@
 package com.example.gustavooliveira.empiretitanssociotorcedor;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +13,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Fragments.Alterar;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Fragments.Duvidas;
@@ -22,6 +27,7 @@ import com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Fragments.I
 import com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Fragments.Inicio;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Login;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Usuario;
+import com.example.gustavooliveira.empiretitanssociotorcedor.Salesforce.UsuarioSF;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -72,8 +78,8 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_sair) {
-            confirmacaoSair();
+        if (id == R.id.action_excluir) {
+            confirmacaoDelete();
             return true;
         }
 
@@ -128,6 +134,62 @@ public class MainActivity extends AppCompatActivity
         });
 
         msg.show();
+    }
+
+    private void confirmacaoDelete() {
+        final Dialog d = new Dialog(this);
+        d.setTitle("Confirmar Exclusão");
+        d.setContentView(R.layout.layout_dialog_exclusao);
+        d.setCancelable(true);
+        final EditText senha = (EditText) d.findViewById(R.id.txtSenhaDialogExclusao);
+        Button cadastrar = (Button) d.findViewById(R.id.btConfirmaDialogExclusao);
+        Button cancelar = (Button) d.findViewById(R.id.btCancelaDialogExclusao);
+
+        cadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (senha.getText().toString().equals(Usuario.getPrincipal().getSenha())) {
+                    d.dismiss();
+                    realizarExclusao();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Senha incorreta!!!", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        cancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                d.dismiss();
+            }
+        });
+
+        d.show();
+    }
+
+    private void realizarExclusao() {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    new UsuarioSF().excluir(Usuario.getPrincipal().getId());
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(), "Conta excluida!!!", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(MainActivity.this, Login.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(), "Conta NÃO excluida!!!", Toast.LENGTH_LONG).show();
+                }
+            }
+        }).start();
+
     }
 
 }

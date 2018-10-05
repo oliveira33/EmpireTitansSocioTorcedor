@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="115dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp">
+
+        <ImageView
+            android:id="@+id/imageView15"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            app:srcCompat="@android:color/holo_blue_dark" />
+
+        <TextView
+            android:id="@+id/viewDataAdquirido"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignTop="@+id/imageView15"
+            android:gravity="center_vertical"
+            android:paddingLeft="5dp"
+            android:text="Ingresso adquirido em:"
+            android:textColor="@android:color/background_light" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginBottom="431dp"
+        app:cardBackgroundColor="@color/cardview_shadow_start_color">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView13"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                app:srcCompat="@drawable/icon_ingresso" />
+
+            <TextView
+                android:id="@+id/txtPartidaHistoricoCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/imageView13"
+                android:text="Empire Titans x Atlético" />
+
+            <TextView
+                android:id="@+id/txtDataHitoricoCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtPartidaHistoricoCard"
+                android:layout_toEndOf="@+id/imageView13"
+                android:text="11/11/2011" />
+
+            <TextView
+                android:id="@+id/txtLocalHitoricoCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtDataHitoricoCard"
+                android:layout_toEndOf="@+id/imageView13"
+                android:text="Empire Arena" />
+
+            <TextView
+                android:id="@+id/txtValorHistoricoCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtLocalHitoricoCard"
+                android:layout_toEndOf="@+id/imageView13"
+                android:text="R$40,00" />
+
+            <ImageView
+                android:id="@+id/imgAdversario"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:paddingRight="15dp"
+                app:srcCompat="@drawable/time_d" />
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>
