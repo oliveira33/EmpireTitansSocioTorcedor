@@ -54,7 +54,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView13"
+                    android:id="@+id/viewNome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
@@ -73,7 +73,7 @@
                     android:textColor="@android:color/background_light" />
 
                 <TextView
-                    android:id="@+id/textView12"
+                    android:id="@+id/viewSobrenome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
@@ -92,7 +92,7 @@
                     android:textColor="@android:color/background_light" />
 
                 <TextView
-                    android:id="@+id/textView11"
+                    android:id="@+id/viewEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
@@ -168,7 +168,7 @@
                     android:textColor="@android:color/background_light" />
 
                 <TextView
-                    android:id="@+id/textView14"
+                    android:id="@+id/viewEndereco"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
@@ -201,7 +201,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Insira uma senha"
+                    android:hint="Insira uma senha (mínimo 3 digitos)"
                     android:inputType="textPassword"
                     android:textColor="@android:color/background_light" />
 
@@ -248,7 +248,8 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Insira o código de segurança do cartão"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:textColor="@android:color/background_light" />
 
                 <View
                     android:id="@+id/divider"
@@ -266,22 +267,29 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="7dp"
                     android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/btConfirma"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
                         android:layout_weight="1"
+                        android:background="@color/cardview_shadow_start_color"
                         android:text="Confirmar"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textColor="@color/cardview_light_background" />
 
                     <Button
                         android:id="@+id/btCancelar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
                         android:layout_weight="1"
-                        android:text="Cancelar" />
+                        android:background="@color/cardview_shadow_start_color"
+                        android:text="Cancelar"
+                        android:textColor="@color/cardview_light_background" />
                 </LinearLayout>
 
             </LinearLayout>

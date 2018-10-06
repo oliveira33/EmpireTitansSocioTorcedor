@@ -41,6 +41,12 @@ public class Cadastro extends AppCompatActivity {
     private TextView viewTelefone;
     private TextView viewCartao;
     private CheckBox checkTermos;
+    private TextView viewNome;
+    private TextView viewSobrenome;
+    private TextView viewEmail;
+    private TextView viewEndereco;
+    private TextView viewCodSeguranca;
+    private TextView viewSenha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +72,12 @@ public class Cadastro extends AppCompatActivity {
         viewTelefone = (TextView) findViewById(R.id.viewTelefone);
         viewCartao = (TextView) findViewById(R.id.viewCartao);
         checkTermos = (CheckBox) findViewById(R.id.checkTermos);
+        viewNome = (TextView) findViewById(R.id.viewNome);
+        viewSobrenome = (TextView) findViewById(R.id.viewSobrenome);
+        viewEmail = (TextView) findViewById(R.id.viewEmail);
+        viewEndereco = (TextView) findViewById(R.id.viewEndereco);
+        viewCodSeguranca = (TextView) findViewById(R.id.viewCodSeguranca);
+        viewSenha = (TextView) findViewById(R.id.viewSenha);
 
         aplicarMascaras();
 
@@ -94,6 +106,51 @@ public class Cadastro extends AppCompatActivity {
 
     private boolean validarCampos() {
         boolean status = true;
+
+        if(txtNome.length() <= 0) {
+            viewNome.setTextColor(Color.RED);
+            viewNome.setText("*Nome");
+            status = false;
+        } else {
+            viewNome.setTextColor(Color.WHITE);
+            viewNome.setText("Nome");
+        }
+
+        if(txtSobrenome.length() <= 0) {
+            viewSobrenome.setTextColor(Color.RED);
+            viewSobrenome.setText("*Sobrenome");
+            status = false;
+        } else {
+            viewNome.setTextColor(Color.WHITE);
+            viewNome.setText("Sobrenome");
+        }
+
+        if (txtEmail. length() <= 5 || !txtEmail.getText().toString().contains("@") || !txtEmail.getText().toString().contains(".")) {
+            viewEmail.setTextColor(Color.RED);
+            viewEmail.setText("*E-Mail");
+            status = false;
+        } else {
+            viewEmail.setTextColor(Color.WHITE);
+            viewEmail.setText("E-Mail");
+        }
+
+        if (txtEndereco.length() <= 0) {
+            viewEndereco.setTextColor(Color.RED);
+            viewEndereco.setText("*Endereço");
+            status = false;
+        } else {
+            viewEndereco.setTextColor(Color.WHITE);
+            viewEndereco.setText("Endereço");
+        }
+
+        if (txtCodSeguranca.length() != 3) {
+            viewCodSeguranca.setTextColor(Color.RED);
+            viewCodSeguranca.setText("*Código de Segurança");
+            status = false;
+        } else {
+            viewCodSeguranca.setTextColor(Color.WHITE);
+            viewCodSeguranca.setText("Código de Segurança");
+        }
 
         if (txtData.length() != 10) {
             viewData.setTextColor(Color.RED);
@@ -129,6 +186,15 @@ public class Cadastro extends AppCompatActivity {
         } else {
             viewCartao.setTextColor(Color.WHITE);
             viewCartao.setText("Cartão");
+        }
+
+        if (!txtSenha.getText().toString().equals(txtSenhaConfirm.getText().toString()) || txtSenha.length() < 3) {
+            viewSenha.setTextColor(Color.RED);
+            viewSenha.setText("*Senha");
+            status = false;
+        } else {
+            viewSenha.setTextColor(Color.WHITE);
+            viewSenha.setText("Senha");
         }
 
         if (!checkTermos.isChecked()) {
@@ -227,6 +293,11 @@ public class Cadastro extends AppCompatActivity {
         mask = new SimpleMaskFormatter("NNNN NNNN NNNN NNNN");
         mtw = new MaskTextWatcher(txtCartao, mask);
         txtCartao.addTextChangedListener(mtw);
+
+        //Mascara Cod Segurança
+        mask = new SimpleMaskFormatter("NNN");
+        mtw = new MaskTextWatcher(txtCodSeguranca, mask);
+        txtCodSeguranca.addTextChangedListener(mtw);
     }
 
 }
