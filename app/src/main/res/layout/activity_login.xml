@@ -101,7 +101,7 @@
             android:layout_marginBottom="10dp"
             android:background="#37a4a4a4"
             android:text="Login"
-            android:textColor="@android:color/darker_gray" />
+            android:textColor="#ffffff" />
 
         <Button
             android:id="@+id/btCadastrar"
@@ -109,7 +109,7 @@
             android:layout_height="40dp"
             android:background="#37a3a3a3"
             android:text="Cadastrar"
-            android:textColor="@android:color/darker_gray" />
+            android:textColor="@android:color/background_light" />
 
     </LinearLayout>
 

@@ -126,7 +126,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Insira sua data de nascimento"
-                    android:inputType="date"
+                    android:inputType="number"
                     android:textColor="@android:color/background_light" />
 
                 <TextView

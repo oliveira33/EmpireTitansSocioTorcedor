@@ -10,9 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.gustavooliveira.empiretitanssociotorcedor.Adapters.MyMap.MyMap;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Historico;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Partida;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Usuario;
@@ -23,17 +25,20 @@ import com.example.gustavooliveira.empiretitanssociotorcedor.Salesforce.UsuarioS
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 public class IngressoAdapter extends RecyclerView.Adapter {
 
     private List<Partida> partidas;
     private Context context;
     private View view;
+    private Map<String, Integer> imagens;
 
     public IngressoAdapter(List<Partida> partidas, Context context, View view) {
         this.partidas = partidas;
         this.context = context;
         this.view = view;
+        imagens = new MyMap().gerarMap();
     }
 
     @NonNull
@@ -48,6 +53,7 @@ public class IngressoAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder nHolder, int position) {
         NossoViewHolder holder = (NossoViewHolder) nHolder;
         Partida p = partidas.get(position);
+        holder.imagem.setImageResource(imagens.get(p.getClube().getNome()));
         holder.id = p.getId();
         holder.nomeClube.setText(p.getClube().getNome());
         holder.data.setText(new SimpleDateFormat("dd/MM/yyyy").format(p.getData()));
@@ -67,6 +73,7 @@ public class IngressoAdapter extends RecyclerView.Adapter {
         private TextView data;
         private TextView valor;
         private TextView local;
+        private ImageView imagem;
 
         public NossoViewHolder(final View itemView) {
             super(itemView);
@@ -74,6 +81,7 @@ public class IngressoAdapter extends RecyclerView.Adapter {
             this.data = (TextView) itemView.findViewById(R.id.viewDataCardIngresso);
             this.valor = (TextView) itemView.findViewById(R.id.viewValorCardIngresso);
             this.local = (TextView) itemView.findViewById(R.id.viewLocalCardIngresso);
+            this.imagem = (ImageView) itemView.findViewById(R.id.imgAdversarioCardIngresso);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

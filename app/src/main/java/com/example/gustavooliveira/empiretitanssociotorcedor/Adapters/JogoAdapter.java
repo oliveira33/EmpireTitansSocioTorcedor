@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.gustavooliveira.empiretitanssociotorcedor.Adapters.MyMap.MyMap;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Partida;
 import com.example.gustavooliveira.empiretitanssociotorcedor.R;
 
@@ -22,10 +23,12 @@ public class JogoAdapter extends RecyclerView.Adapter {
 
     private List<Partida> list;
     private Context context;
+    private Map<String, Integer> imagens;
 
     public JogoAdapter(List<Partida> list, Context context) {
         this.list = list;
         this.context = context;
+        imagens = new MyMap().gerarMap();
     }
 
     @NonNull
@@ -38,6 +41,7 @@ public class JogoAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder nHolder, int position) {
         NossoViewHolder holder = (NossoViewHolder) nHolder;
         Partida p = list.get(position);
+        holder.imagem.setImageResource(imagens.get(p.getClube().getNome()));
         holder.rival.setText(p.getClube().getNome());
         holder.local.setText(p.getLocal());
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -61,6 +65,7 @@ public class JogoAdapter extends RecyclerView.Adapter {
             rival = (TextView) itemView.findViewById(R.id.txtCardJogoRival);
             local = (TextView) itemView.findViewById(R.id.txtCardJogoLocal);
             data = (TextView) itemView.findViewById(R.id.txtCardJogoData);
+            imagem = (ImageView) itemView.findViewById(R.id.imgCardJogoRival);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
