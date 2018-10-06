@@ -56,7 +56,7 @@ public class IngressoAdapter extends RecyclerView.Adapter {
         holder.imagem.setImageResource(imagens.get(p.getClube().getNome()));
         holder.id = p.getId();
         holder.nomeClube.setText(p.getClube().getNome());
-        holder.data.setText(new SimpleDateFormat("dd/MM/yyyy").format(p.getData()));
+        holder.data.setText(new SimpleDateFormat("dd/MM/yyyy - HH:mm").format(p.getData()));
         holder.local.setText("Local: " + p.getLocal());
         holder.valor.setText("R$ " + String.format("%.2f", p.getValor()));
 

@@ -52,7 +52,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:textColor="@android:color/background_light" />
         </LinearLayout>
 

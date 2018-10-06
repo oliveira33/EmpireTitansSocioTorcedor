@@ -15,6 +15,7 @@ import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Partida;
 import com.example.gustavooliveira.empiretitanssociotorcedor.R;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,7 +45,7 @@ public class JogoAdapter extends RecyclerView.Adapter {
         holder.imagem.setImageResource(imagens.get(p.getClube().getNome()));
         holder.rival.setText(p.getClube().getNome());
         holder.local.setText(p.getLocal());
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy - HH:mm");
         holder.data.setText(sdf.format(p.getData()));
     }
 
@@ -59,6 +60,7 @@ public class JogoAdapter extends RecyclerView.Adapter {
         private TextView rival;
         private TextView local;
         private TextView data;
+        private TextView disponibilidade;
 
         public NossoViewHolder(final View itemView) {
             super(itemView);
@@ -66,6 +68,7 @@ public class JogoAdapter extends RecyclerView.Adapter {
             local = (TextView) itemView.findViewById(R.id.txtCardJogoLocal);
             data = (TextView) itemView.findViewById(R.id.txtCardJogoData);
             imagem = (ImageView) itemView.findViewById(R.id.imgCardJogoRival);
+            disponibilidade = (TextView) itemView.findViewById(R.id.txtCardJogoDisponibilidade) ;
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

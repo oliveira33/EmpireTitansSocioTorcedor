@@ -46,7 +46,7 @@ public class HistoricoAdapter extends RecyclerView.Adapter {
         Historico h = historicos.get(position);
         holder.imagem.setImageResource(imagens.get(h.getPartida().getClube().getNome()));
         holder.txtPartidaHistoricoCard.setText("Empire Titans x "+h.getPartida().getClube().getNome());
-        holder.txtDataHitoricoCard.setText(new SimpleDateFormat("dd/MM/yyyy").format(h.getData()));
+        holder.txtDataHitoricoCard.setText(new SimpleDateFormat("dd/MM/yyyy - HH:mm").format(h.getPartida().getData()));
         holder.txtLocalHistoricoCard.setText(h.getPartida().getLocal());
         holder.txtValorHistoricoCard.setText("R$"+String.format("%,.2f", h.getPartida().getValor()));
         SimpleDateFormat sdfData = new SimpleDateFormat("dd/MM/yyyy");
