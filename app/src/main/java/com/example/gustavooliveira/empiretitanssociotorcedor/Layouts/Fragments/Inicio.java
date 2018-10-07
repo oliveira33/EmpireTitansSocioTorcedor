@@ -41,6 +41,8 @@ public class Inicio extends Fragment {
     private TextView txtCpfUsuario;
     private ProgressBar progressBar;
     private ImageButton btFacebook;
+    private ImageButton btInsta;
+    private ImageButton btTwiter;
     private View mView;
 
     public Inicio() {
@@ -64,11 +66,29 @@ public class Inicio extends Fragment {
         txtCpfUsuario.setText(Usuario.getPrincipal().getCpf());
         progressBar = mView.findViewById(R.id.progressBarInicio);
         btFacebook = mView.findViewById(R.id.btFacebookInicio);
+        btInsta = mView.findViewById(R.id.btInstaInicio);
+        btTwiter = mView.findViewById(R.id.btTwitterInicio);
 
         btFacebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/Empire-Titans-2179135355701007/?modal=admin_todo_tour"));
+                startActivity(intent);
+            }
+        });
+
+        btInsta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/empire1titans/"));
+                startActivity(intent);
+            }
+        });
+
+        btTwiter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/empiretitans"));
                 startActivity(intent);
             }
         });

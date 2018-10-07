@@ -42,12 +42,44 @@
 
             </android.support.v7.widget.RecyclerView>
 
-            <ImageView
-                android:id="@+id/imageView9"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="560dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/banner" />
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="match_parent"
+                    android:layout_height="560dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/banner" />
+
+                <ImageButton
+                    android:id="@+id/btTwitterIngresso"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginStart="290dp"
+                    android:layout_marginTop="54dp"
+                    android:background="@android:color/transparent"
+                    android:src="@android:color/transparent" />
+
+                <ImageButton
+                    android:id="@+id/btInstaIngresso"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginStart="194dp"
+                    android:layout_marginTop="54dp"
+                    android:background="@android:color/transparent"
+                    android:src="@android:color/transparent" />
+
+                <ImageButton
+                    android:id="@+id/btFacebookIngresso"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginStart="102dp"
+                    android:layout_marginTop="54dp"
+                    android:background="@android:color/transparent"
+                    android:src="@android:color/transparent" />
+            </RelativeLayout>
 
         </LinearLayout>
     </ScrollView>
