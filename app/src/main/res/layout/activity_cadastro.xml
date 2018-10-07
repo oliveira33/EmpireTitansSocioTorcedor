@@ -305,6 +305,16 @@
             android:layout_marginTop="2dp"
             app:srcCompat="@drawable/logo" />
 
+        <ProgressBar
+            android:id="@+id/progressBarCadastro"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:background="#8d000000"
+            android:padding="150dp"
+            android:visibility="invisible" />
+
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

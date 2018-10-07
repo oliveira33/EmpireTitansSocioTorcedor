@@ -9,6 +9,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +49,7 @@ public class Cadastro extends AppCompatActivity {
     private TextView viewEndereco;
     private TextView viewCodSeguranca;
     private TextView viewSenha;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +81,7 @@ public class Cadastro extends AppCompatActivity {
         viewEndereco = (TextView) findViewById(R.id.viewEndereco);
         viewCodSeguranca = (TextView) findViewById(R.id.viewCodSeguranca);
         viewSenha = (TextView) findViewById(R.id.viewSenha);
+        progressBar = (ProgressBar) findViewById(R.id.progressBarCadastro);
 
         aplicarMascaras();
 
@@ -87,9 +90,11 @@ public class Cadastro extends AppCompatActivity {
             public void onClick(View v) {
                 if (validarCampos()) {
                     try {
+                        progressBar.setVisibility(View.VISIBLE);
                         cadastrar(validar());
                     } catch (Exception ex) {
                         Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
+                        progressBar.setVisibility(View.INVISIBLE);
                     }
                 } else {
                     Toast.makeText(getApplicationContext(), "Verifique os campos incorretos!", Toast.LENGTH_LONG).show();
@@ -258,6 +263,7 @@ public class Cadastro extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            progressBar.setVisibility(View.INVISIBLE);
                             Intent intent = new Intent(Cadastro.this, CadastroRealizado.class);
                             startActivity(intent);
                             finish();
