@@ -122,6 +122,19 @@
             android:padding="150dp"
             android:visibility="invisible" />
 
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="2dp"
+            android:fontFamily="sans-serif"
+            android:text="@2018 Empire Titans Sócio Torcedor"
+            android:textAlignment="center"
+            android:textColor="@color/transparenteTexto"
+            android:textSize="10sp" />
+
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

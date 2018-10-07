@@ -42,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Insira seu nome"
-                    android:inputType="textPersonName" />
+                    android:inputType="textCapSentences" />
 
                 <TextView
                     android:id="@+id/viewSobrenomeAtt"
@@ -57,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Insira seu sobrenome"
-                    android:inputType="textPersonName" />
+                    android:inputType="textCapSentences" />
 
                 <TextView
                     android:id="@+id/viewEmailAtt"
@@ -132,7 +132,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Insira seu endereço:"
-                    android:inputType="textPersonName" />
+                    android:inputType="textCapSentences" />
 
                 <TextView
                     android:id="@+id/viewSenhaAtt"

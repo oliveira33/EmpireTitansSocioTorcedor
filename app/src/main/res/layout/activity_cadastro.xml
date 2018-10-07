@@ -69,7 +69,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Insira seu nome"
-                    android:inputType="textPersonName"
+                    android:inputType="textCapSentences"
                     android:textColor="@android:color/background_light" />
 
                 <TextView
@@ -88,7 +88,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Insira seu sobrenome"
-                    android:inputType="textPersonName"
+                    android:inputType="textCapSentences"
                     android:textColor="@android:color/background_light" />
 
                 <TextView
@@ -183,7 +183,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Insira seu endereço"
-                    android:inputType="textPersonName"
+                    android:inputType="textCapSentences"
                     android:textColor="@android:color/background_light" />
 
                 <TextView

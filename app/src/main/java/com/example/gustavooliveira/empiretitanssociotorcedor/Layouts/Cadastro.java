@@ -1,5 +1,6 @@
 package com.example.gustavooliveira.empiretitanssociotorcedor.Layouts;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -257,7 +258,8 @@ public class Cadastro extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(getApplicationContext(), "Cadastro realizado com sucesso!", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(Cadastro.this, CadastroRealizado.class);
+                            startActivity(intent);
                             finish();
                         }
                     });
