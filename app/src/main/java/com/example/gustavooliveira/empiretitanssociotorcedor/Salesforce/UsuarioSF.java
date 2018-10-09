@@ -16,6 +16,7 @@ public class UsuarioSF {
 
     public void alterar(Usuario usuario) throws Exception {
         HttpURLConnection conexao = (HttpURLConnection) new URL("https://na57.salesforce.com/services/data/v43.0/sobjects/Usuario__c/" + usuario.getId()).openConnection();
+        conexao.setDoInput(true);
         conexao.setDoOutput(true);
         conexao.setRequestMethod("PATCH");
         conexao.setRequestProperty("Authorization", "Bearer " + Autenticacao.get().getToken());
@@ -26,12 +27,20 @@ public class UsuarioSF {
         writer.flush();
         writer.close();
 
-        if (conexao.getResponseCode() != HttpURLConnection.HTTP_NO_CONTENT)
-            throw new Exception(conexao.getResponseMessage());
+        if (conexao.getResponseCode() != HttpURLConnection.HTTP_NO_CONTENT) {
+            String linha, resposta = new String();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(conexao.getErrorStream()));
+            while ((linha = reader.readLine()) != null)
+                resposta += linha;
+            reader.close();
+
+            throw new Exception(new JSONArray(resposta).getJSONObject(0).getString("message"));
+        }
     }
 
     public void cadastrar(Usuario usuario) throws Exception {
         HttpURLConnection conexao = (HttpURLConnection) new URL("https://na57.salesforce.com/services/data/v43.0/sobjects/Usuario__c").openConnection();
+        conexao.setDoInput(true);
         conexao.setDoOutput(true);
         conexao.setRequestMethod("POST");
         conexao.setRequestProperty("Authorization", "Bearer " + Autenticacao.get().getToken());
@@ -42,8 +51,15 @@ public class UsuarioSF {
         writer.flush();
         writer.close();
 
-        if (conexao.getResponseCode() != HttpURLConnection.HTTP_CREATED)
-            throw new Exception(conexao.getResponseMessage());
+        if (conexao.getResponseCode() != HttpURLConnection.HTTP_CREATED) {
+            String linha, resposta = new String();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(conexao.getErrorStream()));
+            while ((linha = reader.readLine()) != null)
+                resposta += linha;
+            reader.close();
+
+            throw new Exception(new JSONArray(resposta).getJSONObject(0).getString("message"));
+        }
     }
 
     public void excluir(String id) throws Exception {
