@@ -10,17 +10,17 @@
         android:id="@+id/imageView3"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="#2F8EB9"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/fundo_azul" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="140dp"
+        android:layout_marginBottom="50dp"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -43,7 +43,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"
-            android:background="#10ffffff"
+            android:background="#23000000"
             android:drawableLeft="@drawable/ic_action_person"
             android:drawableTint="@color/transparenteIcones"
             android:ems="10"
@@ -64,7 +64,7 @@
             android:layout_below="@+id/textView5"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"
-            android:background="#10ffffff"
+            android:background="#23000000"
             android:drawableLeft="@drawable/ic_action_lock"
             android:drawableTint="@color/transparenteIcones"
             android:ems="10"
@@ -88,7 +88,7 @@
                 android:layout_height="35dp"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:background="#10ffffff"
+                android:background="#23000000"
                 android:text="Login"
                 android:textColor="@color/transparenteTexto"
                 android:textSize="12sp" />
@@ -100,7 +100,7 @@
 
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
-                android:background="#10ffffff"
+                android:background="#23000000"
                 android:text="Cadastrar"
                 android:textColor="@color/transparenteTexto"
                 android:textSize="12sp" />
@@ -111,16 +111,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:background="#8d000000"
-            android:padding="150dp"
-            android:visibility="invisible" />
 
         <TextView
             android:id="@+id/textView11"
@@ -134,6 +124,16 @@
             android:textAlignment="center"
             android:textColor="@color/transparenteTexto"
             android:textSize="10sp" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:background="#8d000000"
+            android:padding="150dp"
+            android:visibility="invisible" />
 
     </RelativeLayout>
 

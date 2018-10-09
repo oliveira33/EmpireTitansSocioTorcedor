@@ -18,11 +18,11 @@
 
         <ImageView
             android:id="@+id/imageView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
             android:scaleType="fitXY"
-            android:visibility="visible"
-            app:srcCompat="@drawable/fundo_azul" />
+            android:visibility="visible" />
 
         <ScrollView
             android:layout_width="fill_parent"
@@ -45,211 +45,306 @@
                     android:id="@+id/textView6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-smallcaps"
                     android:text="REALIZE SEU CADASTRO"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textColor="@android:color/background_light"
-                    android:textSize="18sp"
+                    android:textColor="#474747"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Dados Pessoais"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="#474747"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/viewNome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#2F8EB9"
                     android:fontFamily="sans-serif"
-                    android:paddingStart="6dp"
+                    android:paddingLeft="7dp"
                     android:text="Nome"
                     android:textAlignment="viewStart"
-                    android:textColor="@android:color/background_light" />
+                    android:textColor="@color/cardview_light_background" />
 
                 <EditText
                     android:id="@+id/txtNome"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="35dp"
+                    android:background="#19000000"
                     android:ems="10"
                     android:hint="Insira seu nome"
                     android:inputType="textCapSentences"
-                    android:textColor="@android:color/background_light" />
+                    android:paddingLeft="7dp"
+                    android:textColor="#c8000000" />
 
                 <TextView
                     android:id="@+id/viewSobrenome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#2F8EB9"
                     android:fontFamily="sans-serif"
                     android:paddingStart="6dp"
+                    android:paddingLeft="7dp"
                     android:text="Sobrenome"
                     android:textAlignment="viewStart"
-                    android:textColor="@android:color/background_light" />
+                    android:textColor="@color/cardview_light_background" />
 
                 <EditText
                     android:id="@+id/txtSobrenome"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="35dp"
+                    android:background="#19000000"
                     android:ems="10"
                     android:hint="Insira seu sobrenome"
                     android:inputType="textCapSentences"
-                    android:textColor="@android:color/background_light" />
-
-                <TextView
-                    android:id="@+id/viewEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif"
-                    android:paddingStart="6dp"
-                    android:text="E-Mail"
-                    android:textAlignment="viewStart"
-                    android:textColor="@android:color/background_light" />
-
-                <EditText
-                    android:id="@+id/txtEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Insira seu e-mail"
-                    android:inputType="textEmailAddress"
-                    android:textColor="@android:color/background_light" />
-
-                <TextView
-                    android:id="@+id/viewData"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif"
-                    android:paddingStart="6dp"
-                    android:text="Data de Nascimento"
-                    android:textAlignment="viewStart"
-                    android:textColor="@android:color/background_light" />
-
-                <EditText
-                    android:id="@+id/txtData"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Insira sua data de nascimento"
-                    android:inputType="number"
-                    android:textColor="@android:color/background_light" />
+                    android:paddingLeft="7dp"
+                    android:textColor="#c8000000" />
 
                 <TextView
                     android:id="@+id/viewCpf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#2F8EB9"
                     android:fontFamily="sans-serif"
                     android:paddingStart="6dp"
+                    android:paddingLeft="7dp"
                     android:text="CPF"
                     android:textAlignment="viewStart"
-                    android:textColor="@android:color/background_light" />
+                    android:textColor="@color/cardview_light_background" />
 
                 <EditText
                     android:id="@+id/txtCpf"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="35dp"
+                    android:background="#19000000"
                     android:ems="10"
                     android:hint="Insira seu CPF"
                     android:inputType="number"
-                    android:textColor="@android:color/background_light" />
+                    android:paddingLeft="7dp"
+                    android:textColor="#c8000000" />
 
                 <TextView
-                    android:id="@+id/viewTelefone"
+                    android:id="@+id/viewData"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#2F8EB9"
                     android:fontFamily="sans-serif"
                     android:paddingStart="6dp"
-                    android:text="Telefone de Contato"
+                    android:paddingLeft="7dp"
+                    android:text="Data de Nascimento"
                     android:textAlignment="viewStart"
-                    android:textColor="@android:color/background_light" />
+                    android:textColor="@color/cardview_light_background" />
 
                 <EditText
-                    android:id="@+id/txtTelefone"
+                    android:id="@+id/txtData"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="35dp"
+                    android:background="#19000000"
                     android:ems="10"
-                    android:hint="Insira um telefone para contato"
+                    android:hint="Insira sua data de nascimento"
                     android:inputType="number"
-                    android:textColor="@android:color/background_light" />
+                    android:paddingLeft="7dp"
+                    android:textColor="#c8000000" />
 
                 <TextView
                     android:id="@+id/viewEndereco"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#2F8EB9"
                     android:fontFamily="sans-serif"
                     android:paddingStart="6dp"
+                    android:paddingLeft="7dp"
                     android:text="Endereço"
                     android:textAlignment="viewStart"
-                    android:textColor="@android:color/background_light" />
+                    android:textColor="@color/cardview_light_background" />
 
                 <EditText
                     android:id="@+id/txtEndereco"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="35dp"
+                    android:background="#19000000"
                     android:ems="10"
                     android:hint="Insira seu endereço"
                     android:inputType="textCapSentences"
-                    android:textColor="@android:color/background_light" />
+                    android:paddingLeft="7dp"
+                    android:textColor="#c8000000" />
+
+                <TextView
+                    android:id="@+id/textView42"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Dados Para Contato"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="#474747"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/viewEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#2F8EB9"
+                    android:fontFamily="sans-serif"
+                    android:paddingStart="6dp"
+                    android:paddingLeft="7dp"
+                    android:text="E-Mail"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/cardview_light_background" />
+
+                <EditText
+                    android:id="@+id/txtEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="#19000000"
+                    android:ems="10"
+                    android:hint="Insira seu e-mail"
+                    android:inputType="textEmailAddress"
+                    android:paddingLeft="7dp"
+                    android:textColor="#c8000000" />
+
+                <TextView
+                    android:id="@+id/viewTelefone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#2F8EB9"
+                    android:fontFamily="sans-serif"
+                    android:paddingStart="6dp"
+                    android:paddingLeft="7dp"
+                    android:text="Telefone de Contato"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/cardview_light_background" />
+
+                <EditText
+                    android:id="@+id/txtTelefone"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="#19000000"
+                    android:ems="10"
+                    android:hint="Insira um telefone para contato"
+                    android:inputType="number"
+                    android:paddingLeft="7dp"
+                    android:textColor="#c8000000" />
+
+                <TextView
+                    android:id="@+id/textView43"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Informe Uma Senha"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="#474747"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/viewSenha"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#2F8EB9"
                     android:fontFamily="sans-serif"
                     android:paddingStart="6dp"
+                    android:paddingLeft="7dp"
                     android:text="Senha"
                     android:textAlignment="viewStart"
-                    android:textColor="@android:color/background_light" />
+                    android:textColor="@color/cardview_light_background" />
 
                 <EditText
                     android:id="@+id/txtSenha"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="35dp"
+                    android:background="#19000000"
                     android:ems="10"
                     android:hint="Insira uma senha (mínimo 3 digitos)"
                     android:inputType="textPassword"
-                    android:textColor="@android:color/background_light" />
+                    android:paddingLeft="7dp"
+                    android:textColor="#c8000000" />
+
+                <TextView
+                    android:id="@+id/textView45"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:background="#2F8EB9"
+                    android:textColor="@color/cardview_light_background" />
 
                 <EditText
                     android:id="@+id/txtSenhaConfirm"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="35dp"
+                    android:background="#19000000"
                     android:ems="10"
                     android:hint="Confirme a sua senha"
                     android:inputType="textPassword"
-                    android:textColor="@android:color/background_light" />
+                    android:paddingLeft="7dp"
+                    android:textColor="#c8000000" />
+
+                <TextView
+                    android:id="@+id/textView44"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="DADOS DO SEU CARTÃO"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="#474747"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/viewCartao"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#2F8EB9"
                     android:fontFamily="sans-serif"
                     android:paddingStart="6dp"
-                    android:text="Cartão"
+                    android:paddingLeft="7dp"
+                    android:text="Número do Cartão"
                     android:textAlignment="viewStart"
-                    android:textColor="@android:color/background_light" />
+                    android:textColor="@color/cardview_light_background" />
 
                 <EditText
                     android:id="@+id/txtCartao"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="35dp"
+                    android:background="#19000000"
                     android:ems="10"
                     android:hint="Insira o número do seu cartão"
                     android:inputType="number"
-                    android:textColor="@android:color/background_light" />
+                    android:paddingLeft="7dp"
+                    android:textColor="#c8000000" />
 
                 <TextView
                     android:id="@+id/viewCodSeguranca"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#2F8EB9"
                     android:fontFamily="sans-serif"
                     android:paddingStart="6dp"
+                    android:paddingLeft="7dp"
                     android:text="Código de segurança"
-                    android:textColor="@android:color/background_light" />
+                    android:textColor="@color/cardview_light_background" />
 
                 <EditText
                     android:id="@+id/txtCodSegurancaDialog"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="35dp"
+                    android:background="#19000000"
                     android:ems="10"
                     android:hint="Insira o código de segurança do cartão"
                     android:inputType="number"
-                    android:textColor="@android:color/background_light" />
+                    android:paddingLeft="7dp"
+                    android:textColor="#c8000000" />
 
                 <View
                     android:id="@+id/divider"
@@ -262,7 +357,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Concordo com os Termos de Uso"
-                    android:textColor="@android:color/background_light" />
+                    android:textColor="#383838" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -276,10 +371,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
                         android:layout_weight="1"
-                        android:background="@color/cardview_shadow_start_color"
+                        android:background="#2d000000"
                         android:text="Confirmar"
                         android:textAlignment="center"
-                        android:textColor="@color/cardview_light_background" />
+                        android:textColor="#c8000000" />
 
                     <Button
                         android:id="@+id/btCancelar"
@@ -287,23 +382,13 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:layout_weight="1"
-                        android:background="@color/cardview_shadow_start_color"
+                        android:background="#2d000000"
                         android:text="Cancelar"
-                        android:textColor="@color/cardview_light_background" />
+                        android:textColor="#c8000000" />
                 </LinearLayout>
 
             </LinearLayout>
         </ScrollView>
-
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginEnd="2dp"
-            android:layout_marginTop="2dp"
-            app:srcCompat="@drawable/logo" />
 
         <ProgressBar
             android:id="@+id/progressBarCadastro"
