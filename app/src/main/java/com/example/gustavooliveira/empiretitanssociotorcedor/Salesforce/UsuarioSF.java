@@ -72,7 +72,7 @@ public class UsuarioSF {
     }
 
     public Usuario logar(String email, String senha) throws Exception {
-        String query = "SELECT+Id,+Email__c,+Senha__c,+Nome__c,+Sobrenome__c,+Cpf__c,+Endereco__c,+DataNascimento__c,+Telefone__c,+Cartao__c,+CodSeguranca__c,+Administrador__c+FROM+Usuario__c+WHERE+Email__c+=+'" + email + "'+AND+senha__c+=+'" + senha + "'";
+        String query = "SELECT+Id,+Email__c,+Senha__c,+Nome__c,+Sobrenome__c,+Cpf__c,+Endereco__c,+DataNascimento__c,+Telefone__c,+Cartao__c,+CodSeguranca__c,+Administrador__c,+DataValCartao__c,+NomeCartao__c+FROM+Usuario__c+WHERE+Email__c+=+'" + email + "'+AND+senha__c+=+'" + senha + "'";
         HttpURLConnection conexao = (HttpURLConnection) new URL("https://na57.salesforce.com/services/data/v43.0/query/?q=" + query).openConnection();
         conexao.setDoInput(true);
         conexao.setRequestMethod("GET");
