@@ -38,6 +38,8 @@ public class Cadastro extends AppCompatActivity {
     private EditText txtSenhaConfirm;
     private EditText txtCartao;
     private EditText txtCodSeguranca;
+    private EditText txtDataValCartao;
+    private EditText txtNomeCartao;
     private TextView viewData;
     private TextView viewCpf;
     private TextView viewTelefone;
@@ -49,6 +51,8 @@ public class Cadastro extends AppCompatActivity {
     private TextView viewEndereco;
     private TextView viewCodSeguranca;
     private TextView viewSenha;
+    private TextView viewDataValCartao;
+    private TextView viewNomeCartao;
     private ProgressBar progressBar;
 
     @Override
@@ -61,7 +65,7 @@ public class Cadastro extends AppCompatActivity {
         btCancelar = (Button) findViewById(R.id.btCancelar);
         txtNome = (EditText) findViewById(R.id.txtNome);
         txtSobrenome = (EditText) findViewById(R.id.txtSobrenome);
-        txtEmail = (EditText) findViewById(R.id.txtEmailAtt);
+        txtEmail = (EditText) findViewById(R.id.txtEmail);
         txtData = (EditText) findViewById(R.id.txtData);
         txtCpf = (EditText) findViewById(R.id.txtCpf);
         txtTelefone = (EditText) findViewById(R.id.txtTelefone);
@@ -89,11 +93,12 @@ public class Cadastro extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (validarCampos()) {
+                    progressBar.setVisibility(View.VISIBLE);
                     try {
-                        progressBar.setVisibility(View.VISIBLE);
                         cadastrar(validar());
                     } catch (Exception ex) {
                         Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
+                    } finally {
                         progressBar.setVisibility(View.INVISIBLE);
                     }
                 } else {
@@ -218,10 +223,7 @@ public class Cadastro extends AppCompatActivity {
     public Usuario validar() throws Exception {
         String email = txtEmail.getText().toString();
         if (email.isEmpty())
-            throw new Exception("O e-mail não foi informada");
-
-        if (!email.contains("@") || !email.contains("."))
-            throw new Exception("O e-mail informado é inválido");
+            throw new Exception("O e-mail não foi informado");
 
         Date data = null;
         String dataString = txtData.getText().toString();
@@ -236,7 +238,7 @@ public class Cadastro extends AppCompatActivity {
 
         String senha = txtSenha.getText().toString();
         if (!senha.equals(txtSenhaConfirm.getText().toString()))
-            throw new Exception("As senhas não são conferem");
+            throw new Exception("As senhas não conferem");
 
         String codSeguranca = txtCodSeguranca.getText().toString();
         if (codSeguranca.isEmpty())
@@ -250,8 +252,19 @@ public class Cadastro extends AppCompatActivity {
                 throw new Exception("O código de segurança é inválido");
         }
 
-        return new Usuario(email, senha, txtNome.getText().toString(), txtSobrenome.getText().toString(), data, txtCpf.getText().toString(),
-                txtEndereco.getText().toString(), txtTelefone.getText().toString(), txtCartao.getText().toString(), codSeguranca, 'U');
+        Date dataValCartao = null;
+        String dataValCartaoString = txtDataValCartao.getText().toString();
+        if (dataValCartaoString.isEmpty())
+            throw new Exception("A data de validade do cartão não foi preenchida");
+
+        try {
+            dataValCartao = new SimpleDateFormat("MM/yy").parse(dataValCartaoString);
+        } catch (ParseException e) {
+            throw new Exception("A data de validade do cartão informada é inválida");
+        }
+
+        return new Usuario(email, senha, txtNome.getText().toString(), txtSobrenome.getText().toString(), data, txtCpf.getText().toString(), txtEndereco.getText().toString(),
+                txtTelefone.getText().toString(), txtCartao.getText().toString(), codSeguranca, 'U', dataValCartao, txtNomeCartao.getText().toString());
     }
 
     public void cadastrar(final Usuario usuario) {
@@ -273,6 +286,7 @@ public class Cadastro extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            progressBar.setVisibility(View.INVISIBLE);
                             Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     });

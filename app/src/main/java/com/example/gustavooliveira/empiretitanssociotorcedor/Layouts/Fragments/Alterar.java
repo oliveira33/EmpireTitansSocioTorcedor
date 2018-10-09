@@ -38,6 +38,8 @@ public class Alterar extends Fragment {
     private EditText txtSenhaConfirm;
     private EditText txtCartao;
     private EditText txtCodSeguranca;
+    private EditText txtDataValCartao;
+    private EditText txtNomeCartao;
     private TextView viewNome;
     private TextView viewSobrenome;
     private TextView viewEmail;
@@ -46,6 +48,8 @@ public class Alterar extends Fragment {
     private TextView viewTelefone;
     private TextView viewEndereco;
     private TextView viewCartao;
+    private TextView viewDataValCartao;
+    private TextView viewNomeCartao;
 
     private View mView;
     private ImageButton btAttCadastro;
@@ -150,9 +154,10 @@ public class Alterar extends Fragment {
             @Override
             public void run() {
                 try {
-                    new UsuarioSF().alterar(new Usuario(Usuario.getPrincipal().getId(), txtEmail.getText().toString(), senha, txtNome.getText().toString(),
-                            txtSobrenome.getText().toString(), new SimpleDateFormat("dd/MM/yyyy").parse(txtData.getText().toString()), txtCpf.getText().toString(), txtEndereco.getText().toString(),
-                            txtTelefone.getText().toString(), txtCartao.getText().toString(), txtCodSeguranca.getText().toString(), 'U'));
+                    new UsuarioSF().alterar(new Usuario(Usuario.getPrincipal().getId(), txtEmail.getText().toString(), senha, txtNome.getText().toString(), txtSobrenome.getText().toString(),
+                            new SimpleDateFormat("dd/MM/yyyy").parse(txtData.getText().toString()), txtCpf.getText().toString(), txtEndereco.getText().toString(), txtTelefone.getText().toString(),
+                            txtCartao.getText().toString(), txtCodSeguranca.getText().toString(), 'U', new SimpleDateFormat("MM/yy").parse(txtDataValCartao.getText().toString()),
+                            txtNomeCartao.getText().toString()));
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {

@@ -92,7 +92,8 @@ public class UsuarioSF {
             JSONObject json = array.getJSONObject(0);
             return new Usuario(json.getString("Id"), json.getString("Email__c"), json.getString("Senha__c"), json.getString("Nome__c"), json.getString("Sobrenome__c").replace("null", ""),
                     new DateSF().toDate(json.getString("DataNascimento__c")), json.getString("Cpf__c"), json.getString("Endereco__c"), json.getString("Telefone__c"),
-                    json.getString("Cartao__c"), json.getString("CodSeguranca__c"), json.getString("Administrador__c").charAt(0));
+                    json.getString("Cartao__c"), json.getString("CodSeguranca__c"), json.getString("Administrador__c").charAt(0),
+                    new DateSF().toDate(json.getString("DataValCartao__c")), json.getString("NomeCartao__c"));
         } else
             throw new Exception(conexao.getResponseMessage());
     }
@@ -111,6 +112,8 @@ public class UsuarioSF {
         json.put("Cartao__c", usuario.getCartao());
         json.put("CodSeguranca__c", usuario.getCodSeguranca());
         json.put("Administrador__c", usuario.getAdministrador());
+        json.put("DataValCartao__c", usuario.getDataValCartao());
+        json.put("NomeCartao__c", usuario.getNomeCartao());
 
         return json;
     }

@@ -19,12 +19,14 @@ public class Usuario {
     private String cartao;
     private String codSeguranca;
     private Character administrador;
+    private Date dataValCartao;
+    private String nomeCartao;
     private static Usuario principal;
 
     public Usuario() {
     }
 
-    public Usuario(String email, String senha, String nome, String sobrenome, Date dataNascimento, String cpf, String endereco, String telefone, String cartao, String codSeguranca, Character administrador) {
+    public Usuario(String email, String senha, String nome, String sobrenome, Date dataNascimento, String cpf, String endereco, String telefone, String cartao, String codSeguranca, Character administrador, Date dataValCartao, String nomeCartao) {
         this.email = email;
         this.senha = senha;
         this.nome = nome;
@@ -36,9 +38,11 @@ public class Usuario {
         this.cartao = cartao;
         this.codSeguranca = codSeguranca;
         this.administrador = administrador;
+        this.dataValCartao = dataValCartao;
+        this.nomeCartao = nomeCartao;
     }
 
-    public Usuario(String id, String email, String senha, String nome, String sobrenome, Date dataNascimento, String cpf, String endereco, String telefone, String cartao, String codSeguranca, Character administrador) {
+    public Usuario(String id, String email, String senha, String nome, String sobrenome, Date dataNascimento, String cpf, String endereco, String telefone, String cartao, String codSeguranca, Character administrador, Date dataValCartao, String nomeCartao) {
         this.id = id;
         this.email = email;
         this.senha = senha;
@@ -51,6 +55,8 @@ public class Usuario {
         this.cartao = cartao;
         this.codSeguranca = codSeguranca;
         this.administrador = administrador;
+        this.dataValCartao = dataValCartao;
+        this.nomeCartao = nomeCartao;
     }
 
     public String getId() {
@@ -147,6 +153,22 @@ public class Usuario {
 
     public void setAdministrador(Character administrador) {
         this.administrador = administrador;
+    }
+
+    public Date getDataValCartao() {
+        return dataValCartao;
+    }
+
+    public void setDataValCartao(Date dataValCartao) {
+        this.dataValCartao = dataValCartao;
+    }
+
+    public String getNomeCartao() {
+        return nomeCartao;
+    }
+
+    public void setNomeCartao(String nomeCartao) {
+        this.nomeCartao = nomeCartao;
     }
 
     public static Usuario getPrincipal() {
