@@ -67,7 +67,7 @@ public class Alterar extends Fragment {
         txtNome = mView.findViewById(R.id.txtNomeAtt);
         txtSobrenome = mView.findViewById(R.id.txtSobrenomeAtt);
         txtEmail = mView.findViewById(R.id.txtEmailAtt);
-        txtData = mView.findViewById(R.id.txtDataNascimentoAtt);
+        txtData = mView.findViewById(R.id.txtDataAtt);
         txtCpf = mView.findViewById(R.id.txtCpfAtt);
         txtTelefone = mView.findViewById(R.id.txtTelefoneAtt);
         txtEndereco = mView.findViewById(R.id.txtEnderecoAtt);
@@ -178,7 +178,7 @@ public class Alterar extends Fragment {
 
     private void carregarDados() {
         viewEmail = mView.findViewById(R.id.viewEmailAtt);
-        viewData = mView.findViewById(R.id.viewDataNascimentoAtt);
+        viewData = mView.findViewById(R.id.viewDataAtt);
         viewCpf = mView.findViewById(R.id.viewCpfAtt);
         viewTelefone = mView.findViewById(R.id.viewTelefoneAtt);
         viewCartao = mView.findViewById(R.id.viewCartaoAtt);

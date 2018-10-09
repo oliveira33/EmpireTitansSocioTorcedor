@@ -86,6 +86,10 @@ public class Cadastro extends AppCompatActivity {
         viewCodSeguranca = (TextView) findViewById(R.id.viewCodSeguranca);
         viewSenha = (TextView) findViewById(R.id.viewSenha);
         progressBar = (ProgressBar) findViewById(R.id.progressBarCadastro);
+        txtDataValCartao = (EditText) findViewById(R.id.txtVencimentoCartao);
+        txtNomeCartao = (EditText) findViewById(R.id.txtNomeTitular);
+        viewDataValCartao = (TextView) findViewById(R.id.viewVencimentoCartao);
+        viewNomeCartao = (TextView) findViewById(R.id.viewNomeTitular);
 
         aplicarMascaras();
 
@@ -217,6 +221,24 @@ public class Cadastro extends AppCompatActivity {
             checkTermos.setText("Concordo com os Termos de Uso");
         }
 
+        if(txtNomeCartao.length() <= 0) {
+            viewNomeCartao.setTextColor(Color.RED);
+            viewNomeCartao.setText("*Nome do Titular do Cartão");
+            status = false;
+        } else {
+            viewNomeCartao.setTextColor(Color.WHITE);
+            viewNomeCartao.setText("Nome do Titular do Cartão");
+        }
+
+        if(txtDataValCartao.length() != 5) {
+            viewDataValCartao.setTextColor(Color.RED);
+            viewDataValCartao.setText("*Data de Vencimento do Cartão");
+            status = false;
+        } else {
+            viewDataValCartao.setTextColor(Color.WHITE);
+            viewDataValCartao.setText("Data de Vencimento do Cartão");
+        }
+
         return status;
     }
 
@@ -320,6 +342,11 @@ public class Cadastro extends AppCompatActivity {
         mask = new SimpleMaskFormatter("NNN");
         mtw = new MaskTextWatcher(txtCodSeguranca, mask);
         txtCodSeguranca.addTextChangedListener(mtw);
+
+        //Mascara Venc Cartao
+        mask = new SimpleMaskFormatter("NN/NN");
+        mtw = new MaskTextWatcher(txtDataValCartao, mask);
+        txtDataValCartao.addTextChangedListener(mtw);
     }
 
 }

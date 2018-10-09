@@ -302,6 +302,28 @@
                     android:textSize="18sp" />
 
                 <TextView
+                    android:id="@+id/viewNomeTitular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#2F8EB9"
+                    android:fontFamily="sans-serif"
+                    android:paddingStart="6dp"
+                    android:paddingLeft="7dp"
+                    android:text="Nome do Titular do Cartão"
+                    android:textColor="@color/cardview_light_background" />
+
+                <EditText
+                    android:id="@+id/txtNomeTitular"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="#19000000"
+                    android:ems="10"
+                    android:hint="Insira o nome do titular"
+                    android:inputType="textCapSentences"
+                    android:paddingLeft="7dp"
+                    android:textColor="#c8000000" />
+
+                <TextView
                     android:id="@+id/viewCartao"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -320,6 +342,28 @@
                     android:background="#19000000"
                     android:ems="10"
                     android:hint="Insira o número do seu cartão"
+                    android:inputType="number"
+                    android:paddingLeft="7dp"
+                    android:textColor="#c8000000" />
+
+                <TextView
+                    android:id="@+id/viewVencimentoCartao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#2F8EB9"
+                    android:fontFamily="sans-serif"
+                    android:paddingStart="6dp"
+                    android:paddingLeft="7dp"
+                    android:text="Data de Vencimento do Cartão"
+                    android:textColor="@color/cardview_light_background" />
+
+                <EditText
+                    android:id="@+id/txtVencimentoCartao"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="#19000000"
+                    android:ems="10"
+                    android:hint="Insira a data de vencimento"
                     android:inputType="number"
                     android:paddingLeft="7dp"
                     android:textColor="#c8000000" />
