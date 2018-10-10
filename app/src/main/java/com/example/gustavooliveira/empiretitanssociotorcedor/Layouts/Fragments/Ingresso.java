@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -45,36 +46,9 @@ public class Ingresso extends Fragment {
         mView = inflater.inflate(R.layout.fragment_ingresso, container, false);
         progressBar = mView.findViewById(R.id.progressBarIngresso);
         recyclerView = mView.findViewById(R.id.recycleView_Ingresso);
-        RecyclerView.LayoutManager li = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        RecyclerView.LayoutManager li = new GridLayoutManager(getContext(), 3);
+                //LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(li);
-
-        btFacebook = mView.findViewById(R.id.btFacebookIngresso);
-        btInsta = mView.findViewById(R.id.btInstaIngresso);
-        btTwiter = mView.findViewById(R.id.btTwitterIngresso);
-
-        btFacebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/Empire-Titans-2179135355701007/?modal=admin_todo_tour"));
-                startActivity(intent);
-            }
-        });
-
-        btInsta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/empire1titans/"));
-                startActivity(intent);
-            }
-        });
-
-        btTwiter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/empiretitans"));
-                startActivity(intent);
-            }
-        });
 
         consultarPartidas();
 

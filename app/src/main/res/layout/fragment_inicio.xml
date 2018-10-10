@@ -106,13 +106,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textView53"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#147099"
+                    android:background="#2F8EB9"
                     android:paddingLeft="10dp"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
@@ -125,17 +127,17 @@
                     android:id="@+id/textView20"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#2F8EB9"
+                    android:background="#19000000"
                     android:padding="10dp"
                     android:text="No momento da venda, para melhor desempenho do sistema, em jogos de grande apelo, poderá ser interrompida a opção para pagamento por tempo determinado."
-                    android:textColor="@color/cardview_light_background"
+                    android:textColor="#333333"
                     android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/textView54"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#147099"
+                    android:background="#2F8EB9"
                     android:paddingLeft="10dp"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
@@ -148,17 +150,17 @@
                     android:id="@+id/textView47"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#2F8EB9"
+                    android:background="#19000000"
                     android:padding="10dp"
                     android:text='Mantenha seus dados e seu e-mail  sempre atualizado, pois é  por ele que nós enviamos a você "COMUNICADOS IMPORTANTES" de  jogos, promoções e demais informações.'
-                    android:textColor="@color/cardview_light_background"
+                    android:textColor="#333333"
                     android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/textView55"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#147099"
+                    android:background="#2F8EB9"
                     android:paddingLeft="10dp"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
@@ -171,10 +173,10 @@
                     android:id="@+id/textView50"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#2F8EB9"
+                    android:background="#19000000"
                     android:padding="10dp"
                     android:text="Para utilizar seu ingresso adquirido no App do Empire Titans Sócio Torcedor basta apresentar o ingresso, que estará salvo em seu historico de compras, na portaria do estádio."
-                    android:textColor="@color/cardview_light_background"
+                    android:textColor="#333333"
                     android:textSize="14sp" />
 
             </LinearLayout>

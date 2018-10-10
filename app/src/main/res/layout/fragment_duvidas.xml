@@ -27,8 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:scaleType="fitXY"
-                android:visibility="visible"
-                app:srcCompat="@drawable/fundo_azul" />
+                android:visibility="visible" />
 
             <ScrollView
                 android:layout_width="fill_parent"
@@ -51,175 +50,210 @@
                         android:id="@+id/textView6"
                         android:layout_width="match_parent"
                         android:layout_height="36dp"
-                        android:fontFamily="sans-serif-smallcaps"
+                        android:layout_marginBottom="5dp"
                         android:text="Dúvidas Frequentes/FAQ"
                         android:textAlignment="center"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                        android:textColor="@android:color/background_light"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/textView35"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif"
+                        android:background="#2F8EB9"
                         android:paddingStart="6dp"
-                        android:text="• O que é o programa?"
-                        android:textAlignment="viewStart"
-                        android:textColor="@android:color/background_light"
-                        android:textSize="18sp" />
+                        android:text="O que é o programa?"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/textView36"
                         android:layout_width="match_parent"
-                        android:layout_height="78dp"
-                        android:text="   O programa de sócios torcedores do Empire Titans oferece vantagens na compra de ingressos, descontos em promoções e, além de tudo, à satisfação de ajudar o seu clube a evoluir."
-                        android:textColor="@android:color/background_light" />
+                        android:layout_height="wrap_content"
+                        android:background="#19000000"
+                        android:padding="5dp"
+                        android:text="O programa de sócios torcedores do Empire Titans oferece vantagens na compra de ingressos, descontos em promoções e, além de tudo, à satisfação de ajudar o seu clube a evoluir."
+                        android:textAlignment="viewStart"
+                        android:textColor="#323232"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/textView33"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif"
+                        android:background="#2F8EB9"
                         android:paddingStart="6dp"
-                        android:text="• Como me associo ao programa?"
-                        android:textAlignment="viewStart"
-                        android:textColor="@android:color/background_light"
-                        android:textSize="18sp" />
+                        android:text="Como me associo ao programa?"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/textView34"
                         android:layout_width="match_parent"
-                        android:layout_height="73dp"
-                        android:text="    Ao acessar o site ou o aplicativo você encontrará as opções de planos e poderá optar pelo de sua preferência."
-                        android:textColor="@android:color/background_light" />
+                        android:layout_height="wrap_content"
+                        android:background="#19000000"
+                        android:padding="5dp"
+                        android:text="Ao acessar o site ou o aplicativo você encontrará as opções de planos e poderá optar pelo de sua preferência."
+                        android:textAlignment="viewStart"
+                        android:textColor="#323232"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/textView31"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif"
+                        android:background="#2F8EB9"
                         android:paddingStart="6dp"
-                        android:text="• Depois de finalizado meu cadastro, em quanto tempo recebo meu cartão?"
-                        android:textAlignment="viewStart"
-                        android:textColor="@android:color/background_light"
-                        android:textSize="18sp" />
+                        android:text="Depois de finalizado meu cadastro, em quanto tempo recebo meu cartão?"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/textView32"
                         android:layout_width="match_parent"
-                        android:layout_height="52dp"
-                        android:text="    O ingresso será 100% digital, basta apresentar o ingresso na tela do aplicativo."
-                        android:textColor="@android:color/background_light" />
+                        android:layout_height="wrap_content"
+                        android:background="#19000000"
+                        android:padding="5dp"
+                        android:text="O ingresso será 100% digital, basta apresentar o ingresso na tela do aplicativo."
+                        android:textAlignment="viewStart"
+                        android:textColor="#323232"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/textView29"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif"
+                        android:background="#2F8EB9"
                         android:paddingStart="6dp"
-                        android:text="• Quais as formas de pagamento? Eu posso parcelar?"
-                        android:textAlignment="viewStart"
-                        android:textColor="@android:color/background_light"
-                        android:textSize="18sp" />
+                        android:text="Quais as formas de pagamento? Eu posso parcelar?"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/textView30"
                         android:layout_width="match_parent"
-                        android:layout_height="57dp"
-                        android:text="    Cartão de crédito, por enquanto ainda não estamos trabalhando com parcelamento."
-                        android:textColor="@android:color/background_light" />
+                        android:layout_height="wrap_content"
+                        android:background="#19000000"
+                        android:padding="5dp"
+                        android:text="Cartão de crédito, por enquanto ainda não estamos trabalhando com parcelamento."
+                        android:textAlignment="viewStart"
+                        android:textColor="#323232"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/textView16"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif"
+                        android:background="#2F8EB9"
                         android:paddingStart="6dp"
-                        android:text="• O sócio do programa tem ingresso garantido?"
-                        android:textAlignment="viewStart"
-                        android:textColor="@android:color/background_light"
-                        android:textSize="18sp" />
+                        android:text="O sócio do programa tem ingresso garantido?"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/textView26"
                         android:layout_width="match_parent"
-                        android:layout_height="129dp"
-                        android:text="    Não. O sócio tem preferência de compra de ingressos, ou seja, antes de abrir a venda de ingressos na bilheteria para o torcedor comum, às vendas abrem para os afiliados, existindo um limite estipulado de fechamento de venda para os planos, para posteriormente a abertura da bilheteria comum, havendo ingressos disponíveis."
-                        android:textColor="@android:color/background_light" />
+                        android:layout_height="wrap_content"
+                        android:background="#19000000"
+                        android:padding="5dp"
+                        android:text="Não. O sócio tem preferência de compra de ingressos, ou seja, antes de abrir a venda de ingressos na bilheteria para o torcedor comum, às vendas abrem para os afiliados, existindo um limite estipulado de fechamento de venda para os planos, para posteriormente a abertura da bilheteria comum, havendo ingressos disponíveis."
+                        android:textAlignment="viewStart"
+                        android:textColor="#323232"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/textView10"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif"
+                        android:background="#2F8EB9"
                         android:paddingStart="6dp"
-                        android:text="• Consigo comprar ingressos quando o Empire Titans for visitante?"
-                        android:textAlignment="viewStart"
-                        android:textColor="@android:color/background_light"
-                        android:textSize="18sp" />
+                        android:text="Consigo comprar ingressos quando o Empire Titans for visitante?"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/textView15"
                         android:layout_width="match_parent"
-                        android:layout_height="52dp"
-                        android:text="    Não. O programa serve apenas para jogos de mando do Empire Titans."
-                        android:textColor="@android:color/background_light" />
+                        android:layout_height="wrap_content"
+                        android:background="#19000000"
+                        android:padding="5dp"
+                        android:text="Não. O programa serve apenas para jogos de mando do Empire Titans."
+                        android:textAlignment="viewStart"
+                        android:textColor="#323232"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/textView7"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif"
+                        android:background="#2F8EB9"
                         android:paddingStart="6dp"
-                        android:text="• Posso solicitar devolução do ingresso ou reembolso?"
-                        android:textAlignment="viewStart"
-                        android:textColor="@android:color/background_light"
-                        android:textSize="18sp" />
+                        android:text="Posso solicitar devolução do ingresso ou reembolso?"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/textView9"
                         android:layout_width="match_parent"
-                        android:layout_height="78dp"
-                        android:text="    Só serão aceitas solicitações de cancelamento de compras de jogos 72 horas antes da partida, após esse período não serão feitas devoluções de valores. "
-                        android:textColor="@android:color/background_light" />
+                        android:layout_height="wrap_content"
+                        android:background="#19000000"
+                        android:padding="5dp"
+                        android:text="Só serão aceitas solicitações de cancelamento de compras de jogos 72 horas antes da partida, após esse período não serão feitas devoluções de valores. "
+                        android:textAlignment="viewStart"
+                        android:textColor="#323232"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/textView13"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif"
+                        android:background="#2F8EB9"
                         android:paddingStart="6dp"
-                        android:text="• Porque não recebo e-mail com promoções dos parceiros e novidades?"
-                        android:textAlignment="viewStart"
-                        android:textColor="@android:color/background_light"
-                        android:textSize="18sp" />
+                        android:text="Porque não recebo e-mail com promoções dos parceiros e novidades?"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/textView38"
                         android:layout_width="match_parent"
-                        android:layout_height="61dp"
-                        android:text="    A NewsLetter será implementada em nosso sistema em breve, aguarde para maiores informações."
-                        android:textColor="@android:color/background_light" />
+                        android:layout_height="wrap_content"
+                        android:background="#19000000"
+                        android:padding="5dp"
+                        android:text="A NewsLetter será implementada em nosso sistema em breve, aguarde para maiores informações."
+                        android:textAlignment="viewStart"
+                        android:textColor="#323232"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/textView37"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif"
+                        android:background="#2F8EB9"
                         android:paddingStart="6dp"
-                        android:text="• Quem tem direito a meia-entrada?"
-                        android:textAlignment="viewStart"
-                        android:textColor="@android:color/background_light"
-                        android:textSize="18sp" />
+                        android:text="Quem tem direito a meia-entrada?"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/textView2"
                         android:layout_width="match_parent"
-                        android:layout_height="170dp"
-                        android:text="    Estudantes (apresentar o documento do estudante na porta do estádio) - De acordo com a Lei Federal 12.933/2013.  Portadores de deficiência(inclusive seu acompanhante) e idosos maiores de 60 anos (apresentar documento oficial com foto na porta do estádio) - Lei Federal 10.741/2003. Jovens de baixa renda entre 15 e 29 anos, inscritos no Cadastro Único para Programas Sociais do Governo Federal (CadÚnico), com renda familiar mensal de até 2 salários mínimos."
-                        android:textColor="@android:color/background_light" />
+                        android:layout_height="wrap_content"
+                        android:background="#19000000"
+                        android:padding="5dp"
+                        android:text="Estudantes (apresentar o documento do estudante na porta do estádio) - De acordo com a Lei Federal 12.933/2013.  Portadores de deficiência(inclusive seu acompanhante) e idosos maiores de 60 anos (apresentar documento oficial com foto na porta do estádio) - Lei Federal 10.741/2003. Jovens de baixa renda entre 15 e 29 anos, inscritos no Cadastro Único para Programas Sociais do Governo Federal (CadÚnico), com renda familiar mensal de até 2 salários mínimos."
+                        android:textAlignment="viewStart"
+                        android:textColor="#323232"
+                        android:textSize="12sp" />
 
                     <View
                         android:id="@+id/divider"
@@ -236,16 +270,6 @@
 
                 </LinearLayout>
             </ScrollView>
-
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginEnd="2dp"
-                android:layout_marginTop="2dp"
-                app:srcCompat="@drawable/logo" />
 
         </RelativeLayout>
 

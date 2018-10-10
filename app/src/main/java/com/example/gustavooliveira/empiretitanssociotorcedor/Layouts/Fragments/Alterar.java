@@ -52,7 +52,7 @@ public class Alterar extends Fragment {
     private TextView viewNomeCartao;
 
     private View mView;
-    private ImageButton btAttCadastro;
+    private Button btAttCadastro;
 
     public Alterar() {
 
