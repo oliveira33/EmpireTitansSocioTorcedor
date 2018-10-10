@@ -112,7 +112,7 @@ public class UsuarioSF {
         json.put("Cartao__c", usuario.getCartao());
         json.put("CodSeguranca__c", usuario.getCodSeguranca());
         json.put("Administrador__c", usuario.getAdministrador());
-        json.put("DataValCartao__c", usuario.getDataValCartao());
+        json.put("DataValCartao__c", new DateSF().fromDate(usuario.getDataValCartao()));
         json.put("NomeCartao__c", usuario.getNomeCartao());
 
         return json;
