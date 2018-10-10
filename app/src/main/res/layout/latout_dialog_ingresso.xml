@@ -2,19 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="300dp">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="300dp">
-
-        <ImageView
-            android:id="@+id/imageView14"
-            android:layout_width="wrap_content"
-            android:layout_height="300dp"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/fundo_jogo" />
-    </RelativeLayout>
+    android:layout_height="300dp"
+    android:background="#2F8EB9">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -34,8 +23,8 @@
                 android:id="@+id/textView40"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:layout_alignParentStart="true"
                 android:layout_alignTop="@+id/txtCodSegurancaDialog"
+                android:layout_alignParentStart="true"
                 android:layout_weight="1"
                 android:gravity="fill_vertical"
                 android:paddingRight="5dp"
@@ -48,8 +37,8 @@
                 android:id="@+id/txtCodSegurancaDialog"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:layout_alignParentBottom="true"
                 android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="number"
@@ -122,10 +111,10 @@
             android:id="@+id/btCancelarDialogIngresso"
             android:layout_width="100dp"
             android:layout_height="40dp"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
             android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/cardview_shadow_start_color"
             android:text="Cancelar"
             android:textColor="@color/cardview_light_background" />
@@ -147,7 +136,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="121dp"
-            android:background="#b07f7f7f" />
+            android:background="@color/cardview_light_background" />
 
     </RelativeLayout>
 </RelativeLayout>

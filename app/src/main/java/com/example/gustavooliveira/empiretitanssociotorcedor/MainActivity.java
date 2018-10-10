@@ -27,6 +27,7 @@ import com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Fragments.I
 import com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Fragments.Inicio;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Layouts.Login;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Models.Usuario;
+import com.example.gustavooliveira.empiretitanssociotorcedor.Salesforce.HistoricoSF;
 import com.example.gustavooliveira.empiretitanssociotorcedor.Salesforce.UsuarioSF;
 
 public class MainActivity extends AppCompatActivity

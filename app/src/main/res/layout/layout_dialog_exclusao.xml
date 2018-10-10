@@ -2,22 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
-
-        <ImageView
-            android:id="@+id/imageView17"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/fundo_jogo" />
-
-    </RelativeLayout>
+    android:layout_height="210dp"
+    android:background="#2F8EB9">
 
     <TextView
         android:id="@+id/textView41"
@@ -43,12 +29,16 @@
     <EditText
         android:id="@+id/txtSenhaDialogExclusao"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:layout_height="40dp"
         android:layout_below="@+id/textView24"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#37000000"
         android:ems="10"
         android:hint="Senha"
         android:inputType="textPassword"
+        android:paddingLeft="10dp"
         android:textColor="@color/cardview_light_background"
         android:textColorHint="@android:color/darker_gray" />
 
@@ -56,10 +46,10 @@
         android:id="@+id/btConfirmaDialogExclusao"
         android:layout_width="110dp"
         android:layout_height="40dp"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="97dp"
-        android:layout_marginTop="155dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="164dp"
+        android:layout_marginEnd="102dp"
         android:background="@color/cardview_shadow_start_color"
         android:text="Confirmar"
         android:textColor="@android:color/background_light" />
@@ -68,9 +58,9 @@
         android:id="@+id/btCancelaDialogExclusao"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/btConfirmaDialogExclusao"
-        android:layout_marginEnd="3dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="2dp"
         android:background="@color/cardview_shadow_start_color"
         android:text="Cancelar"
         android:textColor="@android:color/background_light" />

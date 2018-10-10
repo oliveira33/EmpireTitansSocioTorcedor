@@ -60,7 +60,6 @@ public class JogoAdapter extends RecyclerView.Adapter {
         private TextView rival;
         private TextView local;
         private TextView data;
-        private TextView disponibilidade;
 
         public NossoViewHolder(final View itemView) {
             super(itemView);
@@ -68,15 +67,6 @@ public class JogoAdapter extends RecyclerView.Adapter {
             local = (TextView) itemView.findViewById(R.id.txtCardJogoLocal);
             data = (TextView) itemView.findViewById(R.id.txtCardJogoData);
             imagem = (ImageView) itemView.findViewById(R.id.imgCardJogoRival);
-            disponibilidade = (TextView) itemView.findViewById(R.id.txtCardJogoDisponibilidade) ;
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //O que acontece ao ser clicado
-                    Toast.makeText(context, "Partida Info", Toast.LENGTH_SHORT).show();
-                }
-            });
-
 
         }
     }
