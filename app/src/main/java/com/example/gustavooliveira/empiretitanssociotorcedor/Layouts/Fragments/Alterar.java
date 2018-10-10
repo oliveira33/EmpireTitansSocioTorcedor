@@ -75,6 +75,15 @@ public class Alterar extends Fragment {
         txtSenhaConfirm = mView.findViewById(R.id.txtSenhaConfirmAtt);
         txtCartao = mView.findViewById(R.id.txtCartaoAtt);
         txtCodSeguranca = mView.findViewById(R.id.txtCodSegurancaAtt);
+        viewEmail = mView.findViewById(R.id.viewEmailAtt);
+        viewData = mView.findViewById(R.id.viewDataAtt);
+        viewCpf = mView.findViewById(R.id.viewCpfAtt);
+        viewTelefone = mView.findViewById(R.id.viewTelefoneAtt);
+        viewCartao = mView.findViewById(R.id.viewCartaoAtt);
+        txtNomeCartao = mView.findViewById(R.id.txtNomeTitularAtt);
+        viewNomeCartao = mView.findViewById(R.id.viewNomeTitularAtt);
+        txtDataValCartao = mView.findViewById(R.id.txtVencimentoCartaoAtt);
+        viewDataValCartao = mView.findViewById(R.id.viewVencimentoCartaoAtt);
 
         carregarDados();
         aplicarMascaras();
@@ -114,6 +123,11 @@ public class Alterar extends Fragment {
         mask = new SimpleMaskFormatter("NNNN NNNN NNNN NNNN");
         mtw = new MaskTextWatcher(txtCartao, mask);
         txtCartao.addTextChangedListener(mtw);
+
+        //Mascara Venc Cartao
+        mask = new SimpleMaskFormatter("NN/NN");
+        mtw = new MaskTextWatcher(txtDataValCartao, mask);
+        txtDataValCartao.addTextChangedListener(mtw);
     }
 
     private void openDialogPassword() {
@@ -177,11 +191,6 @@ public class Alterar extends Fragment {
     }
 
     private void carregarDados() {
-        viewEmail = mView.findViewById(R.id.viewEmailAtt);
-        viewData = mView.findViewById(R.id.viewDataAtt);
-        viewCpf = mView.findViewById(R.id.viewCpfAtt);
-        viewTelefone = mView.findViewById(R.id.viewTelefoneAtt);
-        viewCartao = mView.findViewById(R.id.viewCartaoAtt);
         txtNome.setText(Usuario.getPrincipal().getNome());
         txtSobrenome.setText(Usuario.getPrincipal().getSobrenome());
         txtEmail.setText(Usuario.getPrincipal().getEmail());
@@ -191,6 +200,8 @@ public class Alterar extends Fragment {
         txtEndereco.setText(Usuario.getPrincipal().getEndereco());
         txtCartao.setText(Usuario.getPrincipal().getCartao());
         txtCodSeguranca.setText(Usuario.getPrincipal().getCodSeguranca());
+        txtNomeCartao.setText(Usuario.getPrincipal().getNomeCartao());
+        txtDataValCartao.setText(new SimpleDateFormat("MM/yy").format(Usuario.getPrincipal().getDataValCartao()));
     }
 
     private boolean validarCampos() {
